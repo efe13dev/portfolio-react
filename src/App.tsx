@@ -61,8 +61,8 @@ function App() {
 
       <Header />
 
-      <main className='container mx-auto px-6 py-24 space-y-24 relative z-10'>
-        <AnimatedSection>
+      <main className='container mx-auto px-6 pt-20 pb-16 space-y-16 relative z-10'>
+        <AnimatedSection className='pt-4'>
           <Hero />
         </AnimatedSection>
 

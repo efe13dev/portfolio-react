@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../hooks/useTheme';
 import { Moon, Sun } from 'lucide-react';
+import { Button } from './ui/button';
 
 export function Header() {
   const [activeSection, setActiveSection] = useState('');
@@ -25,49 +26,50 @@ export function Header() {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial section
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
+      const offsetTop = element.offsetTop;
       window.scrollTo({
-        top: element.offsetTop - 80,
+        top: offsetTop - 80,
         behavior: 'smooth'
       });
+      setActiveSection(sectionId);
     }
   };
 
   return (
-    <header className='bg-white dark:bg-gray-800 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm shadow-sm fixed top-0 left-0 right-0 z-10'>
+    <header className='bg-white dark:bg-gray-800 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm shadow-sm fixed top-0 left-0 right-0 z-50'>
       <nav className='container mx-auto p-4 flex justify-between items-center'>
         <ul className='flex space-x-4'>
           {['about', 'projects', 'skills', 'contact'].map((section) => (
             <li key={section}>
-              <button
-                className={`capitalize text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md ${
-                  activeSection === section
-                    ? 'bg-gray-100 dark:bg-gray-700'
-                    : ''
-                }`}
+              <Button
+                variant={activeSection === section ? 'secondary' : 'ghost'}
                 onClick={() => scrollToSection(section)}
+                className='capitalize'
               >
                 {section}
-              </button>
+              </Button>
             </li>
           ))}
         </ul>
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={toggleTheme}
           aria-label='Toggle theme'
-          className='p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700'
         >
           {theme === 'light' ? (
             <Moon className='h-5 w-5' />
           ) : (
             <Sun className='h-5 w-5' />
           )}
-        </button>
+        </Button>
       </nav>
     </header>
   );
