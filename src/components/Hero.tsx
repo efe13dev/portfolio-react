@@ -16,7 +16,7 @@ export function Hero() {
   return (
     <section
       id='about'
-      className='grid md:grid-cols-2  items-center min-h-[calc(80vh-6rem)]'
+      className='grid md:grid-cols-2  items-center  min-h-[calc(80vh-6rem)]'
     >
       {/* Columna de texto */}
       <div className='space-y-6'>
@@ -44,14 +44,16 @@ export function Hero() {
 
       {/* Columna de imagen */}
       <motion.div
-        className='relative w-64 h-64 md:w-96 md:h-96'
+        className='flex justify-center items-center'
         variants={fadeInRight}
       >
-        <img
-          src='/hero-image.jpg'
-          alt='Desarrollador programando'
-          className='object-cover rounded-2xl w-full h-full '
-        />
+        <div className='relative w-64 h-64 md:w-96 md:h-96'>
+          <img
+            src='/hero-image.jpg'
+            alt='Desarrollador programando'
+            className='object-cover rounded-2xl w-full h-full '
+          />
+        </div>
       </motion.div>
     </section>
   );

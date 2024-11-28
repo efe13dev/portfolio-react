@@ -16,12 +16,13 @@ const staggerChildren = {
 };
 
 const colorfulIcons = {
+  HTML: <Code className='text-orange-500 dark:text-orange-400' />,
   React: <Code className='text-blue-500 dark:text-blue-400' />,
   'Next.js': <Globe className='text-black dark:text-white' />,
   'Node.js': <Server className='text-green-500 dark:text-green-400' />,
   TypeScript: <Code className='text-blue-700 dark:text-blue-300' />,
   'Tailwind CSS': <Palette className='text-teal-500 dark:text-teal-400' />,
-  GraphQL: <Database className='text-pink-500 dark:text-pink-400' />
+  MySQL: <Database className='text-blue-600 dark:text-blue-500' />
 };
 
 export function Skills() {
