@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Button } from './ui/button';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -48,15 +49,15 @@ export function Contact() {
             className='bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700'
           />
         </motion.div>
-        <motion.div variants={fadeInUp}>
-          <motion.button
-            type='submit'
-            className='bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700'
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+        <motion.div 
+          variants={fadeInUp}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="inline-block"
+        >
+          <Button type="submit" variant="default">
             Enviar Mensaje
-          </motion.button>
+          </Button>
         </motion.div>
       </motion.form>
     </section>

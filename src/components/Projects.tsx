@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-
+import { Button } from './ui/button';
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
@@ -41,9 +41,7 @@ export function Projects() {
                 <p className='text-gray-600 dark:text-gray-400 mb-4'>
                   Detalles del proyecto y tecnologías utilizadas.
                 </p>
-                <button className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700'>
-                  Ver Proyecto
-                </button>
+                <Button variant='default'>Ver Proyecto</Button>
               </div>
             </div>
           </motion.div>
