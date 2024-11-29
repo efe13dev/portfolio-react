@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
+import { projects } from '../data/projectsData';
+
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
@@ -27,21 +29,50 @@ export function Projects() {
         className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'
         variants={staggerChildren}
       >
-        {[1, 2, 3].map((project) => (
+        {projects.map((project) => (
           <motion.div
-            key={project}
+            key={project.id}
             variants={fadeInUp}
+            className='h-[550px] flex flex-col'
           >
-            <div className='bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow'>
-              <div className='p-6'>
-                <h3 className='text-xl font-bold mb-2'>Proyecto {project}</h3>
+            <div className='bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden flex flex-col h-full'>
+              {project.image && (
+                <div className='aspect-video w-full overflow-hidden'>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className='w-full h-full object-cover'
+                  />
+                </div>
+              )}
+              <div className='p-6 flex flex-col flex-grow'>
+                <h3 className='text-xl font-bold mb-2'>{project.title}</h3>
                 <p className='text-gray-600 dark:text-gray-400 mb-4'>
-                  Descripción breve del proyecto
+                  {project.description}
                 </p>
-                <p className='text-gray-600 dark:text-gray-400 mb-4'>
-                  Detalles del proyecto y tecnologías utilizadas.
-                </p>
-                <Button variant='default'>Ver Proyecto</Button>
+                <div className='overflow-y-auto flex-grow mb-4'>
+                  <p className='text-gray-600 dark:text-gray-400'>
+                    {project.details}
+                  </p>
+                </div>
+                <div className='flex flex-wrap gap-2 mb-4'>
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className='px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-md text-sm'
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <Button
+                  variant='default'
+                  onClick={() =>
+                    project.link && window.open(project.link, '_blank')
+                  }
+                >
+                  Ver Proyecto
+                </Button>
               </div>
             </div>
           </motion.div>
