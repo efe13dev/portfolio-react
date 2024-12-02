@@ -49,13 +49,16 @@ export function Contact() {
             className='bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700'
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           variants={fadeInUp}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="inline-block"
+          className='inline-block'
         >
-          <Button type="submit" variant="default">
+          <Button
+            type='submit'
+            variant='default'
+          >
             Enviar Mensaje
           </Button>
         </motion.div>
