@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { World } from './ui/globe';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -44,14 +45,51 @@ export function Hero() {
 
       {/* Columna de imagen */}
       <motion.div
-        className='flex justify-center items-center'
+        className='flex justify-center items-center w-full h-full'
         variants={fadeInRight}
       >
-        <div className='relative w-64 h-64 md:w-96 md:h-96'>
-          <img
-            src='/hero-image.jpg'
-            alt='Desarrollador programando'
-            className='object-cover rounded-2xl w-full h-full '
+        <div className='relative w-full h-[400px] md:h-[600px]'>
+          <World 
+            globeConfig={{
+              pointSize: 4,
+              globeColor: '#192441',
+              showAtmosphere: true,
+              atmosphereColor: '#3a64ff',
+              atmosphereAltitude: 0.1,
+              emissive: '#000000',
+              emissiveIntensity: 0.1,
+              shininess: 0.9,
+              polygonColor: 'rgba(255,255,255,0.7)',
+              ambientLight: '#38bdf8',
+              directionalLeftLight: '#ffffff',
+              directionalTopLight: '#ffffff',
+              pointLight: '#ffffff',
+              arcTime: 1000,
+              arcLength: 0.9,
+              rings: 1,
+              maxRings: 3,
+              initialPosition: { lat: 22.3511148, lng: 78.6677428 }
+            }}
+            data={[
+              {
+                order: 1,
+                startLat: 22.3511148,
+                startLng: 78.6677428,
+                endLat: 48.8566,
+                endLng: 2.3522,
+                arcAlt: 0.3,
+                color: '#2196F3'
+              },
+              {
+                order: 2,
+                startLat: 22.3511148,
+                startLng: 78.6677428,
+                endLat: 40.7128,
+                endLng: -74.0060,
+                arcAlt: 0.5,
+                color: '#E91E63'
+              }
+            ]}
           />
         </div>
       </motion.div>
