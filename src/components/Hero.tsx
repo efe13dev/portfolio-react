@@ -49,17 +49,17 @@ export function Hero() {
         variants={fadeInRight}
       >
         <div className='relative w-full h-[400px] md:h-[600px]'>
-          <World 
+          <World
             globeConfig={{
               pointSize: 4,
-              globeColor: '#192441',
+              globeColor: '#11a1c4',
               showAtmosphere: true,
               atmosphereColor: '#3a64ff',
-              atmosphereAltitude: 0.1,
-              emissive: '#000000',
+              atmosphereAltitude: 0.15,
+              emissive: '#062d56',
               emissiveIntensity: 0.1,
               shininess: 0.9,
-              polygonColor: 'rgba(255,255,255,0.7)',
+              polygonColor: 'rgba(255,255,255,1)',
               ambientLight: '#38bdf8',
               directionalLeftLight: '#ffffff',
               directionalTopLight: '#ffffff',
@@ -68,26 +68,85 @@ export function Hero() {
               arcLength: 0.9,
               rings: 1,
               maxRings: 3,
-              initialPosition: { lat: 22.3511148, lng: 78.6677428 }
+              initialPosition: {
+                lat: 40.4168,
+                lng: -3.7038
+              },
+              autoRotate: true,
+              autoRotateSpeed: 0.5
             }}
             data={[
               {
                 order: 1,
-                startLat: 22.3511148,
-                startLng: 78.6677428,
+                startLat: 40.4168,
+                startLng: -3.7038,
                 endLat: 48.8566,
                 endLng: 2.3522,
-                arcAlt: 0.3,
-                color: '#2196F3'
+                arcAlt: 0.2,
+                color: '#60A5FA'
               },
               {
                 order: 2,
-                startLat: 22.3511148,
-                startLng: 78.6677428,
+                startLat: 51.5074,
+                startLng: -0.1278,
                 endLat: 40.7128,
-                endLng: -74.0060,
-                arcAlt: 0.5,
-                color: '#E91E63'
+                endLng: -74.006,
+                arcAlt: 0.3,
+                color: '#F472B6'
+              },
+              {
+                order: 3,
+                startLat: 35.6762,
+                startLng: 139.6503,
+                endLat: -33.8688,
+                endLng: 151.2093,
+                arcAlt: 0.25,
+                color: '#4ADE80'
+              },
+              {
+                order: 4,
+                startLat: -33.8688,
+                startLng: 151.2093,
+                endLat: -23.5505,
+                endLng: -46.6333,
+                arcAlt: 0.35,
+                color: '#FCD34D'
+              },
+              {
+                order: 5,
+                startLat: 55.7558,
+                startLng: 37.6173,
+                endLat: 35.6762,
+                endLng: 139.6503,
+                arcAlt: 0.28,
+                color: '#C084FC'
+              },
+              {
+                order: 6,
+                startLat: 1.3521,
+                startLng: 103.8198,
+                endLat: 31.2304,
+                endLng: 121.4737,
+                arcAlt: 0.15,
+                color: '#67E8F9'
+              },
+              {
+                order: 7,
+                startLat: -23.5505,
+                startLng: -46.6333,
+                endLat: 40.4168,
+                endLng: -3.7038,
+                arcAlt: 0.4,
+                color: '#FB923C'
+              },
+              {
+                order: 8,
+                startLat: 48.8566,
+                startLng: 2.3522,
+                endLat: 55.7558,
+                endLng: 37.6173,
+                arcAlt: 0.2,
+                color: '#BEF264'
               }
             ]}
           />

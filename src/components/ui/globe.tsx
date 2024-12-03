@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from 'three';
 import ThreeGlobe from 'three-globe';
 import { useThree, Object3DNode, Canvas, extend } from '@react-three/fiber';
@@ -58,8 +58,6 @@ interface WorldProps {
   data: Position[];
 }
 
-let numbersOfRings = [0];
-
 export function Globe({ globeConfig, data }: WorldProps) {
   const globeRef = useRef<ThreeGlobe | null>(null);
 
@@ -91,7 +89,14 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .showAtmosphere(defaultProps.showAtmosphere)
       .atmosphereColor(defaultProps.atmosphereColor)
       .atmosphereAltitude(defaultProps.atmosphereAltitude)
-      .hexPolygonColor(() => defaultProps.polygonColor);
+      .hexPolygonColor(() => defaultProps.polygonColor)
+      .ringsData([])
+      .ringColor(() => (t: any) => t.color)
+      .ringMaxRadius(defaultProps.maxRings)
+      .ringPropagationSpeed(RING_PROPAGATION_SPEED)
+      .ringRepeatPeriod(
+        (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
+      );
 
     // Build material
     const globeMaterial = globeRef.current.globeMaterial() as unknown as {
@@ -100,7 +105,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       emissiveIntensity: number;
       shininess: number;
     };
-    
+
     globeMaterial.color = new Color(defaultProps.globeColor);
     globeMaterial.emissive = new Color(defaultProps.emissive);
     globeMaterial.emissiveIntensity = defaultProps.emissiveIntensity;
@@ -108,7 +113,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
     // Add arcs data
     if (data && data.length > 0) {
-      const arcsData = data.map(arc => ({
+      const arcsData = data.map((arc) => ({
         startLat: arc.startLat,
         startLng: arc.startLng,
         endLat: arc.endLat,
@@ -187,7 +192,7 @@ export function World(props: WorldProps) {
 
 export function hexToRgb(hex: string) {
   var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+  hex = hex.replace(shorthandRegex, function (_m, r, g, b) {
     return r + r + g + g + b + b;
   });
 
