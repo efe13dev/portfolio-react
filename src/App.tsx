@@ -14,7 +14,13 @@ const fadeInUp = {
   transition: { duration: 0.6 }
 };
 
-function AnimatedSection({ children, className }: { children: React.ReactNode, className?: string }) {
+function AnimatedSection({
+  children,
+  className
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const controls = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: true });
 

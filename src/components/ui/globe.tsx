@@ -53,10 +53,10 @@ export type GlobeConfig = {
   autoRotateSpeed?: number;
 };
 
-interface WorldProps {
+export type WorldProps = {
   globeConfig: GlobeConfig;
   data: Position[];
-}
+};
 
 export function Globe({ globeConfig, data }: WorldProps) {
   const globeRef = useRef<ThreeGlobe | null>(null);
