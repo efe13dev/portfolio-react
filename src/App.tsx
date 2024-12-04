@@ -45,11 +45,11 @@ function AnimatedSection({
 
 function App() {
   return (
-    <div className='min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 relative transition-colors duration-300'>
+    <div className='min-h-screen bg-transparent dark:bg-transparent text-gray-800 dark:text-gray-200 relative transition-colors duration-300'>
       {/* Background grid */}
-      <div className='absolute inset-0 z-0 overflow-hidden pointer-events-none'>
+      <div className='absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-30'>
         <div
-          className='absolute inset-0 opacity-30 dark:opacity-20'
+          className='absolute inset-0'
           style={{
             backgroundImage: `
               radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0),
