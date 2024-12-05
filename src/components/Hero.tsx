@@ -1,15 +1,18 @@
 import { motion } from 'framer-motion';
-import { Suspense, lazy } from 'react';
-import type { WorldProps } from './ui/globe';
+import { Suspense, lazy, useEffect, useState } from 'react';
+// import type { WorldProps } from './ui/globe';
 
-const World = lazy<React.ComponentType<WorldProps>>(() =>
-  import('./ui/globe').then(
-    (module) =>
-      new Promise((resolve) =>
-        setTimeout(() => resolve({ default: module.World }), 1000)
-      )
-  )
+// Precargar el módulo
+const preloadWorld = () => import('./ui/globe');
+
+const World = lazy(() =>
+  import('./ui/globe').then((module) => ({
+    default: module.World
+  }))
 );
+
+// Iniciar la precarga cuando el módulo se importe
+preloadWorld();
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -24,6 +27,16 @@ const fadeInRight = {
 };
 
 export function Hero() {
+  const [showWorld, setShowWorld] = useState(false);
+
+  useEffect(() => {
+    // Retrasar la renderización del World hasta que la página esté cargada
+    const timer = setTimeout(() => {
+      setShowWorld(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       id='about'
@@ -53,26 +66,19 @@ export function Hero() {
         </motion.p>
       </div>
 
-      {/* Columna de imagen */}
-      <motion.div
-        className='flex justify-center items-center w-full h-full'
-        variants={fadeInRight}
-      >
-        <div className='relative w-full h-[400px] md:h-[600px]'>
-          <Suspense
-            fallback={
-              <div className='w-full h-full flex items-center justify-center'>
-                <div className='w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full bg-gradient-to-r from-gray-700 to-gray-800 animate-pulse flex items-center justify-center'>
-                  <div className='w-3/4 h-3/4 rounded-full bg-gradient-to-r from-gray-600 to-gray-700 animate-pulse'></div>
-                </div>
-              </div>
-            }
-          >
+      {/* Columna del globo */}
+      <div className='relative w-[500px] h-[500px] mx-auto'>
+        {showWorld && (
+          <Suspense fallback={<div className='w-full h-full bg-transparent' />}>
             <motion.div
-              className='w-full h-full flex items-center justify-center'
+              className='w-full h-full'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, ease: 'easeOut' }}
+              transition={{
+                duration: 1,
+                ease: 'easeInOut'
+              }}
+              variants={fadeInRight}
             >
               <World
                 globeConfig={{
@@ -177,8 +183,8 @@ export function Hero() {
               />
             </motion.div>
           </Suspense>
-        </div>
-      </motion.div>
+        )}
+      </div>
     </section>
   );
 }

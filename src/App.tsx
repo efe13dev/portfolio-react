@@ -67,32 +67,11 @@ function App() {
       </div>
 
       {/* Vortex background */}
-      <div className='fixed top-[-250px]  w-full h-full z-0 overflow-hidden pointer-events-none'>
-        <Vortex
-          particleCount={500}
-          baseSpeed={0.02}
-          rangeSpeed={0.5}
-          baseRadius={1}
-          rangeRadius={1.5}
-          baseHue={220}
-          backgroundColor='transparent'
-        />
-      </div>
+
       <div className='fixed  w-full h-full z-0 overflow-hidden pointer-events-none'>
         <Vortex
-          particleCount={500}
-          baseSpeed={0.02}
-          rangeSpeed={0.8}
-          baseRadius={1}
-          rangeRadius={1.5}
-          baseHue={220}
-          backgroundColor='transparent'
-        />
-      </div>
-      <div className='fixed top-[250px] w-full h-full z-0 overflow-hidden pointer-events-none'>
-        <Vortex
-          particleCount={500}
-          baseSpeed={0.02}
+          particleCount={400}
+          baseSpeed={0.05}
           rangeSpeed={0.5}
           baseRadius={1}
           rangeRadius={1.5}
