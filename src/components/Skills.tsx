@@ -16,13 +16,13 @@ const staggerChildren = {
 };
 
 const colorfulIcons = {
-  HTML: <Code className='text-orange-500 dark:text-orange-400' />,
-  React: <Code className='text-blue-500 dark:text-blue-400' />,
-  'Next.js': <Globe className='text-black dark:text-white' />,
-  'Node.js': <Server className='text-green-500 dark:text-green-400' />,
-  TypeScript: <Code className='text-blue-700 dark:text-blue-300' />,
-  'Tailwind CSS': <Palette className='text-teal-500 dark:text-teal-400' />,
-  MySQL: <Database className='text-blue-600 dark:text-blue-500' />
+  HTML: <Code className='text-orange-500' />,
+  React: <Code className='text-blue-500' />,
+  'Next.js': <Globe className='text-black' />,
+  'Node.js': <Server className='text-green-500' />,
+  TypeScript: <Code className='text-blue-700' />,
+  'Tailwind CSS': <Palette className='text-teal-500' />,
+  MySQL: <Database className='text-blue-600' />
 };
 
 export function Skills() {
@@ -31,7 +31,7 @@ export function Skills() {
       id='skills'
       className='space-y-4'
     >
-      <h2 className='text-3xl font-semibold text-gray-900 dark:text-white'>
+      <h2 className='text-3xl font-semibold text-white'>
         Habilidades
       </h2>
       <motion.div
@@ -41,12 +41,12 @@ export function Skills() {
         {Object.entries(colorfulIcons).map(([skill, icon]) => (
           <motion.div
             key={skill}
-            className='flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-full text-lg shadow-sm transition-all hover:shadow-md cursor-default'
+            className='flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-full text-lg shadow-sm transition-all hover:shadow-md cursor-default'
             variants={fadeInUp}
             whileHover={{ scale: 1.05 }}
           >
             {icon}
-            <span className='text-gray-700 dark:text-gray-300'>{skill}</span>
+            <span className='text-gray-300'>{skill}</span>
           </motion.div>
         ))}
       </motion.div>

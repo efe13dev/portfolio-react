@@ -7,6 +7,7 @@ import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { Vortex } from './components/ui/vortex';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -45,11 +46,11 @@ function AnimatedSection({
 
 function App() {
   return (
-    <div className='min-h-screen bg-transparent dark:bg-transparent text-gray-800 dark:text-gray-200 relative transition-colors duration-300'>
+    <div className='min-h-screen h-screen bg-[#0a0a0a] text-gray-200 relative'>
       {/* Background grid */}
-      <div className='absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-30'>
+      <div className='fixed inset-0 w-full h-full z-0 overflow-hidden pointer-events-none opacity-30'>
         <div
-          className='absolute inset-0'
+          className='absolute inset-0 w-full h-full'
           style={{
             backgroundImage: `
               radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0),
@@ -65,27 +66,64 @@ function App() {
         />
       </div>
 
-      <Header />
+      {/* Vortex background */}
+      <div className='fixed top-[-250px]  w-full h-full z-0 overflow-hidden pointer-events-none'>
+        <Vortex
+          particleCount={500}
+          baseSpeed={0.02}
+          rangeSpeed={0.5}
+          baseRadius={1}
+          rangeRadius={1.5}
+          baseHue={220}
+          backgroundColor='transparent'
+        />
+      </div>
+      <div className='fixed  w-full h-full z-0 overflow-hidden pointer-events-none'>
+        <Vortex
+          particleCount={500}
+          baseSpeed={0.02}
+          rangeSpeed={0.8}
+          baseRadius={1}
+          rangeRadius={1.5}
+          baseHue={220}
+          backgroundColor='transparent'
+        />
+      </div>
+      <div className='fixed top-[250px] w-full h-full z-0 overflow-hidden pointer-events-none'>
+        <Vortex
+          particleCount={500}
+          baseSpeed={0.02}
+          rangeSpeed={0.5}
+          baseRadius={1}
+          rangeRadius={1.5}
+          baseHue={220}
+          backgroundColor='transparent'
+        />
+      </div>
 
-      <main className='container mx-auto px-6 pt-20 pb-16 space-y-16 relative z-10'>
-        <AnimatedSection className='pt-4'>
-          <Hero />
-        </AnimatedSection>
+      <div className='relative z-10 min-h-screen'>
+        <Header />
 
-        <AnimatedSection>
-          <Projects />
-        </AnimatedSection>
+        <main className='container mx-auto px-6 pt-20 pb-16 space-y-16'>
+          <AnimatedSection className='pt-4'>
+            <Hero />
+          </AnimatedSection>
 
-        <AnimatedSection>
-          <Skills />
-        </AnimatedSection>
+          <AnimatedSection>
+            <Projects />
+          </AnimatedSection>
 
-        <AnimatedSection>
-          <Contact />
-        </AnimatedSection>
-      </main>
+          <AnimatedSection>
+            <Skills />
+          </AnimatedSection>
 
-      <Footer />
+          <AnimatedSection>
+            <Contact />
+          </AnimatedSection>
+        </main>
+
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -32,20 +32,20 @@ export function Hero() {
       {/* Columna de texto */}
       <div className='space-y-6'>
         <motion.h1
-          className='text-5xl font-bold text-gray-900 dark:text-white'
+          className='text-5xl font-bold text-white'
           variants={fadeInUp}
         >
           Juan Desarrollador
         </motion.h1>
         <motion.p
-          className='text-2xl font-semibold text-gray-700 dark:text-gray-300'
+          className='text-2xl font-semibold text-gray-300'
           variants={fadeInUp}
         >
           Desarrollador Full Stack
         </motion.p>
         <motion.p
           variants={fadeInUp}
-          className='text-lg text-gray-600 dark:text-gray-400'
+          className='text-lg text-gray-400'
         >
           Soy un desarrollador apasionado con experiencia en crear aplicaciones
           web modernas y eficientes. Me especializo en React, Next.js y Node.js,
@@ -62,8 +62,8 @@ export function Hero() {
           <Suspense
             fallback={
               <div className='w-full h-full flex items-center justify-center'>
-                <div className='w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 animate-pulse flex items-center justify-center'>
-                  <div className='w-3/4 h-3/4 rounded-full bg-gradient-to-r from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-700 animate-pulse'></div>
+                <div className='w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full bg-gradient-to-r from-gray-700 to-gray-800 animate-pulse flex items-center justify-center'>
+                  <div className='w-3/4 h-3/4 rounded-full bg-gradient-to-r from-gray-600 to-gray-700 animate-pulse'></div>
                 </div>
               </div>
             }
@@ -77,7 +77,7 @@ export function Hero() {
               <World
                 globeConfig={{
                   pointSize: 4,
-                  globeColor: '#11a1c4',
+                  globeColor: '#0f67c0',
                   showAtmosphere: true,
                   atmosphereColor: '#3a64ff',
                   atmosphereAltitude: 0.15,
