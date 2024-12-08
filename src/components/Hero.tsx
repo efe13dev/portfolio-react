@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Suspense, lazy, useEffect, useState } from 'react';
+import { Button } from './ui/button';
 // import type { WorldProps } from './ui/globe';
 
 // Precargar el módulo
@@ -16,18 +17,27 @@ preloadWorld();
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.5 },
   transition: { duration: 0.6 }
 };
 
 const fadeInRight = {
   initial: { opacity: 0, x: 60 },
-  animate: { opacity: 1, x: 0 },
+  whileInView: { opacity: 1, x: 0 },
+  viewport: { once: true, amount: 0.5 },
   transition: { duration: 0.6 }
 };
 
 export function Hero() {
   const [showWorld, setShowWorld] = useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     // Retrasar la renderización del World hasta que la página esté cargada
@@ -40,30 +50,61 @@ export function Hero() {
   return (
     <section
       id='about'
-      className='grid md:grid-cols-2  items-center  min-h-[calc(80vh-6rem)]'
+      className='grid md:grid-cols-2 items-center min-h-[calc(100vh-6rem)]'
     >
       {/* Columna de texto */}
       <div className='space-y-6'>
         <motion.h1
-          className='text-5xl font-bold text-white'
+          className='text-5xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-[#a4ccb4] via-[#624072] to-[#a76286]'
           variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true, amount: 0.5 }}
         >
           Juan Desarrollador
         </motion.h1>
         <motion.p
-          className='text-2xl font-semibold text-gray-300'
           variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true, amount: 0.5 }}
+          className='text-2xl font-normal text-[#a4ccb4] font-body'
         >
           Desarrollador Full Stack
         </motion.p>
         <motion.p
           variants={fadeInUp}
-          className='text-lg text-gray-400'
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true, amount: 0.5 }}
+          className='text-xl font-normal text-[#eff6f2]/80 font-body'
         >
           Soy un desarrollador apasionado con experiencia en crear aplicaciones
           web modernas y eficientes. Me especializo en React, Next.js y Node.js,
           y siempre estoy buscando aprender nuevas tecnologías.
         </motion.p>
+        <motion.div
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true, amount: 0.5 }}
+          className='flex flex-wrap gap-4'
+        >
+          <Button
+            variant='default'
+            className='bg-[#624072] text-[#eff6f2] hover:bg-[#624072]/90'
+            onClick={() => scrollToSection('projects')}
+          >
+            Ver Proyectos
+          </Button>
+          <Button
+            variant='outline'
+            className='border-[#a4ccb4] text-[#a4ccb4] hover:bg-[#a4ccb4]/10'
+            onClick={() => scrollToSection('contact')}
+          >
+            Contactar
+          </Button>
+        </motion.div>
       </div>
 
       {/* Columna del globo */}

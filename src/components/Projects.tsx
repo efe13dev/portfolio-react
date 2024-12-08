@@ -22,12 +22,13 @@ export function Projects() {
       id='projects'
       className='space-y-4'
     >
-      <h2 className='text-3xl font-semibold text-gray-900 dark:text-white'>
-        Proyectos Destacados
-      </h2>
+      <h2 className='text-4xl font-bold text-[#a4ccb4] font-heading'>Proyectos Destacados</h2>
       <motion.div
-        className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'
-        variants={staggerChildren}
+        className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
       >
         {projects.map((project) => (
           <motion.div
@@ -35,7 +36,7 @@ export function Projects() {
             variants={fadeInUp}
             className='h-[550px] flex flex-col'
           >
-            <div className='bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden flex flex-col h-full'>
+            <div className='bg-[#0b0f0c] rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full border-2 border-[#624072] hover:border-[#a76286]'>
               {project.image && (
                 <div className='aspect-video w-full overflow-hidden'>
                   <img
@@ -46,33 +47,37 @@ export function Projects() {
                 </div>
               )}
               <div className='p-6 flex flex-col flex-grow'>
-                <h3 className='text-xl font-bold mb-2'>{project.title}</h3>
-                <p className='text-gray-600 dark:text-gray-400 mb-4'>
-                  {project.description}
-                </p>
+                <h3 className='text-2xl font-bold mb-2 text-[#eff6f2] font-heading'>
+                  {project.title}
+                </h3>
+                <p className='text-base font-normal text-[#eff6f2] font-body mb-4'>{project.description}</p>
                 <div className='overflow-y-auto flex-grow mb-4'>
-                  <p className='text-gray-600 dark:text-gray-400'>
-                    {project.details}
-                  </p>
+                  <p className='text-sm font-normal text-[#eff6f2]/80 font-body'>{project.details}</p>
                 </div>
                 <div className='flex flex-wrap gap-2 mb-4'>
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className='px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-md text-sm'
+                      className='px-2 py-1 bg-[#624072] text-sm text-[#eff6f2] rounded-md'
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-                <Button
-                  variant='default'
-                  onClick={() =>
-                    project.link && window.open(project.link, '_blank')
-                  }
-                >
-                  Ver Proyecto
-                </Button>
+                <div className='flex gap-4 mt-auto'>
+                  <Button
+                    variant='outline'
+                    className='flex-1 bg-[#624072] text-[#eff6f2] hover:bg-[#624072]/90 border-none'
+                  >
+                    Ver Proyecto
+                  </Button>
+                  <Button
+                    variant='outline'
+                    className='flex-1 bg-[#a76286] text-[#eff6f2] hover:bg-[#a76286]/90 border-none'
+                  >
+                    Código
+                  </Button>
+                </div>
               </div>
             </div>
           </motion.div>

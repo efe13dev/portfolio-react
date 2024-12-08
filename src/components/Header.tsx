@@ -40,7 +40,7 @@ export function Header() {
   };
 
   return (
-    <header className='bg-gray-800 bg-opacity-90 backdrop-blur-sm shadow-sm fixed top-0 left-0 right-0 z-50'>
+    <header className='bg-[#040604]/90 backdrop-blur-sm shadow-md fixed top-0 left-0 right-0 z-50 border-b border-[#a4ccb4]/20'>
       <nav className='container mx-auto p-4 flex justify-between items-center'>
         <ul className='flex space-x-4'>
           {['about', 'projects', 'skills', 'contact'].map((section) => (
@@ -48,7 +48,11 @@ export function Header() {
               <Button
                 variant={activeSection === section ? 'secondary' : 'ghost'}
                 onClick={() => scrollToSection(section)}
-                className='capitalize'
+                className={`capitalize ${
+                  activeSection === section 
+                    ? 'bg-[#624072] text-[#eff6f2] hover:bg-[#624072]/90' 
+                    : 'text-[#a4ccb4] hover:bg-[#a4ccb4]/10'
+                }`}
               >
                 {section}
               </Button>

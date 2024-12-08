@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Projects } from './components/Projects';
@@ -9,46 +7,11 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Vortex } from './components/ui/vortex';
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
-};
-
-function AnimatedSection({
-  children,
-  className
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('animate');
-    }
-  }, [controls, inView]);
-
-  return (
-    <motion.section
-      ref={ref}
-      initial='initial'
-      animate={controls}
-      variants={fadeInUp}
-      className={className}
-    >
-      {children}
-    </motion.section>
-  );
-}
-
 function App() {
   return (
-    <div className='min-h-screen h-screen bg-[#0a0a0a] text-gray-200 relative'>
+    <main className='min-h-screen bg-background text-text'>
       {/* Background grid */}
-      <div className='fixed inset-0 w-full h-full z-0 overflow-hidden pointer-events-none opacity-30'>
+      <div className='fixed inset-0 w-full h-full z-0 overflow-hidden pointer-events-none opacity-40'>
         <div
           className='absolute inset-0 w-full h-full'
           style={{
@@ -59,9 +22,9 @@ function App() {
             backgroundSize: '40px 40px',
             backgroundPosition: '0 0, 20px 20px',
             maskImage:
-              'radial-gradient(circle at center, black, transparent 80%)',
+              'radial-gradient(circle at center, black, transparent 85%)',
             WebkitMaskImage:
-              'radial-gradient(circle at center, black, transparent 80%)'
+              'radial-gradient(circle at center, black, transparent 100%)'
           }}
         />
       </div>
@@ -83,27 +46,27 @@ function App() {
       <div className='relative z-10 min-h-screen'>
         <Header />
 
-        <main className='container mx-auto px-6 pt-20 pb-16 space-y-16'>
-          <AnimatedSection className='pt-4'>
+        <div className='container mx-auto px-6 pt-20 pb-16 space-y-16'>
+          <div className='pt-4'>
             <Hero />
-          </AnimatedSection>
+          </div>
 
-          <AnimatedSection>
+          <div>
             <Projects />
-          </AnimatedSection>
+          </div>
 
-          <AnimatedSection>
+          <div>
             <Skills />
-          </AnimatedSection>
+          </div>
 
-          <AnimatedSection>
+          <div>
             <Contact />
-          </AnimatedSection>
-        </main>
+          </div>
+        </div>
 
         <Footer />
       </div>
-    </div>
+    </main>
   );
 }
 
