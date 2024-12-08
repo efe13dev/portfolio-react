@@ -71,7 +71,7 @@ export function Projects() {
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className='px-2 py-1 bg-[#624072] text-sm text-[#eff6f2] rounded-md'
+                      className='px-3 py-1 bg-[#443d5f] text-sm text-[#eff6f2] rounded-full'
                     >
                       {tech}
                     </span>
