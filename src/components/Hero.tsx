@@ -55,7 +55,7 @@ export function Hero() {
       {/* Columna de texto */}
       <div className='space-y-6'>
         <motion.h1
-          className='text-5xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-[#a4ccb4] via-[#624072] to-[#a76286]'
+          className='text-5xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-[#a2b7d1] via-[#324f75] to-[#638ec6]'
           variants={fadeInUp}
           initial="initial"
           whileInView="whileInView"
@@ -68,7 +68,7 @@ export function Hero() {
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true, amount: 0.5 }}
-          className='text-2xl font-normal text-[#a4ccb4] font-body'
+          className='text-2xl font-normal text-[#a2b7d1] font-body'
         >
           Desarrollador Full Stack
         </motion.p>
@@ -77,7 +77,7 @@ export function Hero() {
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true, amount: 0.5 }}
-          className='text-xl font-normal text-[#eff6f2]/80 font-body'
+          className='text-xl font-normal text-[#eceff3]/80 font-body'
         >
           Soy un desarrollador apasionado con experiencia en crear aplicaciones
           web modernas y eficientes. Me especializo en React, Next.js y Node.js,
@@ -92,14 +92,14 @@ export function Hero() {
         >
           <Button
             variant='default'
-            className='bg-[#624072] text-[#eff6f2] hover:bg-[#624072]/90'
+            className='bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90'
             onClick={() => scrollToSection('projects')}
           >
             Ver Proyectos
           </Button>
           <Button
             variant='outline'
-            className='border-[#a4ccb4] text-[#a4ccb4] hover:bg-[#a4ccb4]/10'
+            className='border-[#a2b7d1] text-[#a2b7d1] hover:bg-[#a2b7d1]/10'
             onClick={() => scrollToSection('contact')}
           >
             Contactar

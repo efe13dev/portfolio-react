@@ -24,7 +24,7 @@ export function Contact() {
       id='contact'
       className='space-y-4'
     >
-      <h2 className='text-4xl font-bold text-[#a4ccb4] font-heading'>
+      <h2 className='text-4xl font-bold text-[#a2b7d1] font-heading'>
         Contáctame
       </h2>
       <motion.form
@@ -37,26 +37,26 @@ export function Contact() {
         <motion.div variants={fadeInUp}>
           <Input
             placeholder='Tu nombre'
-            className='bg-[#040604] border-2 border-[#624072] focus:border-[#a76286] text-[#eff6f2] placeholder:text-[#eff6f2]/50'
+            className='bg-[#0b0f13] border-2 border-[#324f75] focus:border-[#638ec6] text-[#eceff3] placeholder:text-[#eceff3]/50'
           />
         </motion.div>
         <motion.div variants={fadeInUp}>
           <Input
             type='email'
             placeholder='Tu email'
-            className='bg-[#040604] border-2 border-[#624072] focus:border-[#a76286] text-[#eff6f2] placeholder:text-[#eff6f2]/50'
+            className='bg-[#0b0f13] border-2 border-[#324f75] focus:border-[#638ec6] text-[#eceff3] placeholder:text-[#eceff3]/50'
           />
         </motion.div>
         <motion.div variants={fadeInUp}>
           <Textarea
             placeholder='Tu mensaje'
-            className='bg-[#040604] border-2 border-[#624072] focus:border-[#a76286] text-[#eff6f2] placeholder:text-[#eff6f2]/50 min-h-[150px]'
+            className='bg-[#0b0f13] border-2 border-[#324f75] focus:border-[#638ec6] text-[#eceff3] placeholder:text-[#eceff3]/50 min-h-[150px]'
           />
         </motion.div>
         <motion.div variants={fadeInUp}>
           <Button
             type='submit'
-            className='w-full bg-[#a4ccb4] hover:bg-[#a4ccb4]/90 text-[#040604] font-medium'
+            className='w-full bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90 font-medium'
           >
             Enviar Mensaje
           </Button>

@@ -40,7 +40,7 @@ export function Header() {
   };
 
   return (
-    <header className='bg-[#040604]/90 backdrop-blur-sm shadow-md fixed top-0 left-0 right-0 z-50 border-b border-[#a4ccb4]/20'>
+    <header className='bg-[#0b0f13]/90 backdrop-blur-sm shadow-md fixed top-0 left-0 right-0 z-50 border-b border-[#a2b7d1]/20'>
       <nav className='container mx-auto p-4 flex justify-between items-center'>
         <ul className='flex space-x-4'>
           {['about', 'projects', 'skills', 'contact'].map((section) => (
@@ -50,8 +50,8 @@ export function Header() {
                 onClick={() => scrollToSection(section)}
                 className={`capitalize ${
                   activeSection === section 
-                    ? 'bg-[#624072] text-[#eff6f2] hover:bg-[#624072]/90' 
-                    : 'text-[#a4ccb4] hover:bg-[#a4ccb4]/10'
+                    ? 'bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90' 
+                    : 'text-[#a2b7d1] hover:bg-[#a2b7d1]/10'
                 }`}
               >
                 {section}

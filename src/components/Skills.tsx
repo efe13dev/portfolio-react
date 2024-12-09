@@ -23,13 +23,13 @@ const item = {
 };
 
 const colorfulIcons = {
-  HTML: <Code className='text-[#a76286]' />,
-  React: <Code className='text-[#a4ccb4]' />,
-  'Next.js': <Globe className='text-[#eff6f2]' />,
-  'Node.js': <Server className='text-[#a4ccb4]' />,
-  TypeScript: <Code className='text-[#624072]' />,
-  'Tailwind CSS': <Palette className='text-[#a76286]' />,
-  MySQL: <Database className='text-[#624072]' />
+  HTML: <Code className='text-[#638ec6]' />,
+  React: <Code className='text-[#a2b7d1]' />,
+  'Next.js': <Globe className='text-[#eceff3]' />,
+  'Node.js': <Server className='text-[#a2b7d1]' />,
+  TypeScript: <Code className='text-[#324f75]' />,
+  'Tailwind CSS': <Palette className='text-[#638ec6]' />,
+  MySQL: <Database className='text-[#324f75]' />
 };
 
 export function Skills() {
@@ -39,7 +39,7 @@ export function Skills() {
       className='space-y-4'
     >
       <motion.h2 
-        className='text-4xl font-bold text-[#a4ccb4] font-heading'
+        className='text-4xl font-bold text-[#a2b7d1] font-heading'
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -57,12 +57,12 @@ export function Skills() {
         {Object.entries(colorfulIcons).map(([skill, icon]) => (
           <motion.div
             key={skill}
-            className='flex items-center gap-2 px-4 py-2 bg-[#040604] border-2 border-[#624072] hover:border-[#a76286] rounded-full text-lg shadow-md transition-all hover:shadow-lg cursor-default'
+            className='flex items-center gap-2 px-4 py-2 bg-[#0b0f13] text-[#eceff3] rounded-lg border-2 border-[#324f75] hover:border-[#638ec6] transition-colors duration-300'
             variants={item}
             whileHover={{ scale: 1.05 }}
           >
             {icon}
-            <span className='text-[#eff6f2]'>{skill}</span>
+            <span className='text-[#eceff3]'>{skill}</span>
           </motion.div>
         ))}
       </motion.div>

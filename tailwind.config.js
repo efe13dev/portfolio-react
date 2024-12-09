@@ -9,11 +9,11 @@ export default {
         sm: 'calc(var(--radius) - 4px)'
       },
       colors: {
-        text: '#eff6f2', // Color blanco del texto
-        background: '#040604', // Color negro del fondo
-        primary: '#a4ccb4', // Color verde menta
-        secondary: '#624072', // Color morado
-        accent: '#a76286', // Color rosa
+        text: '#eceff3', // Color blanco del texto
+        background: '#0b0f13', // Color negro del fondo
+        primary: '#a2b7d1', // Color verde menta
+        secondary: '#324f75', // Color morado
+        accent: '#638ec6', // Color rosa
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'

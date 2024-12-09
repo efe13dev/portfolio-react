@@ -9,7 +9,7 @@ export function Projects() {
       id='projects'
       className='space-y-4'
     >
-      <h2 className='text-4xl font-bold text-[#a4ccb4] font-heading'>
+      <h2 className='text-4xl font-bold text-[#a2b7d1] font-heading'>
         Proyectos Destacados
       </h2>
       <motion.div
@@ -24,18 +24,18 @@ export function Projects() {
             key={project.id}
             className='w-full'
           >
-            <CardBody className='bg-[#0b0f0c] relative group/card border-2 border-[#624072] hover:border-[#a76286] w-full h-[550px] rounded-xl p-6 transition-all duration-300 flex flex-col'>
+            <CardBody className='bg-[#0b0f13] relative group/card border-2 border-[#324f75] hover:border-[#638ec6] w-full h-[550px] rounded-xl p-6 transition-all duration-300 flex flex-col'>
               <div className='flex-none'>
                 <CardItem
                   translateZ='50'
-                  className='text-2xl font-bold text-[#eff6f2] font-heading'
+                  className='text-2xl font-bold text-[#eceff3] font-heading'
                 >
                   {project.title}
                 </CardItem>
 
                 <CardItem
                   translateZ='60'
-                  className='text-base font-normal text-[#eff6f2] mt-2'
+                  className='text-base font-normal text-[#eceff3] mt-2'
                 >
                   {project.description}
                 </CardItem>
@@ -59,7 +59,7 @@ export function Projects() {
               <div className='flex-none space-y-4'>
                 <CardItem
                   translateZ='60'
-                  className='text-sm font-normal text-[#eff6f2]/80'
+                  className='text-sm font-normal text-[#eceff3]/80'
                 >
                   {project.details}
                 </CardItem>
@@ -71,7 +71,7 @@ export function Projects() {
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className='px-3 py-1 bg-[#443d5f] text-sm text-[#eff6f2] rounded-full'
+                      className='px-3 py-1 bg-[#324f75] text-sm text-[#eceff3] rounded-full'
                     >
                       {tech}
                     </span>
@@ -84,13 +84,13 @@ export function Projects() {
                 >
                   <Button
                     variant='outline'
-                    className='flex-1 bg-[#624072] text-[#eff6f2] hover:bg-[#624072]/90 border-none'
+                    className='flex-1 bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90 border-none'
                   >
                     Ver Proyecto
                   </Button>
                   <Button
                     variant='outline'
-                    className='flex-1 bg-[#a76286] text-[#eff6f2] hover:bg-[#a76286]/90 border-none'
+                    className='flex-1 bg-[#638ec6] text-[#eceff3] hover:bg-[#638ec6]/90 border-none'
                   >
                     Código
                   </Button>
