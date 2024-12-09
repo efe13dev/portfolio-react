@@ -29,15 +29,15 @@ function App() {
       </div>
 
       {/* Vortex background */}
-
-      <div className='fixed  w-full h-full z-0 overflow-hidden pointer-events-none'>
+      <div className='fixed inset-0 w-full h-full z-0 overflow-hidden pointer-events-none'>
         <Vortex
-          particleCount={400}
-          baseSpeed={0.05}
-          rangeSpeed={0.5}
+          particleCount={50}
+          baseSpeed={0.01}
+          rangeSpeed={1}
           baseRadius={1}
           rangeRadius={1.5}
-          baseHue={220}
+          baseHue={120}
+          rangeY={window.innerHeight}
           backgroundColor='transparent'
         />
       </div>

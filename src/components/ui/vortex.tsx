@@ -85,7 +85,8 @@ export const Vortex = (props: VortexProps) => {
     let x, y, vx, vy, life, ttl, speed, radius, hue;
 
     x = rand(canvas.width);
-    y = center[1] + randRange(rangeY);
+    // Distribuir las partículas en un rango vertical mayor
+    y = rand(canvas.height * 2) - canvas.height * 0.5;
     vx = 0;
     vy = 0;
     life = 0;
@@ -182,7 +183,8 @@ export const Vortex = (props: VortexProps) => {
   };
 
   const checkBounds = (x: number, y: number, canvas: HTMLCanvasElement) => {
-    return x > canvas.width || x < 0 || y > canvas.height || y < 0;
+    // Permitir que las partículas se muevan en un rango vertical mayor
+    return x > canvas.width || x < 0 || y > canvas.height * 2 || y < -canvas.height;
   };
 
   const resize = (canvas: HTMLCanvasElement) => {
