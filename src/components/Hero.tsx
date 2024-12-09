@@ -57,25 +57,25 @@ export function Hero() {
         <motion.h1
           className='text-5xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-[#a2b7d1] via-[#324f75] to-[#638ec6]'
           variants={fadeInUp}
-          initial="initial"
-          whileInView="whileInView"
+          initial='initial'
+          whileInView='whileInView'
           viewport={{ once: true, amount: 0.5 }}
         >
           Juan Desarrollador
         </motion.h1>
         <motion.p
           variants={fadeInUp}
-          initial="initial"
-          whileInView="whileInView"
+          initial='initial'
+          whileInView='whileInView'
           viewport={{ once: true, amount: 0.5 }}
           className='text-2xl font-normal text-[#a2b7d1] font-body'
         >
-          Desarrollador Full Stack
+          Desarrollador Web Full Stack
         </motion.p>
         <motion.p
           variants={fadeInUp}
-          initial="initial"
-          whileInView="whileInView"
+          initial='initial'
+          whileInView='whileInView'
           viewport={{ once: true, amount: 0.5 }}
           className='text-xl font-normal text-[#eceff3]/80 font-body'
         >
@@ -85,8 +85,8 @@ export function Hero() {
         </motion.p>
         <motion.div
           variants={fadeInUp}
-          initial="initial"
-          whileInView="whileInView"
+          initial='initial'
+          whileInView='whileInView'
           viewport={{ once: true, amount: 0.5 }}
           className='flex flex-wrap gap-4'
         >
