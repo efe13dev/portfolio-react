@@ -4,8 +4,10 @@ interface Project {
   description: string;
   details: string;
   technologies: string[];
-  link?: string;
   image?: string;
+  link?: string;
+  demoUrl?: string;
+  codeUrl?: string;
 }
 
 export const projects: Project[] = [
@@ -16,7 +18,9 @@ export const projects: Project[] = [
     description: "Portfolio web desarrollado con React y TypeScript",
     details: "Un sitio web moderno y responsive que muestra mis proyectos y habilidades",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    link: "https://tuportfolio.com"
+    link: "https://tuportfolio.com",
+    demoUrl: "https://tuportfolio.com",
+    codeUrl: "https://github.com/tuusuario/portfolio"
   },
   {
     id: 2,

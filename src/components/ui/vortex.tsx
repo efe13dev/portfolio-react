@@ -23,7 +23,7 @@ export const Vortex = (props: VortexProps) => {
   const particleCount = props.particleCount || 700;
   const particlePropCount = 9;
   const particlePropsLength = particleCount * particlePropCount;
-  const rangeY = props.rangeY || 100;
+  //const rangeY = props.rangeY || 100;
   const baseTTL = 50;
   const rangeTTL = 150;
   const baseSpeed = props.baseSpeed || 0.0;
@@ -46,7 +46,7 @@ export const Vortex = (props: VortexProps) => {
   const TAU: number = 2 * Math.PI;
   // const TO_RAD: number = Math.PI / 180;
   const rand = (n: number): number => n * Math.random();
-  const randRange = (n: number): number => n - rand(2 * n);
+  //const randRange = (n: number): number => n - rand(2 * n);
   const fadeInOut = (t: number, m: number): number => {
     let hm = 0.5 * m;
     return Math.abs(((t + hm) % m) - hm) / hm;
@@ -184,7 +184,9 @@ export const Vortex = (props: VortexProps) => {
 
   const checkBounds = (x: number, y: number, canvas: HTMLCanvasElement) => {
     // Permitir que las partículas se muevan en un rango vertical mayor
-    return x > canvas.width || x < 0 || y > canvas.height * 2 || y < -canvas.height;
+    return (
+      x > canvas.width || x < 0 || y > canvas.height * 2 || y < -canvas.height
+    );
   };
 
   const resize = (canvas: HTMLCanvasElement) => {

@@ -23,3 +23,21 @@
     @apply font-heading;
   }
 }
+
+@layer utilities {
+  @property --border-angle {
+    syntax: "<angle>";
+    initial-value: 0turn;
+    inherits: false;
+  }
+
+  @keyframes border-rotate {
+    to {
+      --border-angle: 1turn;
+    }
+  }
+
+  .animate-border {
+    animation: border-rotate 8s linear infinite;
+  }
+}
