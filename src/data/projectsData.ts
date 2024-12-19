@@ -14,7 +14,7 @@ export const projects: Project[] = [
   {
     id: 1,
     title: 'Protectora Huellas',
-    image: '/src/assets/project-1.webp',
+    image: '/src/assets/images/protectora-huellas.webp',
     description: 'Portfolio web desarrollado con React y TypeScript',
     details:
       'Un sitio web moderno y responsive que muestra mis proyectos y habilidades',
