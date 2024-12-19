@@ -15,13 +15,13 @@ export const projects: Project[] = [
     id: 1,
     title: 'Protectora Huellas',
     image: '/src/assets/images/protectora-huellas.webp',
-    description: 'Portfolio web desarrollado con React y TypeScript',
+    description: 'Web de una protectora de animales',
     details:
-      'Un sitio web moderno y responsive que muestra mis proyectos y habilidades',
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-    link: 'https://tuportfolio.com',
+      'Ofrece información sobre animales en adopción y contacto con el equipo de la protectora.',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    link: 'https://huellas-protectora.vercel.app/',
     demoUrl: 'https://tuportfolio.com',
-    codeUrl: 'https://github.com/tuusuario/portfolio'
+    codeUrl: 'https://github.com/efe13dev/huellas-nextjs'
   },
   {
     id: 2,
