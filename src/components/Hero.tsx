@@ -108,124 +108,128 @@ export function Hero() {
       </div>
 
       {/* Columna del globo */}
-      <div className='relative w-[500px] h-[500px] mx-auto'>
-        {showWorld && (
-          <Suspense fallback={<div className='w-full h-full bg-transparent' />}>
-            <motion.div
-              className='w-full h-full'
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                duration: 1,
-                ease: 'easeInOut'
-              }}
-              variants={fadeInRight}
+      {
+        <div className='relative w-[500px] h-[500px] mx-auto'>
+          {showWorld && (
+            <Suspense
+              fallback={<div className='w-full h-full bg-transparent' />}
             >
-              <World
-                globeConfig={{
-                  pointSize: 4,
-                  globeColor: '#0f67c0',
-                  showAtmosphere: true,
-                  atmosphereColor: '#3a64ff',
-                  atmosphereAltitude: 0.15,
-                  emissive: '#062d56',
-                  emissiveIntensity: 0.1,
-                  shininess: 0.9,
-                  polygonColor: 'rgba(255,255,255,1)',
-                  ambientLight: '#38bdf8',
-                  directionalLeftLight: '#ffffff',
-                  directionalTopLight: '#ffffff',
-                  pointLight: '#ffffff',
-                  arcTime: 1000,
-                  arcLength: 0.9,
-                  rings: 1,
-                  maxRings: 3,
-                  initialPosition: {
-                    lat: 40.4168,
-                    lng: -3.7038
-                  },
-                  autoRotate: true,
-                  autoRotateSpeed: 0.5
+              <motion.div
+                className='w-full h-full'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 1,
+                  ease: 'easeInOut'
                 }}
-                data={[
-                  {
-                    order: 1,
-                    startLat: 40.4168,
-                    startLng: -3.7038,
-                    endLat: 48.8566,
-                    endLng: 2.3522,
-                    arcAlt: 0.2,
-                    color: '#60A5FA'
-                  },
-                  {
-                    order: 2,
-                    startLat: 51.5074,
-                    startLng: -0.1278,
-                    endLat: 40.7128,
-                    endLng: -74.006,
-                    arcAlt: 0.3,
-                    color: '#F472B6'
-                  },
-                  {
-                    order: 3,
-                    startLat: 35.6762,
-                    startLng: 139.6503,
-                    endLat: -33.8688,
-                    endLng: 151.2093,
-                    arcAlt: 0.25,
-                    color: '#4ADE80'
-                  },
-                  {
-                    order: 4,
-                    startLat: -33.8688,
-                    startLng: 151.2093,
-                    endLat: -23.5505,
-                    endLng: -46.6333,
-                    arcAlt: 0.35,
-                    color: '#FCD34D'
-                  },
-                  {
-                    order: 5,
-                    startLat: 55.7558,
-                    startLng: 37.6173,
-                    endLat: 35.6762,
-                    endLng: 139.6503,
-                    arcAlt: 0.28,
-                    color: '#C084FC'
-                  },
-                  {
-                    order: 6,
-                    startLat: 1.3521,
-                    startLng: 103.8198,
-                    endLat: 31.2304,
-                    endLng: 121.4737,
-                    arcAlt: 0.15,
-                    color: '#67E8F9'
-                  },
-                  {
-                    order: 7,
-                    startLat: -23.5505,
-                    startLng: -46.6333,
-                    endLat: 40.4168,
-                    endLng: -3.7038,
-                    arcAlt: 0.4,
-                    color: '#FB923C'
-                  },
-                  {
-                    order: 8,
-                    startLat: 48.8566,
-                    startLng: 2.3522,
-                    endLat: 55.7558,
-                    endLng: 37.6173,
-                    arcAlt: 0.2,
-                    color: '#BEF264'
-                  }
-                ]}
-              />
-            </motion.div>
-          </Suspense>
-        )}
-      </div>
+                variants={fadeInRight}
+              >
+                <World
+                  globeConfig={{
+                    pointSize: 4,
+                    globeColor: '#0f67c0',
+                    showAtmosphere: true,
+                    atmosphereColor: '#3a64ff',
+                    atmosphereAltitude: 0.15,
+                    emissive: '#062d56',
+                    emissiveIntensity: 0.1,
+                    shininess: 0.9,
+                    polygonColor: 'rgba(255,255,255,1)',
+                    ambientLight: '#38bdf8',
+                    directionalLeftLight: '#ffffff',
+                    directionalTopLight: '#ffffff',
+                    pointLight: '#ffffff',
+                    arcTime: 1000,
+                    arcLength: 0.9,
+                    rings: 1,
+                    maxRings: 3,
+                    initialPosition: {
+                      lat: 40.4168,
+                      lng: -3.7038
+                    },
+                    autoRotate: true,
+                    autoRotateSpeed: 0.5
+                  }}
+                  data={[
+                    {
+                      order: 1,
+                      startLat: 40.4168,
+                      startLng: -3.7038,
+                      endLat: 48.8566,
+                      endLng: 2.3522,
+                      arcAlt: 0.2,
+                      color: '#60A5FA'
+                    },
+                    {
+                      order: 2,
+                      startLat: 51.5074,
+                      startLng: -0.1278,
+                      endLat: 40.7128,
+                      endLng: -74.006,
+                      arcAlt: 0.3,
+                      color: '#F472B6'
+                    },
+                    {
+                      order: 3,
+                      startLat: 35.6762,
+                      startLng: 139.6503,
+                      endLat: -33.8688,
+                      endLng: 151.2093,
+                      arcAlt: 0.25,
+                      color: '#4ADE80'
+                    },
+                    {
+                      order: 4,
+                      startLat: -33.8688,
+                      startLng: 151.2093,
+                      endLat: -23.5505,
+                      endLng: -46.6333,
+                      arcAlt: 0.35,
+                      color: '#FCD34D'
+                    },
+                    {
+                      order: 5,
+                      startLat: 55.7558,
+                      startLng: 37.6173,
+                      endLat: 35.6762,
+                      endLng: 139.6503,
+                      arcAlt: 0.28,
+                      color: '#C084FC'
+                    },
+                    {
+                      order: 6,
+                      startLat: 1.3521,
+                      startLng: 103.8198,
+                      endLat: 31.2304,
+                      endLng: 121.4737,
+                      arcAlt: 0.15,
+                      color: '#67E8F9'
+                    },
+                    {
+                      order: 7,
+                      startLat: -23.5505,
+                      startLng: -46.6333,
+                      endLat: 40.4168,
+                      endLng: -3.7038,
+                      arcAlt: 0.4,
+                      color: '#FB923C'
+                    },
+                    {
+                      order: 8,
+                      startLat: 48.8566,
+                      startLng: 2.3522,
+                      endLat: 55.7558,
+                      endLng: 37.6173,
+                      arcAlt: 0.2,
+                      color: '#BEF264'
+                    }
+                  ]}
+                />
+              </motion.div>
+            </Suspense>
+          )}
+        </div>
+      }
     </section>
   );
 }

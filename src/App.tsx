@@ -46,19 +46,22 @@ function App() {
         <Header />
 
         <div className='container mx-auto px-6 pt-20 pb-16 space-y-16'>
-          <div className='pt-4'>
+          <div
+            className='pt-4'
+            id='about'
+          >
             <Hero />
           </div>
 
-          <div>
+          <div id='projects'>
             <Projects />
           </div>
 
-          <div>
+          <div id='skills'>
             <Skills />
           </div>
 
-          <div>
+          <div id='contact'>
             <Contact />
           </div>
         </div>

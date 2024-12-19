@@ -49,8 +49,8 @@ export function Header() {
                 variant={activeSection === section ? 'secondary' : 'ghost'}
                 onClick={() => scrollToSection(section)}
                 className={`capitalize ${
-                  activeSection === section 
-                    ? 'bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90' 
+                  activeSection === section
+                    ? 'bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90'
                     : 'text-[#a2b7d1] hover:bg-[#a2b7d1]/10'
                 }`}
               >

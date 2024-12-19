@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Artifika:wght@400;700&display=swap');
+@font-face {
+  font-family: 'Artifika';
+  src: url('./assets/fonts/artifika-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
