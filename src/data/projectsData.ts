@@ -25,6 +25,17 @@ export const projects: Project[] = [
   },
   {
     id: 2,
+    title: 'App Gestion Huellas',
+    image: '/src/assets/images/huellas-form-opt.webp',
+    description: 'Gestiona las adopciones',
+    details:
+      'Esta app permite gestionar las adopciones de los animales que se muestran en la web de la protectora. Se requiere autenticación para acceder.',
+    technologies: ['Next.js', 'NextAuth', 'Sharp', 'Shadcn UI'],
+    link: 'https://huellas-gestion.vercel.app/',
+    codeUrl: 'https://github.com/efe13dev/huellas-form-nextjs'
+  },
+  {
+    id: 3,
     title: 'App Meetups',
     image: '/src/assets/images/meetups-opt.webp',
     description: 'Aplicacion para organizar reuniones',
@@ -33,15 +44,6 @@ export const projects: Project[] = [
     technologies: ['React', 'Node.js', 'MySQL', 'Tailwind CSS'],
     demoUrl: 'https://www.youtube.com/watch?v=n9YUwfJ52zU',
     codeUrl: 'https://github.com/efe13dev/meetups-frontend'
-  },
-  {
-    id: 3,
-    title: 'App Gestion Huellas',
-    image: '/src/assets/projecto-3.png',
-    description: 'Descripción breve del proyecto 3',
-    details: 'Detalles completos del proyecto 3',
-    technologies: ['Vue.js', 'Firebase', 'Tailwind CSS'],
-    link: 'https://proyecto3.com'
   },
   {
     id: 4,

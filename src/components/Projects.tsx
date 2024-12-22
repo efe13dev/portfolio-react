@@ -127,12 +127,12 @@ export function Projects() {
                     </div>
                     <div className='flex gap-8 mt-6 justify-center'>
                       <a
-                        href={project.link}
+                        href={project.demoUrl || project.link}
                         target='_blank'
                         rel='noopener noreferrer'
                         className='inline-flex items-center gap-2 px-4 py-2 bg-[#324f75] hover:bg-[#638ec6] text-[#eceff3] rounded-lg transition-colors'
                       >
-                        Visitar Web
+                        {project.demoUrl ? 'Ver Demo' : 'Visitar Web'}
                         <svg
                           className='w-4 h-4'
                           fill='none'
