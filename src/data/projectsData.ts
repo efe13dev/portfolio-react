@@ -14,23 +14,25 @@ export const projects: Project[] = [
   {
     id: 1,
     title: 'Protectora Huellas',
-    image: '/src/assets/images/protectora-huellas.webp',
+    image: '/src/assets/images/huellas-opt.webp',
     description: 'Web de una protectora de animales',
     details:
       'Ofrece información sobre animales en adopción y contacto con el equipo de la protectora.',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     link: 'https://huellas-protectora.vercel.app/',
-    demoUrl: 'https://tuportfolio.com',
+
     codeUrl: 'https://github.com/efe13dev/huellas-nextjs'
   },
   {
     id: 2,
     title: 'App Meetups',
-    image: '/src/assets/project-2.webp',
-    description: 'Descripción breve del proyecto 2',
-    details: 'Detalles completos del proyecto 2',
-    technologies: ['React', 'Node.js', 'MongoDB'],
-    link: 'https://proyecto2.com'
+    image: '/src/assets/images/meetups-opt.webp',
+    description: 'Aplicacion para organizar reuniones',
+    details:
+      'Permite el registro de usuarios y la creacion de meetups e inscripcion a las mismos.',
+    technologies: ['React', 'Node.js', 'MySQL', 'Tailwind CSS'],
+    demoUrl: 'https://www.youtube.com/watch?v=n9YUwfJ52zU',
+    codeUrl: 'https://github.com/efe13dev/meetups-frontend'
   },
   {
     id: 3,
