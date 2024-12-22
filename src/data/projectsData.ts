@@ -48,35 +48,23 @@ export const projects: Project[] = [
   {
     id: 4,
     title: 'App Que Comemos Hoy',
-    image: '/src/assets/project-4.webp',
-    description: 'Aplicación de chat con inteligencia artificial',
+    image: '/src/assets/images/que-comemos-hoy-opt.webp',
+    description: 'Aplicación Android de comidas',
     details:
-      'Una aplicación web que utiliza GPT-4 para mantener conversaciones inteligentes con los usuarios. Incluye características como historial de chat, diferentes personalidades de AI y exportación de conversaciones.',
-    technologies: [
-      'Next.js',
-      'OpenAI API',
-      'Prisma',
-      'PostgreSQL',
-      'WebSocket'
-    ],
-    link: 'https://aichat.com'
+      'Es una Apk para Android que te permite gestionar un menú semanal, además de poder ver una lista de recetas previamente añadidas.',
+    technologies: ['React Native', 'Expo', 'Supabase', 'PostgreSQL'],
+    codeUrl: 'https://github.com/efe13dev/QueComemosHoy/'
   },
   {
     id: 5,
     title: 'Juego De Memoria',
-    image: '/src/assets/project-5.webp',
-    description: 'Panel de control para tienda online',
+    image: '/src/assets/images/parejas-opt.webp',
+    description: 'Juego de cartas para ejercitar la memoria',
     details:
-      'Dashboard completo para gestionar una tienda online, con análisis en tiempo real, gestión de inventario, pedidos y clientes. Incluye gráficos interactivos y reportes personalizables.',
-    technologies: [
-      'React',
-      'Redux',
-      'Material-UI',
-      'Chart.js',
-      'Node.js',
-      'Express'
-    ],
-    link: 'https://dashboard-demo.com'
+      'Consiste en voltear las 16 cartas que se muestran en el tablero y encontrar el par de cartas que tienen la misma imagen en el menor numero de intentos posibles.',
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+    link: 'https://descubre-parejas.vercel.app/',
+    codeUrl: 'https://github.com/efe13dev/descubre-parejas'
   },
   {
     id: 6,
