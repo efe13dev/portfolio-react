@@ -36,7 +36,7 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    title: 'App Meetups',
+    title: 'Meetups',
     image: '/src/assets/images/meetups-opt.webp',
     description: 'Aplicacion para organizar reuniones',
     details:
@@ -47,7 +47,7 @@ export const projects: Project[] = [
   },
   {
     id: 4,
-    title: 'App Que Comemos Hoy',
+    title: 'Que Comemos Hoy',
     image: '/src/assets/images/que-comemos-hoy-opt.webp',
     description: 'Aplicación Android de comidas',
     details:
@@ -68,12 +68,14 @@ export const projects: Project[] = [
   },
   {
     id: 6,
-    title: 'Juego Tres en Raya',
-    image: '/src/assets/project-6.webp',
-    description: 'Aplicación de gestión de proyectos y tareas',
+    title: 'Tres en Raya',
+    image: '/src/assets/images/tic-tac-toe-opt.webp',
+    description:
+      'Juego clásico de "Tres en Raya" (también conocido como "Tic-Tac-Toe")',
     details:
-      'Herramienta colaborativa para la gestión de proyectos con características como Kanban boards, seguimiento de tiempo, asignación de tareas y generación de informes. Integración con GitHub y Slack.',
-    technologies: ['Vue 3', 'Pinia', 'TailwindCSS', 'Supabase', 'TypeScript'],
-    link: 'https://taskflow-app.com'
+      'El objetivo es ser el primero en formar una línea de tres símbolos (ya sea en fila, columna o diagonal) en un tablero de 3x3.',
+    technologies: ['React', 'CSS', 'JavaScript', 'Vite'],
+    link: 'https://tres-en-raya-smoky.vercel.app/',
+    codeUrl: 'https://github.com/efe13dev/tres-en-raya'
   }
 ];
