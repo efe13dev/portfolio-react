@@ -3,6 +3,19 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      animation: {
+        scroll: "scroll var(--animation-duration) var(--animation-direction) linear infinite",
+      },
+      keyframes: {
+        scroll: {
+          from: {
+            transform: "translateX(0)",
+          },
+          to: {
+            transform: "translateX(-50%)",
+          },
+        },
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
@@ -69,19 +82,6 @@ export default {
       fontWeight: {
         normal: '400',
         bold: '700'
-      },
-      animation: {
-        scroll: "scroll var(--animation-duration) var(--animation-direction) linear infinite",
-      },
-      keyframes: {
-        scroll: {
-          from: {
-            transform: "translateX(0)",
-          },
-          to: {
-            transform: "translateX(-50%)",
-          },
-        },
       },
     }
   },

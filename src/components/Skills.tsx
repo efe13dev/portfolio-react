@@ -18,6 +18,16 @@ const skills = [
     quote: '',
     name: (
       <div className='flex items-center justify-center min-w-[250px] w-[250px] gap-3 text-2xl'>
+        <Palette className='text-[#2FB4D9] w-10 h-10 shrink-0' />
+        <span className='text-[#2FB4D9] whitespace-nowrap'>Tailwind CSS</span>
+      </div>
+    ),
+    title: 'Styling'
+  },
+  {
+    quote: '',
+    name: (
+      <div className='flex items-center justify-center min-w-[250px] w-[250px] gap-3 text-2xl'>
         <Code className='text-[#4FB3D9] w-10 h-10 shrink-0' />
         <span className='text-[#4FB3D9] whitespace-nowrap'>React</span>
       </div>
@@ -28,21 +38,11 @@ const skills = [
     quote: '',
     name: (
       <div className='flex items-center justify-center min-w-[250px] w-[250px] gap-3 text-2xl'>
-        <Globe className='text-[#7ab39f] w-10 h-10 shrink-0' />
-        <span className='text-[#7ab39f] whitespace-nowrap'>Next.js</span>
+        <Globe className='text-[#d1d1d1] w-10 h-10 shrink-0' />
+        <span className='text-[#d1d1d1] whitespace-nowrap'>Next.js</span>
       </div>
     ),
     title: 'Frontend'
-  },
-  {
-    quote: '',
-    name: (
-      <div className='flex items-center justify-center min-w-[250px] w-[250px] gap-3 text-2xl'>
-        <Server className='text-[#8ba88a] w-10 h-10 shrink-0' />
-        <span className='text-[#8ba88a] whitespace-nowrap'>Node.js</span>
-      </div>
-    ),
-    title: 'Backend'
   },
   {
     quote: '',
@@ -58,11 +58,11 @@ const skills = [
     quote: '',
     name: (
       <div className='flex items-center justify-center min-w-[250px] w-[250px] gap-3 text-2xl'>
-        <Palette className='text-[#2FB4D9] w-10 h-10 shrink-0' />
-        <span className='text-[#2FB4D9] whitespace-nowrap'>Tailwind CSS</span>
+        <Server className='text-[#8ba88a] w-10 h-10 shrink-0' />
+        <span className='text-[#8ba88a] whitespace-nowrap'>Node.js</span>
       </div>
     ),
-    title: 'Styling'
+    title: 'Backend'
   },
   {
     quote: '',
