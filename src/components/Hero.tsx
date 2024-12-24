@@ -73,7 +73,7 @@ export function Hero() {
           No solo escribo código, creo experiencias digitales que dejan huella,
           mezclo creatividad y tecnología para construir algo único. ¿El
           resultado? · Webs que no solo funcionan,
-          <span className='shine-text'>brillan</span> ·
+          <span className='shine-text'> brillan</span> ·
         </motion.p>
         <motion.div
           variants={fadeInUp}
