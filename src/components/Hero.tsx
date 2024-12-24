@@ -70,10 +70,10 @@ export function Hero() {
           viewport={{ once: true, amount: 0.5 }}
           className='text-xl font-normal text-[#eceff3]/80 font-body '
         >
-          No solo escribo código, creo experiencias digitales que dejan huella.
-          Cada proyecto es un lienzo en blanco donde mezclo creatividad y
-          tecnología para construir algo único. ¿El resultado? Webs que no solo
-          funcionan, <span className="shine-text">brillan</span>.
+          No solo escribo código, creo experiencias digitales que dejan huella,
+          mezclo creatividad y tecnología para construir algo único. ¿El
+          resultado? · Webs que no solo funcionan,
+          <span className='shine-text'>brillan</span> ·
         </motion.p>
         <motion.div
           variants={fadeInUp}

@@ -8,7 +8,13 @@ export function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['about', 'projects', 'skills'];
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      // Verificar si estamos cerca del final de la página
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
+        setActiveSection('skills');
+        return;
+      }
 
       for (const section of sections) {
         const element = document.getElementById(section);
