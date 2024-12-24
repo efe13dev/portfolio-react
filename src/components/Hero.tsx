@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Suspense, lazy } from 'react';
 import { Button } from './ui/button';
-// import type { WorldProps } from './ui/globe';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 // Precargar el módulo
 const preloadWorld = () => import('./ui/globe');
@@ -30,13 +30,6 @@ const fadeInRight = {
 };
 
 export function Hero() {
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   /*  useEffect(() => {
     // Retrasar la renderización del World hasta que la página esté cargada
     const timer = setTimeout(() => {
@@ -59,7 +52,7 @@ export function Hero() {
           whileInView='whileInView'
           viewport={{ once: true, amount: 0.5 }}
         >
-          Juan Desarrollador
+          efe_13
         </motion.h1>
         <motion.p
           variants={fadeInUp}
@@ -75,11 +68,12 @@ export function Hero() {
           initial='initial'
           whileInView='whileInView'
           viewport={{ once: true, amount: 0.5 }}
-          className='text-xl font-normal text-[#eceff3]/80 font-body'
+          className='text-xl font-normal text-[#eceff3]/80 font-body '
         >
-          Soy un desarrollador apasionado con experiencia en crear aplicaciones
-          web modernas y eficientes. Me especializo en React, Next.js y Node.js,
-          y siempre estoy buscando aprender nuevas tecnologías.
+          No solo escribo código, creo experiencias digitales que dejan huella.
+          Cada proyecto es un lienzo en blanco donde mezclo creatividad y
+          tecnología para construir algo único. ¿El resultado? Webs que no solo
+          funcionan, <span className="shine-text">brillan</span>.
         </motion.p>
         <motion.div
           variants={fadeInUp}
@@ -90,17 +84,31 @@ export function Hero() {
         >
           <Button
             variant='default'
-            className='bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90'
-            onClick={() => scrollToSection('projects')}
+            className='bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90 flex items-center gap-2'
+            asChild
           >
-            Ver Proyectos
+            <a
+              href='https://linkedin.com/in/tu-usuario'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaLinkedin className='w-5 h-5' />
+              LinkedIn
+            </a>
           </Button>
           <Button
             variant='outline'
-            className='border-[#a2b7d1] text-[#a2b7d1] hover:bg-[#a2b7d1]/10'
-            onClick={() => scrollToSection('contact')}
+            className='border-[#a2b7d1] text-[#a2b7d1] hover:bg-[#a2b7d1]/10 flex items-center gap-2'
+            asChild
           >
-            Contactar
+            <a
+              href='https://github.com/tu-usuario'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaGithub className='w-5 h-5' />
+              GitHub
+            </a>
           </Button>
         </motion.div>
       </div>

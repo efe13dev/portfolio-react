@@ -46,4 +46,23 @@
   .animate-border {
     animation: border-rotate 8s linear infinite;
   }
+
+  @keyframes shine {
+    0% {
+      color: #eceff3;
+      text-shadow: none;
+    }
+    50% {
+      color: #fff;
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073;
+    }
+    100% {
+      color: #eceff3;
+      text-shadow: none;
+    }
+  }
+
+  .shine-text {
+    animation: shine 2s infinite;
+  }
 }
