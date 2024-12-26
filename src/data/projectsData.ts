@@ -42,7 +42,7 @@ export const projects: Project[] = [
     details:
       'Permite el registro de usuarios y la creacion de meetups e inscripcion a las mismos.',
     technologies: ['React', 'Node.js', 'MySQL', 'Tailwind CSS'],
-    demoUrl: 'https://www.youtube.com/watch?v=n9YUwfJ52zU',
+    demoUrl: 'https://www.youtube.com/watch?v=pXPKdNpGtCQ',
     codeUrl: 'https://github.com/efe13dev/meetups-frontend'
   },
   {
