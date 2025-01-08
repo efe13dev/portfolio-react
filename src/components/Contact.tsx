@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from './ui/button';
+import emailjs from '@emailjs/browser';
+import { useRef, useState } from 'react';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -19,6 +21,30 @@ const staggerChildren = {
 };
 
 export function Contact() {
+  const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await emailjs.sendForm(
+        'service_jqebwim',
+        'template_8lntcyv',
+        form.current!,
+        'BkDXLJmCnyLB2z9pa'
+      );
+      alert('¡Mensaje enviado con éxito!');
+      form.current?.reset();
+    } catch (error) {
+      console.error('Error al enviar el mensaje:', error);
+      alert('Error al enviar el mensaje. Por favor, intenta de nuevo.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section
       id='contact'
@@ -28,6 +54,8 @@ export function Contact() {
         Contáctame
       </h2>
       <motion.form
+        ref={form}
+        onSubmit={handleSubmit}
         className='space-y-4 max-w-2xl'
         variants={staggerChildren}
         initial="initial"
@@ -36,29 +64,36 @@ export function Contact() {
       >
         <motion.div variants={fadeInUp}>
           <Input
+            name="user_name"
             placeholder='Tu nombre'
+            required
             className='bg-[#0b0f13] border-2 border-[#324f75] focus:border-[#638ec6] text-[#eceff3] placeholder:text-[#eceff3]/50'
           />
         </motion.div>
         <motion.div variants={fadeInUp}>
           <Input
+            name="user_email"
             type='email'
+            required
             placeholder='Tu email'
             className='bg-[#0b0f13] border-2 border-[#324f75] focus:border-[#638ec6] text-[#eceff3] placeholder:text-[#eceff3]/50'
           />
         </motion.div>
         <motion.div variants={fadeInUp}>
           <Textarea
+            name="message"
+            required
             placeholder='Tu mensaje'
             className='bg-[#0b0f13] border-2 border-[#324f75] focus:border-[#638ec6] text-[#eceff3] placeholder:text-[#eceff3]/50 min-h-[150px]'
           />
         </motion.div>
         <motion.div variants={fadeInUp}>
-          <Button
-            type='submit'
-            className='w-full bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90 font-medium'
+          <Button 
+            type="submit" 
+            disabled={isSubmitting}
+            className="w-full bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90 font-medium"
           >
-            Enviar Mensaje
+            {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
           </Button>
         </motion.div>
       </motion.form>
