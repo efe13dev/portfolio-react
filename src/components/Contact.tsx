@@ -4,6 +4,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from './ui/button';
 import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
+import { EMAIL_CONFIG } from '@/data/emailConfig';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -31,7 +32,7 @@ const modalVariants = {
     scale: 1,
     y: 0,
     transition: {
-      type: "spring",
+      type: 'spring',
       duration: 0.5
     }
   },
@@ -55,10 +56,10 @@ export function Contact() {
 
     try {
       await emailjs.sendForm(
-        'service_jqebwim',
-        'template_8lntcyv',
+        EMAIL_CONFIG.SERVICE_ID,
+        EMAIL_CONFIG.TEMPLATE_ID,
         form.current!,
-        'BkDXLJmCnyLB2z9pa'
+        EMAIL_CONFIG.PUBLIC_KEY
       );
       form.current?.reset();
       setShowModal(true);
@@ -72,10 +73,24 @@ export function Contact() {
 
   return (
     <>
-      <section id='contact' className='space-y-4'>
-        <h2 className='text-4xl font-bold text-[#a2b7d1] font-heading'>
-          Contáctame
-        </h2>
+      <section
+        id='contact'
+        className='space-y-4'
+      >
+        <div className="space-y-2">
+          <h2 className='text-4xl font-bold text-[#a2b7d1] font-heading'>
+            Contáctame
+          </h2>
+          <motion.p 
+            className="text-[#eceff3]/80 max-w-2xl leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            ¿Tienes un proyecto en mente o quieres colaborar? ¡Me encantaría escuchar tus ideas! Envíame un mensaje y te responderé lo antes posible.
+          </motion.p>
+        </div>
         <motion.form
           ref={form}
           onSubmit={handleSubmit}
@@ -131,35 +146,35 @@ export function Contact() {
 
       <AnimatePresence>
         {showModal && (
-          <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className='fixed inset-0 flex items-center justify-center z-50'>
             {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowModal(false)}
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              className='absolute inset-0 bg-black/50 backdrop-blur-sm'
             />
-            
+
             {/* Modal */}
             <motion.div
               variants={modalVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="relative w-full max-w-md mx-4"
+              initial='hidden'
+              animate='visible'
+              exit='exit'
+              className='relative w-full max-w-md mx-4'
             >
-              <div className="bg-[#0b0f13] p-8 rounded-lg border-2 border-[#324f75] shadow-xl">
-                <div className="text-center">
-                  <h3 className="text-2xl font-semibold text-[#eceff3] mb-3">
+              <div className='bg-[#0b0f13] p-8 rounded-lg border-2 border-[#324f75] shadow-xl'>
+                <div className='text-center'>
+                  <h3 className='text-2xl font-semibold text-[#eceff3] mb-3'>
                     ¡Mensaje Enviado!
                   </h3>
-                  <p className="text-[#eceff3]/80 mb-6">
+                  <p className='text-[#eceff3]/80 mb-6'>
                     Gracias por contactarme. Te responderé lo antes posible.
                   </p>
                   <Button
                     onClick={() => setShowModal(false)}
-                    className="bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90 min-w-[120px]"
+                    className='bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90 min-w-[120px]'
                   >
                     Cerrar
                   </Button>

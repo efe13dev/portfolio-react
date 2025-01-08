@@ -191,7 +191,6 @@ export const Vortex = (props: VortexProps) => {
 
   const resize = (canvas: HTMLCanvasElement) => {
     const { innerWidth, innerHeight } = window;
-    console.log(innerWidth, innerHeight);
 
     canvas.width = innerWidth;
     canvas.height = innerHeight;
