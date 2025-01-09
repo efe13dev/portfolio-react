@@ -1,20 +1,21 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       animation: {
-        scroll: "scroll var(--animation-duration) var(--animation-direction) linear infinite",
+        scroll:
+          'scroll var(--animation-duration) var(--animation-direction) linear infinite'
       },
       keyframes: {
         scroll: {
           from: {
-            transform: "translateX(0)",
+            transform: 'translateX(0)'
           },
           to: {
-            transform: "translateX(-50%)",
-          },
-        },
+            transform: 'translateX(-50%)'
+          }
+        }
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -82,7 +83,7 @@ export default {
       fontWeight: {
         normal: '400',
         bold: '700'
-      },
+      }
     }
   },
   plugins: [require('tailwindcss-animate')]
