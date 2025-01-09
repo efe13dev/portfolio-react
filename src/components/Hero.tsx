@@ -47,7 +47,11 @@ export function Hero() {
       <div className='space-y-6'>
         <motion.h1
           className='text-5xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-[#a2b7d1] via-[#324f75] to-[#638ec6] [text-wrap:balance]'
-          style={{ WebkitBackgroundClip: 'text' }}
+          style={{ 
+            WebkitBackgroundClip: 'text',
+            colorScheme: 'dark'
+          }}
+          data-darkreader-inline-bgcolor="true"
           variants={fadeInUp}
           initial='initial'
           whileInView='whileInView'
