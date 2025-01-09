@@ -14,7 +14,7 @@ export const projects: Project[] = [
   {
     id: 1,
     title: 'Protectora Huellas',
-    image: '../src/assets/images/huellas-opt.webp',
+    image: './huellas-opt.webp',
     description: 'Web de una protectora de animales',
     details:
       'Ofrece información sobre animales en adopción y contacto con el equipo de la protectora.',
@@ -26,7 +26,7 @@ export const projects: Project[] = [
   {
     id: 2,
     title: 'App Gestion Huellas',
-    image: '/src/assets/images/huellas-form-opt.webp',
+    image: './huellas-form-opt.webp',
     description: 'Gestiona las adopciones',
     details:
       'Esta app permite gestionar las adopciones de los animales que se muestran en la web de la protectora. Se requiere autenticación para acceder.',
@@ -37,7 +37,7 @@ export const projects: Project[] = [
   {
     id: 3,
     title: 'Meetups',
-    image: '/src/assets/images/meetups-opt.webp',
+    image: './meetups-opt.webp',
     description: 'Aplicacion para organizar reuniones',
     details:
       'Permite el registro de usuarios y la creacion de meetups e inscripcion a las mismos.',
@@ -48,7 +48,7 @@ export const projects: Project[] = [
   {
     id: 4,
     title: 'Que Comemos Hoy',
-    image: '/src/assets/images/que-comemos-hoy-opt.webp',
+    image: './que-comemos-hoy-opt.webp',
     description: 'Aplicación Android de comidas',
     details:
       'Es una Apk para Android que te permite gestionar un menú semanal, además de poder ver una lista de recetas previamente añadidas.',
@@ -58,7 +58,7 @@ export const projects: Project[] = [
   {
     id: 5,
     title: 'Juego De Memoria',
-    image: '/src/assets/images/parejas-opt.webp',
+    image: './parejas-opt.webp',
     description: 'Juego de cartas para ejercitar la memoria',
     details:
       'Consiste en voltear las 16 cartas que se muestran en el tablero y encontrar el par de cartas que tienen la misma imagen en el menor numero de intentos posibles.',
@@ -69,7 +69,7 @@ export const projects: Project[] = [
   {
     id: 6,
     title: 'Tres en Raya',
-    image: '/src/assets/images/tic-tac-toe-opt.webp',
+    image: './tic-tac-toe-opt.webp',
     description:
       'Juego clásico de "Tres en Raya" (también conocido como "Tic-Tac-Toe")',
     details:
