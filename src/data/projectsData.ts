@@ -14,7 +14,7 @@ export const projects: Project[] = [
   {
     id: 1,
     title: 'Protectora Huellas',
-    image: '/src/assets/images/huellas-opt.webp',
+    image: '../src/assets/images/huellas-opt.webp',
     description: 'Web de una protectora de animales',
     details:
       'Ofrece información sobre animales en adopción y contacto con el equipo de la protectora.',
