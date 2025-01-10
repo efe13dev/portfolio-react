@@ -88,7 +88,7 @@ export function Hero() {
             asChild
           >
             <a
-              href='https://linkedin.com/in/tu-usuario'
+              href='https://www.linkedin.com/in/efe13-dev/'
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -102,7 +102,7 @@ export function Hero() {
             asChild
           >
             <a
-              href='https://github.com/tu-usuario'
+              href='https://github.com/efe13dev'
               target='_blank'
               rel='noopener noreferrer'
             >
