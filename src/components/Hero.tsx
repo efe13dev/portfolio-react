@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
@@ -30,6 +30,17 @@ const fadeInRight = {
 };
 
 export function Hero() {
+  const [canAutoRotate, setCanAutoRotate] = useState(window.innerWidth > 900);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setCanAutoRotate(window.innerWidth > 900);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   /*  useEffect(() => {
     // Retrasar la renderización del World hasta que la página esté cargada
     const timer = setTimeout(() => {
@@ -123,7 +134,7 @@ export function Hero() {
 
       {/* Columna del globo */}
       {
-        <div className='relative w-[500px] h-[500px] mx-auto'>
+        <div className='relative w-[500px] h-[500px] mx-auto max-lg:w-[300px] max-lg:h-[300px]'>
           <Suspense fallback={<div className='w-full h-full bg-transparent' />}>
             <motion.div
               className='w-full h-full'
@@ -158,7 +169,7 @@ export function Hero() {
                     lat: 40.4168,
                     lng: -3.7038
                   },
-                  autoRotate: true,
+                  autoRotate: canAutoRotate,
                   autoRotateSpeed: 0.5
                 }}
                 data={[
