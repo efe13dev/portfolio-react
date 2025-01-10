@@ -25,14 +25,19 @@
     @apply bg-background text-text font-body;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading;
   }
 }
 
 @layer utilities {
   @property --border-angle {
-    syntax: "<angle>";
+    syntax: '<angle>';
     initial-value: 0turn;
     inherits: false;
   }
