@@ -11,7 +11,10 @@ export function Header() {
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       // Verificar si estamos cerca del final de la página
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 100
+      ) {
         setActiveSection('skills');
         return;
       }
@@ -72,7 +75,7 @@ export function Header() {
           asChild
         >
           <a
-            href='/src/assets/cv-efe-13.pdf'
+            href='./cv-efe-13.pdf'
             download
           >
             <FaDownload className='w-4 h-4' />
