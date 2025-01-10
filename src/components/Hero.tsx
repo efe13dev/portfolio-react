@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Suspense, lazy, useState, useEffect } from 'react';
+import { Suspense, lazy } from 'react';
 import { Button } from './ui/button';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
@@ -30,25 +30,6 @@ const fadeInRight = {
 };
 
 export function Hero() {
-  const [canAutoRotate, setCanAutoRotate] = useState(window.innerWidth > 900);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setCanAutoRotate(window.innerWidth > 900);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  /*  useEffect(() => {
-    // Retrasar la renderización del World hasta que la página esté cargada
-    const timer = setTimeout(() => {
-      setShowWorld(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []); */
-
   return (
     <section
       id='about'
@@ -169,7 +150,7 @@ export function Hero() {
                     lat: 40.4168,
                     lng: -3.7038
                   },
-                  autoRotate: canAutoRotate,
+                  autoRotate: window.innerWidth > 900,
                   autoRotateSpeed: 0.5
                 }}
                 data={[
