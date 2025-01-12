@@ -95,9 +95,9 @@ export function Projects() {
                 </CardContainer>
               </ModalTrigger>
               <ModalBody>
-                <ModalContent className='[background:linear-gradient(45deg,#070a0d,#0f1520_50%,#070a0d)_padding-box,conic-gradient(from_var(--border-angle),#1a2942_0%,#1a2942_80%,#638ec6_86%,#90b5ed_90%,#638ec6_94%,#1a2942_100%)_border-box] border-[3px] border-transparent animate-border p-6 rounded-xl w-full max-w-[90vw] md:max-w-4xl mx-auto aspect-[4/3] overflow-y-auto'>
+                <ModalContent className='[background:linear-gradient(45deg,#070a0d,#0f1520_50%,#070a0d)_padding-box,conic-gradient(from_var(--border-angle),#1a2942_0%,#1a2942_80%,#638ec6_86%,#90b5ed_90%,#638ec6_94%,#1a2942_100%)_border-box] border-[3px] border-transparent animate-border p-4 md:p-6 rounded-xl w-full max-w-[90vw] md:max-w-4xl mx-auto min-h-[50vh] max-h-[90vh]'>
                   <div className='flex flex-col items-center text-center h-full'>
-                    <div className='flex-1 space-y-6 w-full max-w-2xl'>
+                    <div className='w-full max-w-2xl space-y-3 md:space-y-6'>
                       <h3 className='text-3xl font-bold text-[#eceff3]'>
                         {project.title}
                       </h3>
