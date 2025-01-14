@@ -75,7 +75,7 @@ export function Header() {
           asChild
         >
           <a
-            href='./cv-efe-13.pdf'
+            href='./CV_FranciscoAntonioLorcaMulero_2025_01.pdf'
             download
           >
             <FaDownload className='w-4 h-4' />
