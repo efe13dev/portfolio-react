@@ -1,10 +1,10 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Button } from './ui/button';
-import emailjs from '@emailjs/browser';
-import { useRef, useState } from 'react';
 import { EMAIL_CONFIG } from '@/data/emailConfig';
+import emailjs from '@emailjs/browser';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { Button } from './ui/button';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
