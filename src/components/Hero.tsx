@@ -70,10 +70,10 @@ export function Hero() {
           viewport={{ once: true, amount: 0.5 }}
           className='text-xl font-normal text-[#eceff3]/80 font-body '
         >
-          No solo escribo código, creo experiencias digitales que dejan huella,
-          mezclo creatividad y tecnología para construir algo único. ¿El
-          resultado? · Webs que no solo funcionan,
-          <span className='shine-text'> brillan</span> ·
+          Creo soluciones web eficientes y funcionales, combinando técnicas
+          avanzadas con diseño práctico para entregar productos digitales efectivos. Mi enfoque:
+          · Aplicaciones web optimizadas que
+          <span className='shine-text'> destacan</span> ·
         </motion.p>
         <motion.div
           variants={fadeInUp}
