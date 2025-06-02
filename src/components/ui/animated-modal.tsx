@@ -1,14 +1,14 @@
-'use client';
-import { cn } from '@/lib/utils';
-import { AnimatePresence, motion } from 'framer-motion';
+"use client";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
 import React, {
   ReactNode,
   createContext,
   useContext,
   useEffect,
   useRef,
-  useState
-} from 'react';
+  useState,
+} from "react";
 
 interface ModalContextType {
   open: boolean;
@@ -30,7 +30,7 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
 export const useModal = () => {
   const context = useContext(ModalContext);
   if (!context) {
-    throw new Error('useModal must be used within a ModalProvider');
+    throw new Error("useModal must be used within a ModalProvider");
   }
   return context;
 };
@@ -41,7 +41,7 @@ export function Modal({ children }: { children: ReactNode }) {
 
 export const ModalTrigger = ({
   children,
-  className
+  className,
 }: {
   children: ReactNode;
   className?: string;
@@ -50,7 +50,7 @@ export const ModalTrigger = ({
   return (
     <button
       className={cn(
-        'px-4 py-2 rounded-md text-black dark:text-white text-center relative overflow-hidden',
+        "px-4 py-2 rounded-md text-black dark:text-white text-center relative overflow-hidden",
         className
       )}
       onClick={() => setOpen(true)}
@@ -62,7 +62,7 @@ export const ModalTrigger = ({
 
 export const ModalBody = ({
   children,
-  className
+  className,
 }: {
   children: ReactNode;
   className?: string;
@@ -71,9 +71,9 @@ export const ModalBody = ({
 
   useEffect(() => {
     if (open) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
   }, [open]);
 
@@ -86,47 +86,48 @@ export const ModalBody = ({
       {open && (
         <motion.div
           initial={{
-            opacity: 0
+            opacity: 0,
           }}
           animate={{
             opacity: 1,
-            backdropFilter: 'blur(10px)'
+            backdropFilter: "blur(10px)",
           }}
           exit={{
             opacity: 0,
-            backdropFilter: 'blur(0px)'
+            backdropFilter: "blur(0px)",
           }}
-          className='fixed [perspective:800px] [transform-style:preserve-3d] inset-0 h-full w-full  flex items-center justify-center z-50'
+          className="fixed [perspective:800px] [transform-style:preserve-3d] inset-0 h-full w-full  flex items-center justify-center z-50"
         >
           <Overlay />
 
           <motion.div
             ref={modalRef}
             className={cn(
-              'min-h-[50%] max-h-[90%] md:max-w-[40%] bg-white dark:bg-neutral-950 border border-transparent dark:border-neutral-800 md:rounded-2xl relative z-50 flex flex-col flex-1 overflow-hidden',
+              "min-h-[50%] max-h-[90%] md:max-w-[40%] bg-dark dark:bg-neutral-950 border border-transparent dark:border-neutral-800 md:rounded-2xl relative z-50 flex flex-col flex-1 overflow-hidden",
               className
             )}
             initial={{
               opacity: 0,
               scale: 0.5,
               rotateX: 40,
-              y: 40
+              y: 40,
             }}
             animate={{
               opacity: 1,
               scale: 1,
               rotateX: 0,
-              y: 0
+              y: 0,
             }}
             exit={{
               opacity: 0,
               scale: 0.8,
-              rotateX: 10
+              rotateX: 10,
             }}
             transition={{
-              type: 'spring',
-              stiffness: 260,
-              damping: 15
+              type: "spring",
+              stiffness: 120, // Menor rigidez para suavidad
+              damping: 22, // Mayor amortiguación para menos rebote
+              duration: 0.45, // Un poco más de tiempo para suavidad
             }}
           >
             <CloseIcon />
@@ -140,13 +141,13 @@ export const ModalBody = ({
 
 export const ModalContent = ({
   children,
-  className
+  className,
 }: {
   children: ReactNode;
   className?: string;
 }) => {
   return (
-    <div className={cn('flex flex-col flex-1 p-8 md:p-10', className)}>
+    <div className={cn("flex flex-col flex-1 p-8 md:p-10", className)}>
       {children}
     </div>
   );
@@ -154,7 +155,7 @@ export const ModalContent = ({
 
 export const ModalFooter = ({
   children,
-  className
+  className,
 }: {
   children: ReactNode;
   className?: string;
@@ -162,7 +163,7 @@ export const ModalFooter = ({
   return (
     <div
       className={cn(
-        'flex justify-end p-4 bg-gray-100 dark:bg-neutral-900',
+        "flex justify-end p-4 bg-gray-100 dark:bg-neutral-900",
         className
       )}
     >
@@ -175,15 +176,18 @@ const Overlay = ({ className }: { className?: string }) => {
   return (
     <motion.div
       initial={{
-        opacity: 0
+        opacity: 0,
       }}
       animate={{
         opacity: 1,
-        backdropFilter: 'blur(10px)'
+        backdropFilter: "blur(10px)",
       }}
       exit={{
         opacity: 0,
-        backdropFilter: 'blur(0px)'
+        backdropFilter: "blur(0px)",
+      }}
+      transition={{
+        duration: 0.35, // Suaviza el desvanecimiento del overlay
       }}
       className={`fixed inset-0 h-full w-full bg-black bg-opacity-50 z-50 ${className}`}
     ></motion.div>
@@ -195,27 +199,23 @@ const CloseIcon = () => {
   return (
     <button
       onClick={() => setOpen(false)}
-      className='absolute top-4 right-10 md:top-4 md:right-4 group'
+      className="absolute top-4 right-8 md:top-4 md:right-4 group bg-white/20 rounded-full p-1 hover:bg-white/40 transition-colors"
     >
       <svg
-        xmlns='http://www.w3.org/2000/svg'
-        width='24'
-        height='24'
-        viewBox='0 0 24 24'
-        fill='none'
-        stroke='currentColor'
-        strokeWidth='2'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-        className='text-black dark:text-white h-4 w-4 group-hover:scale-125 group-hover:rotate-3 transition duration-200'
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="text-white h-4 w-4 group-hover:scale-125 group-hover:rotate-3 transition duration-200"
       >
-        <path
-          stroke='none'
-          d='M0 0h24v24H0z'
-          fill='none'
-        />
-        <path d='M18 6l-12 12' />
-        <path d='M6 6l12 12' />
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M18 6l-12 12" />
+        <path d="M6 6l12 12" />
       </svg>
     </button>
   );
@@ -236,12 +236,12 @@ export const useOutsideClick = (
       callback(event);
     };
 
-    document.addEventListener('mousedown', listener);
-    document.addEventListener('touchstart', listener);
+    document.addEventListener("mousedown", listener);
+    document.addEventListener("touchstart", listener);
 
     return () => {
-      document.removeEventListener('mousedown', listener);
-      document.removeEventListener('touchstart', listener);
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
     };
   }, [ref, callback]);
 };
