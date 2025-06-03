@@ -33,7 +33,8 @@ export function Hero() {
   return (
     <section
       id='about'
-      className='grid md:grid-cols-2 items-center min-h-[calc(100vh-6rem)]'
+      className='grid md:grid-cols-2 items-center min-h-[calc(100vh-6rem)] touch-pan-y'
+      style={{ touchAction: 'pan-y' }}
     >
       {/* Columna de texto */}
       <div className='space-y-6'>
@@ -117,6 +118,14 @@ export function Hero() {
       {
         <div className='relative w-[500px] h-[500px] mx-auto max-lg:w-[300px] max-lg:h-[300px]'>
           <Suspense fallback={<div className='w-full h-full bg-transparent' />}>
+            {/* Overlay transparente solo en mobile para permitir scroll */}
+            {/* Overlay solo mobile para permitir scroll táctil */}
+            <div
+              className="absolute inset-0 z-20 block md:hidden"
+              style={{ background: 'transparent', touchAction: 'pan-y' }}
+              onTouchStart={e => e.stopPropagation()}
+              onTouchMove={e => e.stopPropagation()}
+            />
             <motion.div
               className='w-full h-full'
               initial={{ opacity: 0 }}

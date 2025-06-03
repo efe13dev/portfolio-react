@@ -179,7 +179,8 @@ export function World(props: WorldProps) {
       <OrbitControls
         enablePan={false}
         enableZoom={false}
-        enableRotate={window.innerWidth > 900}
+        // Solo permitir rotación en escritorio (>766px)
+        enableRotate={typeof window !== 'undefined' && window.innerWidth > 766}
         minDistance={cameraZ}
         maxDistance={cameraZ}
         autoRotateSpeed={1}
