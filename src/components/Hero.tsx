@@ -117,7 +117,7 @@ export function Hero() {
       {/* Columna del globo */}
       {
         <div className='relative w-[500px] h-[500px] mx-auto max-lg:w-[300px] max-lg:h-[300px]'>
-          <Suspense fallback={<div className='w-full h-full bg-transparent' />}>
+          <Suspense fallback={<div className='w-full h-full bg-[#0b0f13]' />}>
             {/* Overlay transparente solo en mobile para permitir scroll */}
             {/* Overlay solo mobile para permitir scroll táctil */}
             <div
