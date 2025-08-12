@@ -1,48 +1,50 @@
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { EMAIL_CONFIG } from '@/data/emailConfig';
-import emailjs from '@emailjs/browser';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { Button } from './ui/button';
+import emailjs from "@emailjs/browser";
+import { AnimatePresence, motion } from "framer-motion";
+import { useRef, useState } from "react";
+
+import { Button } from "./ui/button";
+
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { EMAIL_CONFIG } from "@/data/emailConfig";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.3 },
-  transition: { duration: 0.6 }
+  transition: { duration: 0.6 },
 };
 
 const staggerChildren = {
   whileInView: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 const modalVariants = {
   hidden: {
     opacity: 0,
     scale: 0.8,
-    y: 20
+    y: 20,
   },
   visible: {
     opacity: 1,
     scale: 1,
     y: 0,
     transition: {
-      type: 'spring',
-      duration: 0.5
-    }
+      type: "spring",
+      duration: 0.5,
+    },
   },
   exit: {
     opacity: 0,
     scale: 0.8,
     transition: {
-      duration: 0.3
-    }
-  }
+      duration: 0.3,
+    },
+  },
 };
 
 export function Contact() {
@@ -59,13 +61,13 @@ export function Contact() {
         EMAIL_CONFIG.SERVICE_ID,
         EMAIL_CONFIG.TEMPLATE_ID,
         form.current!,
-        EMAIL_CONFIG.PUBLIC_KEY
+        EMAIL_CONFIG.PUBLIC_KEY,
       );
       form.current?.reset();
       setShowModal(true);
     } catch (error) {
-      console.error('Error al enviar el mensaje:', error);
-      alert('Error al enviar el mensaje. Por favor, intenta de nuevo.');
+      console.error("Error al enviar el mensaje:", error);
+      alert("Error al enviar el mensaje. Por favor, intenta de nuevo.");
     } finally {
       setIsSubmitting(false);
     }
@@ -73,72 +75,68 @@ export function Contact() {
 
   return (
     <>
-      <section
-        id='contact'
-        className='space-y-4'
-      >
+      <section id="contact" className="space-y-4">
         <div className="space-y-2">
-          <h2 className='text-4xl font-bold text-[#a2b7d1] font-heading'>
-            Contáctame
-          </h2>
-          <motion.p 
-            className="text-[#eceff3]/80 max-w-2xl leading-relaxed"
+          <h2 className="font-heading text-4xl font-bold text-[#a2b7d1]">Contáctame</h2>
+          <motion.p
+            className="max-w-2xl leading-relaxed text-[#eceff3]/80"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            ¿Tienes un proyecto en mente o quieres colaborar? ¡Me encantaría escuchar tus ideas! Envíame un mensaje y te responderé lo antes posible.
+            ¿Tienes un proyecto en mente o quieres colaborar? ¡Me encantaría escuchar tus ideas!
+            Envíame un mensaje y te responderé lo antes posible.
           </motion.p>
         </div>
         <motion.form
           ref={form}
           onSubmit={handleSubmit}
-          className='space-y-4 max-w-2xl'
+          className="max-w-2xl space-y-4"
           variants={staggerChildren}
-          initial='initial'
-          whileInView='whileInView'
+          initial="initial"
+          whileInView="whileInView"
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.div variants={fadeInUp}>
             <div>
               <Input
-                type='text'
-                name='from_name'
-                placeholder='Tu nombre'
+                type="text"
+                name="from_name"
+                placeholder="Tu nombre"
                 required
-                className='bg-[#0b0f13] border-2 border-[#324f75] focus:border-[#638ec6] text-[#eceff3] placeholder:text-[#eceff3]/50'
+                className="border-2 border-[#324f75] bg-[#0b0f13] text-[#eceff3] placeholder:text-[#eceff3]/50 focus:border-[#638ec6]"
               />
             </div>
           </motion.div>
           <motion.div variants={fadeInUp}>
             <div>
               <Input
-                type='email'
-                name='email'
-                placeholder='Tu correo electrónico'
+                type="email"
+                name="email"
+                placeholder="Tu correo electrónico"
                 required
-                className='bg-[#0b0f13] border-2 border-[#324f75] focus:border-[#638ec6] text-[#eceff3] placeholder:text-[#eceff3]/50'
+                className="border-2 border-[#324f75] bg-[#0b0f13] text-[#eceff3] placeholder:text-[#eceff3]/50 focus:border-[#638ec6]"
               />
             </div>
           </motion.div>
           <motion.div variants={fadeInUp}>
             <div>
               <Textarea
-                name='message'
-                placeholder='Tu mensaje'
+                name="message"
+                placeholder="Tu mensaje"
                 required
-                className='bg-[#0b0f13] border-2 border-[#324f75] focus:border-[#638ec6] text-[#eceff3] placeholder:text-[#eceff3]/50 min-h-[150px]'
+                className="min-h-[150px] border-2 border-[#324f75] bg-[#0b0f13] text-[#eceff3] placeholder:text-[#eceff3]/50 focus:border-[#638ec6]"
               />
             </div>
           </motion.div>
           <motion.div variants={fadeInUp}>
             <Button
-              type='submit'
+              type="submit"
               disabled={isSubmitting}
-              className='w-full bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90 font-medium'
+              className="w-full bg-[#324f75] font-medium text-[#eceff3] hover:bg-[#324f75]/90"
             >
-              {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
+              {isSubmitting ? "Enviando..." : "Enviar mensaje"}
             </Button>
           </motion.div>
         </motion.form>
@@ -146,35 +144,33 @@ export function Contact() {
 
       <AnimatePresence>
         {showModal && (
-          <div className='fixed inset-0 flex items-center justify-center z-50'>
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
             {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowModal(false)}
-              className='absolute inset-0 bg-black/50 backdrop-blur-sm'
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             />
 
             {/* Modal */}
             <motion.div
               variants={modalVariants}
-              initial='hidden'
-              animate='visible'
-              exit='exit'
-              className='relative w-full max-w-md mx-4'
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="relative mx-4 w-full max-w-md"
             >
-              <div className='bg-[#0b0f13] p-8 rounded-lg border-2 border-[#324f75] shadow-xl'>
-                <div className='text-center'>
-                  <h3 className='text-2xl font-semibold text-[#eceff3] mb-3'>
-                    ¡Mensaje Enviado!
-                  </h3>
-                  <p className='text-[#eceff3]/80 mb-6'>
+              <div className="rounded-lg border-2 border-[#324f75] bg-[#0b0f13] p-8 shadow-xl">
+                <div className="text-center">
+                  <h3 className="mb-3 text-2xl font-semibold text-[#eceff3]">¡Mensaje Enviado!</h3>
+                  <p className="mb-6 text-[#eceff3]/80">
                     Gracias por contactarme. Te responderé lo antes posible.
                   </p>
                   <Button
                     onClick={() => setShowModal(false)}
-                    className='bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90 min-w-[120px]'
+                    className="min-w-[120px] bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90"
                   >
                     Cerrar
                   </Button>
