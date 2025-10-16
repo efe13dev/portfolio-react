@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-darkreader-mode="dark">
   <head>
     <meta charset="UTF-8" />
@@ -33,6 +33,20 @@
     />
     <meta name="twitter:image" content="/dev-tag.svg" />
     <link rel="icon" type="image/svg+xml" href="/dev-tag.svg" />
+
+    <!-- Preconnect para optimizar carga de recursos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://unpkg.com" />
+
+    <!-- Preload de recursos críticos -->
+    <link
+      rel="preload"
+      href="/src/assets/fonts/artifika-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
   </head>
   <body>
     <div id="root"></div>
