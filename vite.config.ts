@@ -26,11 +26,6 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000, // Aumentar límite de advertencia a 1MB
   },
   optimizeDeps: {
-    include: [
-      "three",
-      "three-globe",
-      "@react-three/fiber",
-      "@react-three/drei",
-    ],
+    include: ["three", "three-globe", "@react-three/fiber", "@react-three/drei"],
   },
 });

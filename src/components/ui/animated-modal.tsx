@@ -96,26 +96,22 @@ export const ModalBody = ({ children, className }: { children: ReactNode; classN
             )}
             initial={{
               opacity: 0,
-              scale: 0.5,
-              rotateX: 40,
-              y: 40,
+              scale: 0.92,
+              y: 20,
             }}
             animate={{
               opacity: 1,
               scale: 1,
-              rotateX: 0,
               y: 0,
             }}
             exit={{
               opacity: 0,
-              scale: 0.8,
-              rotateX: 10,
+              scale: 0.95,
+              y: -10,
             }}
             transition={{
-              type: "spring",
-              stiffness: 120, // Menor rigidez para suavidad
-              damping: 22, // Mayor amortiguación para menos rebote
-              duration: 0.45, // Un poco más de tiempo para suavidad
+              duration: 0.35,
+              ease: [0.16, 1, 0.3, 1],
             }}
           >
             <CloseIcon />
@@ -166,7 +162,8 @@ const Overlay = ({ className }: { className?: string }) => {
         backdropFilter: "blur(0px)",
       }}
       transition={{
-        duration: 0.35, // Suaviza el desvanecimiento del overlay
+        duration: 0.3,
+        ease: [0.16, 1, 0.3, 1],
       }}
       className={`fixed inset-0 z-50 h-full w-full bg-black bg-opacity-50 ${className}`}
     ></motion.div>

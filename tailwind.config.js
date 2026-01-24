@@ -6,7 +6,8 @@ export default {
   theme: {
     extend: {
       animation: {
-        scroll: "scroll var(--animation-duration) var(--animation-direction) linear infinite",
+        scroll:
+          "scroll var(--animation-duration) var(--animation-direction) linear infinite",
       },
       keyframes: {
         scroll: {
@@ -14,7 +15,7 @@ export default {
             transform: "translateX(0)",
           },
           to: {
-            transform: "translateX(-50%)",
+            transform: "translateX(-25%)",
           },
         },
       },

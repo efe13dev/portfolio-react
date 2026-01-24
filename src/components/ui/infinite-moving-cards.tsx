@@ -83,11 +83,12 @@ export const InfiniteMovingCards = ({
           start && "animate-scroll",
         )}
       >
-        {[...items, ...items].map((item, idx) => (
+        {[...items, ...items, ...items, ...items].map((item, idx) => (
           <li
             className="relative flex w-[300px] max-w-full flex-shrink-0 items-center justify-center md:w-[300px]"
             style={{
-              background: "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
+              background:
+                "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
             }}
             key={idx + "-" + item.name}
           >
