@@ -15,13 +15,6 @@ const floatingIcons = [
   { Icon: SiSupabase, delay: 3.5, x: "92%", y: "85%", size: 26, duration: 3.8 },
 ];
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.5 },
-  transition: { duration: 0.6 },
-};
-
 export function Hero() {
   return (
     <section
