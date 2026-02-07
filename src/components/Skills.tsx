@@ -89,15 +89,19 @@ const skills = [
 
 export function Skills() {
   return (
-    <section id="skills" className="space-y-4">
-      <h2 className="font-heading text-4xl font-bold text-[#a2b7d1]">Habilidades</h2>
-      <div className="relative flex h-32 flex-col items-center justify-center overflow-hidden rounded-md antialiased">
+    <section id="skills" className="space-y-8">
+      <div className="space-y-3">
+        <h2 className="font-heading text-4xl font-bold text-[#a2b7d1] md:text-5xl">Habilidades</h2>
+        <p className="text-lg text-[#eceff3]/70">Tecnologías con las que trabajo</p>
+      </div>
+      <div className="relative flex h-40 flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#324f75]/30 bg-gradient-to-br from-[#0b0f13] to-[#1a2942]/20 shadow-xl shadow-black/20 backdrop-blur-sm antialiased">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#638ec6]/5 to-transparent" />
         <InfiniteMovingCards
           items={skills}
           direction="right"
           speed="normal"
           pauseOnHover={true}
-          className="py-4"
+          className="py-6"
         />
       </div>
     </section>

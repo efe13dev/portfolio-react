@@ -10,18 +10,18 @@ function App() {
   return (
     <main className="min-h-screen bg-background text-text">
       {/* Background grid */}
-      <div className="pointer-events-none fixed inset-0 z-0 h-full w-full overflow-hidden opacity-40">
+      <div className="pointer-events-none fixed inset-0 z-0 h-full w-full overflow-hidden opacity-30">
         <div
           className="absolute inset-0 h-full w-full"
           style={{
             backgroundImage: `
-              radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0),
-              radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)
+              radial-gradient(circle at 1px 1px, #638ec6 1px, transparent 0),
+              radial-gradient(circle at 1px 1px, #324f75 1px, transparent 0)
             `,
-            backgroundSize: "40px 40px",
-            backgroundPosition: "0 0, 20px 20px",
-            maskImage: "radial-gradient(circle at center, black, transparent 85%)",
-            WebkitMaskImage: "radial-gradient(circle at center, black, transparent 100%)",
+            backgroundSize: "50px 50px",
+            backgroundPosition: "0 0, 25px 25px",
+            maskImage: "radial-gradient(circle at center, black, transparent 90%)",
+            WebkitMaskImage: "radial-gradient(circle at center, black, transparent 90%)",
           }}
         />
       </div>
@@ -43,7 +43,7 @@ function App() {
       <div className="relative z-10 min-h-screen">
         <Header />
 
-        <div className="container mx-auto space-y-16 px-6 pb-16 pt-20">
+        <div className="container mx-auto space-y-24 px-6 pb-20 pt-20 md:space-y-32">
           <div className="pt-4" id="about">
             <Hero />
           </div>

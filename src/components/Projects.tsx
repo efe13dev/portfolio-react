@@ -7,8 +7,11 @@ import { Modal, ModalBody, ModalContent, ModalTrigger } from "./ui/animated-moda
 
 export function Projects() {
   return (
-    <section id="projects" className="space-y-4">
-      <h2 className="font-heading text-4xl font-bold text-[#a2b7d1]">Proyectos Destacados</h2>
+    <section id="projects" className="space-y-8">
+      <div className="space-y-3">
+        <h2 className="font-heading text-4xl font-bold text-[#a2b7d1] md:text-5xl">Proyectos Destacados</h2>
+        <p className="text-lg text-[#eceff3]/70">Algunos de mis trabajos más recientes</p>
+      </div>
       <motion.div
         className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
         initial={{ opacity: 0, y: 20 }}
@@ -29,37 +32,40 @@ export function Projects() {
             >
               <ModalTrigger className="h-full w-full">
                 <CardContainer className="h-full w-full cursor-pointer">
-                  <CardBody className="group/card relative flex h-[550px] w-full flex-col rounded-xl border-2 border-[#324f75] bg-[#0b0f13] p-6 transition-all duration-300 hover:border-[#638ec6]">
-                    <div className="flex-none">
+                  <CardBody className="group/card relative flex h-[550px] w-full flex-col overflow-hidden rounded-2xl border-2 border-[#324f75]/50 bg-gradient-to-br from-[#0b0f13] to-[#1a2942]/20 p-6 shadow-xl shadow-black/20 backdrop-blur-sm transition-all duration-500 hover:border-[#638ec6] hover:shadow-2xl hover:shadow-[#638ec6]/20">
+                    <div className="flex-none space-y-3">
                       <CardItem
                         translateZ="50"
-                        className="font-heading text-2xl font-bold text-[#eceff3]"
+                        className="font-heading text-2xl font-bold text-[#eceff3] transition-colors duration-300 group-hover/card:text-[#a2b7d1]"
                       >
                         {project.title}
                       </CardItem>
 
                       <CardItem
                         translateZ="60"
-                        className="mt-2 text-base font-normal text-[#eceff3]"
+                        className="text-base font-normal leading-relaxed text-[#eceff3]/80"
                       >
                         {project.description}
                       </CardItem>
                     </div>
 
-                    <div className="my-4 flex flex-1 items-center justify-center">
+                    <div className="my-4 flex flex-1 items-center justify-center overflow-hidden rounded-xl">
                       {project.image && (
                         <CardItem translateZ="100" className="w-full">
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="h-52 w-full rounded-xl object-cover group-hover/card:shadow-xl"
-                          />
+                          <div className="relative overflow-hidden rounded-xl">
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              className="h-52 w-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f13] via-transparent to-transparent opacity-60" />
+                          </div>
                         </CardItem>
                       )}
                     </div>
 
-                    <div className="flex-none space-y-8">
-                      <CardItem translateZ="60" className="text-sm font-normal text-[#eceff3]/80">
+                    <div className="flex-none space-y-6">
+                      <CardItem translateZ="60" className="text-sm font-normal leading-relaxed text-[#eceff3]/70">
                         {project.details}
                       </CardItem>
 
@@ -67,7 +73,7 @@ export function Projects() {
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="rounded-md bg-[#324f75]/10 px-2.5 py-1 text-sm text-[#a2b7d1] transition-colors hover:bg-[#324f75]/20"
+                            className="rounded-lg border border-[#324f75]/30 bg-[#324f75]/10 px-3 py-1.5 text-xs font-medium text-[#a2b7d1] backdrop-blur-sm transition-all duration-300 hover:border-[#638ec6]/50 hover:bg-[#638ec6]/20 hover:text-[#90b5ed]"
                           >
                             {tech}
                           </span>

@@ -75,11 +75,11 @@ export function Contact() {
 
   return (
     <>
-      <section id="contact" className="space-y-4">
-        <div className="space-y-2">
-          <h2 className="font-heading text-4xl font-bold text-[#a2b7d1]">Contáctame</h2>
+      <section id="contact" className="space-y-8">
+        <div className="space-y-3">
+          <h2 className="font-heading text-4xl font-bold text-[#a2b7d1] md:text-5xl">Contáctame</h2>
           <motion.p
-            className="max-w-2xl leading-relaxed text-[#eceff3]/80"
+            className="max-w-2xl text-lg leading-relaxed text-[#eceff3]/70"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -92,41 +92,44 @@ export function Contact() {
         <motion.form
           ref={form}
           onSubmit={handleSubmit}
-          className="max-w-2xl space-y-4"
+          className="max-w-2xl space-y-6 rounded-2xl border border-[#324f75]/30 bg-gradient-to-br from-[#0b0f13] to-[#1a2942]/20 p-8 shadow-xl shadow-black/20 backdrop-blur-sm"
           variants={staggerChildren}
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.div variants={fadeInUp}>
-            <div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-[#a2b7d1]">Nombre</label>
               <Input
                 type="text"
                 name="from_name"
                 placeholder="Tu nombre"
                 required
-                className="border-2 border-[#324f75] bg-[#0b0f13] text-[#eceff3] placeholder:text-[#eceff3]/50 focus:border-[#638ec6]"
+                className="border-2 border-[#324f75]/50 bg-[#0b0f13]/50 py-6 text-[#eceff3] backdrop-blur-sm transition-all duration-300 placeholder:text-[#eceff3]/40 focus:border-[#638ec6] focus:bg-[#0b0f13] focus:shadow-lg focus:shadow-[#638ec6]/10"
               />
             </div>
           </motion.div>
           <motion.div variants={fadeInUp}>
-            <div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-[#a2b7d1]">Email</label>
               <Input
                 type="email"
                 name="email"
-                placeholder="Tu correo electrónico"
+                placeholder="tu@email.com"
                 required
-                className="border-2 border-[#324f75] bg-[#0b0f13] text-[#eceff3] placeholder:text-[#eceff3]/50 focus:border-[#638ec6]"
+                className="border-2 border-[#324f75]/50 bg-[#0b0f13]/50 py-6 text-[#eceff3] backdrop-blur-sm transition-all duration-300 placeholder:text-[#eceff3]/40 focus:border-[#638ec6] focus:bg-[#0b0f13] focus:shadow-lg focus:shadow-[#638ec6]/10"
               />
             </div>
           </motion.div>
           <motion.div variants={fadeInUp}>
-            <div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-[#a2b7d1]">Mensaje</label>
               <Textarea
                 name="message"
-                placeholder="Tu mensaje"
+                placeholder="Cuéntame sobre tu proyecto..."
                 required
-                className="min-h-[150px] border-2 border-[#324f75] bg-[#0b0f13] text-[#eceff3] placeholder:text-[#eceff3]/50 focus:border-[#638ec6]"
+                className="min-h-[150px] resize-none border-2 border-[#324f75]/50 bg-[#0b0f13]/50 text-[#eceff3] backdrop-blur-sm transition-all duration-300 placeholder:text-[#eceff3]/40 focus:border-[#638ec6] focus:bg-[#0b0f13] focus:shadow-lg focus:shadow-[#638ec6]/10"
               />
             </div>
           </motion.div>
@@ -134,9 +137,12 @@ export function Contact() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#324f75] font-medium text-[#eceff3] hover:bg-[#324f75]/90"
+              className="group relative w-full overflow-hidden bg-gradient-to-r from-[#324f75] to-[#638ec6] py-6 font-medium text-[#eceff3] shadow-lg shadow-[#324f75]/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#638ec6]/30 disabled:opacity-50 disabled:hover:scale-100"
             >
-              {isSubmitting ? "Enviando..." : "Enviar mensaje"}
+              <span className="absolute inset-0 bg-gradient-to-r from-[#638ec6] to-[#90b5ed] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <span className="relative z-10">
+                {isSubmitting ? "Enviando..." : "Enviar mensaje"}
+              </span>
             </Button>
           </motion.div>
         </motion.form>

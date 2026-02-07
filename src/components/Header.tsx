@@ -53,33 +53,36 @@ export function Header() {
   };
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#a2b7d1]/20 bg-[#0b0f13]/90 shadow-md backdrop-blur-sm">
-      <nav className="container mx-auto flex items-center justify-between p-4">
-        <ul className="flex space-x-4">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#324f75]/30 bg-[#0b0f13]/80 shadow-lg shadow-black/10 backdrop-blur-md">
+      <nav className="container mx-auto flex items-center justify-between px-6 py-4">
+        <ul className="flex space-x-2">
           {["about", "projects", "skills"].map((section) => (
             <li key={section}>
               <Button
                 variant={activeSection === section ? "secondary" : "ghost"}
                 onClick={() => scrollToSection(section)}
-                className={`capitalize ${
+                className={`relative capitalize transition-all duration-300 ${
                   activeSection === section
-                    ? "bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90"
-                    : "text-[#a2b7d1] hover:bg-[#a2b7d1]/10"
+                    ? "bg-gradient-to-r from-[#324f75] to-[#638ec6] text-[#eceff3] shadow-lg shadow-[#324f75]/20 hover:shadow-xl hover:shadow-[#638ec6]/30"
+                    : "text-[#a2b7d1] hover:bg-[#324f75]/20 hover:text-[#90b5ed]"
                 }`}
               >
                 {section}
+                {activeSection === section && (
+                  <span className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-[#638ec6] to-[#90b5ed]" />
+                )}
               </Button>
             </li>
           ))}
         </ul>
         <Button
           variant="outline"
-          className="flex items-center gap-2 border-[#a2b7d1] text-[#a2b7d1] hover:bg-[#a2b7d1]/10"
+          className="group flex items-center gap-2 border-2 border-[#a2b7d1] bg-transparent text-[#a2b7d1] transition-all duration-300 hover:scale-105 hover:border-[#638ec6] hover:bg-[#638ec6]/10 hover:text-[#638ec6] hover:shadow-lg hover:shadow-[#638ec6]/20"
           asChild
         >
           <a href="./CV_FranciscoAntonioLorcaMulero_2025_01.pdf" download>
-            <FaDownload className="h-4 w-4" />
-            CV
+            <FaDownload className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
+            <span className="font-medium">CV</span>
           </a>
         </Button>
       </nav>
