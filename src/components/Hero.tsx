@@ -1,12 +1,6 @@
 import { motion } from "framer-motion";
 import { FaDatabase, FaGithub, FaLinkedin, FaNodeJs, FaReact } from "react-icons/fa";
-import {
-    SiNextdotjs,
-    SiSupabase,
-    SiTailwindcss,
-    SiTypescript,
-    SiVite,
-} from "react-icons/si";
+import { SiNextdotjs, SiSupabase, SiTailwindcss, SiTypescript, SiVite } from "react-icons/si";
 
 import { Button } from "./ui/button";
 
@@ -32,7 +26,7 @@ export function Hero() {
   return (
     <section
       id="about"
-      className="relative flex min-h-[calc(100vh-6rem)] items-center justify-center overflow-hidden py-32"
+      className="relative flex min-h-[calc(100vh-6rem)] items-center justify-center overflow-hidden px-6 py-32"
     >
       {/* Grid de fondo decorativo */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.03]">
@@ -60,7 +54,7 @@ export function Hero() {
       {floatingIcons.map(({ Icon, delay, x, y, size, duration }, index) => (
         <motion.div
           key={index}
-          className="pointer-events-none absolute text-[#638ec6]/20"
+          className="pointer-events-none absolute text-[#638ec6]/35"
           style={{ left: x, top: y }}
           initial={{ opacity: 0, scale: 0 }}
           animate={{
