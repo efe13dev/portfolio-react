@@ -46,16 +46,6 @@ const skills: Skill[] = [
     docsUrl: "https://react.dev/",
   },
   {
-    name: "TypeScript",
-    icon: <FileCode className="h-8 w-8" />,
-    category: "Lenguaje",
-    level: 90,
-    color: "#3178C6",
-    glowColor: "rgba(49, 120, 198, 0.4)",
-    description: "Tipado estricto, Genéricos",
-    docsUrl: "https://www.typescriptlang.org/docs/",
-  },
-  {
     name: "Next.js",
     icon: <Triangle className="h-8 w-8" />,
     category: "Framework",
@@ -64,6 +54,16 @@ const skills: Skill[] = [
     glowColor: "rgba(255, 255, 255, 0.3)",
     description: "App Router, SSR, RSC",
     docsUrl: "https://nextjs.org/docs",
+  },
+  {
+    name: "TypeScript",
+    icon: <FileCode className="h-8 w-8" />,
+    category: "Lenguaje",
+    level: 90,
+    color: "#3178C6",
+    glowColor: "rgba(49, 120, 198, 0.4)",
+    description: "Tipado estricto, Genéricos",
+    docsUrl: "https://www.typescriptlang.org/docs/",
   },
   {
     name: "Tailwind CSS",
@@ -190,7 +190,7 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
           >
             {skill.icon}
           </div>
-          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-[#a2b7d1]/70 backdrop-blur-sm">
+          <span className="max-w-[110px] rounded-full border border-white/10 bg-white/5 px-2 py-1 text-[10px] font-medium leading-tight text-[#a2b7d1]/70 backdrop-blur-sm sm:max-w-none sm:px-3 sm:text-xs">
             {skill.category}
           </span>
         </div>
@@ -305,7 +305,7 @@ export function Skills() {
 
       <div
         ref={gridRef}
-        className="grid auto-rows-[200px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        className="grid auto-rows-[240px] grid-cols-1 gap-4 sm:auto-rows-[200px] sm:grid-cols-2 lg:grid-cols-4"
       >
         {featuredSkills.map((skill, index) => (
           <SkillCard key={skill.name} skill={skill} index={index} />
