@@ -78,11 +78,9 @@ export const ModalBody = ({ children, className }: { children: ReactNode; classN
           }}
           animate={{
             opacity: 1,
-            backdropFilter: "blur(10px)",
           }}
           exit={{
             opacity: 0,
-            backdropFilter: "blur(0px)",
           }}
           className="fixed inset-0 z-50 flex h-full w-full items-center justify-center [perspective:800px] [transform-style:preserve-3d]"
         >
@@ -150,23 +148,12 @@ export const ModalFooter = ({
 const Overlay = ({ className }: { className?: string }) => {
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-        backdropFilter: "blur(10px)",
-      }}
-      exit={{
-        opacity: 0,
-        backdropFilter: "blur(0px)",
-      }}
-      transition={{
-        duration: 0.3,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className={`fixed inset-0 z-50 h-full w-full bg-black bg-opacity-50 ${className}`}
-    ></motion.div>
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed inset-0 z-50 h-full w-full bg-black/70 backdrop-blur-[0.5px] ${className}`}
+    />
   );
 };
 
