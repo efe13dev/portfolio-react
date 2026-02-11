@@ -101,6 +101,8 @@ export const Vortex = (props: VortexProps) => {
     particleProps.set([x, y, vx, vy, life, ttl, speed, radius, hue], i);
   };
 
+  let rafId: number;
+
   const draw = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
     tick++;
 
@@ -113,7 +115,7 @@ export const Vortex = (props: VortexProps) => {
     renderGlow(canvas, ctx);
     renderToScreen(canvas, ctx);
 
-    window.requestAnimationFrame(() => draw(canvas, ctx));
+    rafId = window.requestAnimationFrame(() => draw(canvas, ctx));
   };
 
   const drawParticles = (ctx: CanvasRenderingContext2D) => {
@@ -224,13 +226,21 @@ export const Vortex = (props: VortexProps) => {
 
   useEffect(() => {
     setup();
-    window.addEventListener("resize", () => {
+
+    const handleResize = () => {
       const canvas = canvasRef.current;
 
       if (canvas) {
         resize(canvas);
       }
-    });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (

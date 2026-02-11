@@ -13,7 +13,7 @@ export function Header() {
 
       // Verificar si estamos cerca del final de la página
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
-        setActiveSection("skills");
+        setActiveSection((prev) => (prev === "skills" ? prev : "skills"));
 
         return;
       }
@@ -26,14 +26,14 @@ export function Header() {
           scrollPosition >= element.offsetTop &&
           scrollPosition < element.offsetTop + element.offsetHeight
         ) {
-          setActiveSection(section);
+          setActiveSection((prev) => (prev === section ? prev : section));
           break;
         }
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check initial section
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -68,9 +68,9 @@ export function Header() {
                 }`}
               >
                 {section}
-                {activeSection === section && (
+                {activeSection === section ? (
                   <span className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-[#638ec6] to-[#90b5ed]" />
-                )}
+                ) : null}
               </Button>
             </li>
           ))}

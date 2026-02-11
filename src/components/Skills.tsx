@@ -1,23 +1,23 @@
 "use client";
 
 import {
-  Atom,
-  Bolt,
-  Box,
-  Code2,
-  Database,
-  FileCode,
-  GitBranch,
-  Layers,
-  Layout,
-  Palette,
-  Server,
-  Smartphone,
-  Sparkles,
-  Terminal,
-  Triangle,
-  Workflow,
-  Zap,
+    Atom,
+    Bolt,
+    Box,
+    Code2,
+    Database,
+    FileCode,
+    GitBranch,
+    Layers,
+    Layout,
+    Palette,
+    Server,
+    Smartphone,
+    Sparkles,
+    Terminal,
+    Triangle,
+    Workflow,
+    Zap,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -34,10 +34,21 @@ interface Skill {
   docsUrl: string;
 }
 
+const atomIcon = <Atom className="h-8 w-8" />;
+const triangleIcon = <Triangle className="h-8 w-8" />;
+const fileCodeIcon = <FileCode className="h-8 w-8" />;
+const sparklesIcon = <Sparkles className="h-8 w-8" />;
+const serverIcon = <Server className="h-8 w-8" />;
+const zapIcon = <Zap className="h-8 w-8" />;
+const databaseIcon = <Database className="h-8 w-8" />;
+const gitBranchIcon = <GitBranch className="h-8 w-8" />;
+const boltIcon = <Bolt className="h-8 w-8" />;
+const smartphoneIcon = <Smartphone className="h-8 w-8" />;
+
 const skills: Skill[] = [
   {
     name: "React",
-    icon: <Atom className="h-8 w-8" />,
+    icon: atomIcon,
     category: "Frontend",
     level: 95,
     color: "#61DAFB",
@@ -47,7 +58,7 @@ const skills: Skill[] = [
   },
   {
     name: "Next.js",
-    icon: <Triangle className="h-8 w-8" />,
+    icon: triangleIcon,
     category: "Framework",
     level: 88,
     color: "#ffffff",
@@ -57,7 +68,7 @@ const skills: Skill[] = [
   },
   {
     name: "TypeScript",
-    icon: <FileCode className="h-8 w-8" />,
+    icon: fileCodeIcon,
     category: "Lenguaje",
     level: 90,
     color: "#3178C6",
@@ -67,7 +78,7 @@ const skills: Skill[] = [
   },
   {
     name: "Tailwind CSS",
-    icon: <Sparkles className="h-8 w-8" />,
+    icon: sparklesIcon,
     category: "Styling",
     level: 92,
     color: "#38BDF8",
@@ -77,7 +88,7 @@ const skills: Skill[] = [
   },
   {
     name: "Node.js",
-    icon: <Server className="h-8 w-8" />,
+    icon: serverIcon,
     category: "Backend",
     level: 85,
     color: "#339933",
@@ -87,7 +98,7 @@ const skills: Skill[] = [
   },
   {
     name: "Astro",
-    icon: <Zap className="h-8 w-8" />,
+    icon: zapIcon,
     category: "Framework",
     level: 80,
     color: "#FF5D01",
@@ -97,7 +108,7 @@ const skills: Skill[] = [
   },
   {
     name: "PostgreSQL",
-    icon: <Database className="h-8 w-8" />,
+    icon: databaseIcon,
     category: "Database",
     level: 82,
     color: "#336791",
@@ -107,7 +118,7 @@ const skills: Skill[] = [
   },
   {
     name: "Git",
-    icon: <GitBranch className="h-8 w-8" />,
+    icon: gitBranchIcon,
     category: "DevOps",
     level: 88,
     color: "#F05032",
@@ -117,7 +128,7 @@ const skills: Skill[] = [
   },
   {
     name: "Supabase",
-    icon: <Bolt className="h-8 w-8" />,
+    icon: boltIcon,
     category: "Backend",
     level: 78,
     color: "#3ECF8E",
@@ -127,7 +138,7 @@ const skills: Skill[] = [
   },
   {
     name: "React Native",
-    icon: <Smartphone className="h-8 w-8" />,
+    icon: smartphoneIcon,
     category: "Mobile",
     level: 72,
     color: "#7D70F7",
@@ -137,15 +148,24 @@ const skills: Skill[] = [
   },
 ];
 
+const layoutIcon = <Layout className="h-4 w-4" />;
+const serverSmIcon = <Server className="h-4 w-4" />;
+const databaseSmIcon = <Database className="h-4 w-4" />;
+const paletteIcon = <Palette className="h-4 w-4" />;
+const workflowIcon = <Workflow className="h-4 w-4" />;
+const boxIcon = <Box className="h-4 w-4" />;
+const code2Icon = <Code2 className="h-4 w-4" />;
+const layersIcon = <Layers className="h-4 w-4" />;
+
 const categories = [
-  { name: "Frontend", icon: <Layout className="h-4 w-4" /> },
-  { name: "Backend", icon: <Server className="h-4 w-4" /> },
-  { name: "Database", icon: <Database className="h-4 w-4" /> },
-  { name: "Design", icon: <Palette className="h-4 w-4" /> },
-  { name: "DevOps", icon: <Workflow className="h-4 w-4" /> },
-  { name: "Framework", icon: <Box className="h-4 w-4" /> },
-  { name: "Lenguaje", icon: <Code2 className="h-4 w-4" /> },
-  { name: "Styling", icon: <Layers className="h-4 w-4" /> },
+  { name: "Frontend", icon: layoutIcon },
+  { name: "Backend", icon: serverSmIcon },
+  { name: "Database", icon: databaseSmIcon },
+  { name: "Design", icon: paletteIcon },
+  { name: "DevOps", icon: workflowIcon },
+  { name: "Framework", icon: boxIcon },
+  { name: "Lenguaje", icon: code2Icon },
+  { name: "Styling", icon: layersIcon },
 ];
 
 function SkillCard({ skill, index }: { skill: Skill; index: number }) {

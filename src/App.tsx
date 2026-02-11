@@ -35,7 +35,6 @@ function App() {
           baseRadius={1}
           rangeRadius={1.5}
           baseHue={120}
-          rangeY={window.innerHeight}
           backgroundColor="transparent"
         />
       </div>
