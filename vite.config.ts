@@ -4,6 +4,7 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  // @ts-expect-error Vite 8 types not fully updated for rolldownOptions
   plugins: [react()],
   resolve: {
     alias: {
@@ -11,14 +12,24 @@ export default defineConfig({
     },
   },
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: {
-        manualChunks: {
-          "ui-vendor": ["framer-motion", "lucide-react", "react-icons/fa"],
-          "email-vendor": ["@emailjs/browser"],
+        codeSplitting: {
+          groups: [
+            {
+              name: "ui-vendor",
+              test: /node_modules[\\/](framer-motion|lucide-react|react-icons)[\\/]/,
+              priority: 10,
+            },
+            {
+              name: "email-vendor",
+              test: /node_modules[\\/]@emailjs[\\/]/,
+              priority: 10,
+            },
+          ],
         },
       },
     },
-    chunkSizeWarningLimit: 1000, // Aumentar límite de advertencia a 1MB
+    chunkSizeWarningLimit: 1000,
   },
 });

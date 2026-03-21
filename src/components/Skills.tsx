@@ -1,23 +1,23 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
-    Atom,
-    Bolt,
-    Box,
-    Code2,
-    Database,
-    FileCode,
-    GitBranch,
-    Layers,
-    Layout,
-    Palette,
-    Server,
-    Smartphone,
-    Sparkles,
-    Terminal,
-    Triangle,
-    Workflow,
-    Zap,
+  Atom,
+  Bolt,
+  Box,
+  Code2,
+  Database,
+  FileCode,
+  GitBranch,
+  Layers,
+  Layout,
+  Palette,
+  Server,
+  Smartphone,
+  Sparkles,
+  Triangle,
+  Workflow,
+  Zap,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -344,7 +344,28 @@ export function Skills() {
       <div className="relative overflow-hidden rounded-2xl border border-[#324f75]/30 bg-gradient-to-r from-[#0b1628] via-[#0b0f13] to-[#0b1628] p-8">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIgZmlsbD0iIzMyNGY3NSIgLz48L3N2Zz4=')] opacity-20" />
         <div className="relative z-10 flex flex-col items-center gap-4 text-center">
-          <Terminal className="h-8 w-8 text-[#638ec6]" />
+          <div>
+            <motion.svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-8 w-8 text-[#638ec6]"
+            >
+              <polyline points="4 17 10 11 4 5" />
+              <motion.line
+                x1="12"
+                y1="19"
+                x2="20"
+                y2="19"
+                animate={{ opacity: [1, 0.15, 1] }}
+                transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.svg>
+          </div>
           <p className="text-[#eceff3]/80">
             Abierto a incorporar nuevas tecnologías cuando aporten valor real al proyecto.
           </p>
