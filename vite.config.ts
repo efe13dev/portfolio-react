@@ -4,7 +4,6 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  // @ts-expect-error Vite 8 types not fully updated for rolldownOptions
   plugins: [react()],
   resolve: {
     alias: {
