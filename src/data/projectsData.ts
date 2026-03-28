@@ -14,7 +14,7 @@ export const projects: Project[] = [
   {
     id: 1,
     title: "Protectora Huellas",
-    image: "./huellas-opt.webp",
+    image: "./huellas-opt.v2.webp",
     description: "Web de una protectora de animales",
     details:
       "Ofrece información sobre animales en adopción y contacto con el equipo de la protectora.",
@@ -57,7 +57,7 @@ export const projects: Project[] = [
   {
     id: 5,
     title: "Juego De Memoria",
-    image: "./parejas-opt.webp",
+    image: "./parejas-opt.v2.webp",
     description: "Juego de cartas para ejercitar la memoria",
     details:
       "Consiste en voltear las 16 cartas que se muestran en el tablero y encontrar el par de cartas que tienen la misma imagen en el menor numero de intentos posibles.",
@@ -68,7 +68,7 @@ export const projects: Project[] = [
   {
     id: 6,
     title: "Tres en Raya",
-    image: "./tic-tac-toe-opt.webp",
+    image: "./tic-tac-toe-opt.v2.webp",
     description: 'Juego clásico de "Tres en Raya" (también conocido como "Tic-Tac-Toe")',
     details:
       "El objetivo es ser el primero en formar una línea de tres símbolos (ya sea en fila, columna o diagonal) en un tablero de 3x3.",
