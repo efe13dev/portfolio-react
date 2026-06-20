@@ -11,13 +11,13 @@ interface ModalContextType {
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
-export const ModalProvider = ({ children }: { children: ReactNode }) => {
+const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [open, setOpen] = useState(false);
 
   return <ModalContext.Provider value={{ open, setOpen }}>{children}</ModalContext.Provider>;
 };
 
-export const useModal = () => {
+const useModal = () => {
   const context = useContext(ModalContext);
 
   if (!context) {
@@ -131,20 +131,6 @@ export const ModalContent = ({
   return <div className={cn("flex flex-1 flex-col p-8 md:p-10", className)}>{children}</div>;
 };
 
-export const ModalFooter = ({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div className={cn("flex justify-end bg-gray-100 p-4 dark:bg-neutral-900", className)}>
-      {children}
-    </div>
-  );
-};
-
 const Overlay = ({ className }: { className?: string }) => {
   return (
     <motion.div
@@ -187,7 +173,7 @@ const CloseIcon = () => {
 
 // Hook to detect clicks outside of a component.
 // Add it in a separate file, I've added here for simplicity
-export const useOutsideClick = (ref: React.RefObject<HTMLDivElement>, callback: Function) => {
+const useOutsideClick = (ref: React.RefObject<HTMLDivElement>, callback: (event: any) => void) => {
   useEffect(() => {
     const listener = (event: any) => {
       // DO NOTHING if the element being clicked is the target element or their children

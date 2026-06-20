@@ -59,7 +59,6 @@ export function Header() {
           {["about", "projects", "skills"].map((section) => (
             <li key={section}>
               <Button
-                variant={activeSection === section ? "secondary" : "ghost"}
                 onClick={() => scrollToSection(section)}
                 className={`relative capitalize transition-all duration-300 ${
                   activeSection === section
@@ -76,7 +75,6 @@ export function Header() {
           ))}
         </ul>
         <Button
-          variant="outline"
           className="group flex items-center gap-2 border-2 border-[#a2b7d1] bg-transparent text-[#a2b7d1] transition-all duration-300 hover:scale-105 hover:border-[#638ec6] hover:bg-[#638ec6]/10 hover:text-[#638ec6] hover:shadow-lg hover:shadow-[#638ec6]/20"
           asChild
         >

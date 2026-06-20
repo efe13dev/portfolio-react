@@ -143,7 +143,6 @@ export function Hero() {
           className="flex flex-wrap gap-4 pt-4"
         >
           <Button
-            variant="default"
             className="group relative flex items-center gap-2 overflow-hidden bg-gradient-to-r from-[#324f75] to-[#638ec6] px-8 py-6 text-lg font-medium text-[#eceff3] shadow-lg shadow-[#324f75]/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#638ec6]/30"
             asChild
           >
@@ -158,7 +157,6 @@ export function Hero() {
             </a>
           </Button>
           <Button
-            variant="outline"
             className="group flex items-center gap-2 border-2 border-[#a2b7d1] bg-transparent px-8 py-6 text-lg font-medium text-[#a2b7d1] transition-all duration-300 hover:scale-105 hover:border-[#638ec6] hover:bg-[#638ec6]/10 hover:text-[#638ec6]"
             asChild
           >

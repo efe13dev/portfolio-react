@@ -1,345 +1,375 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Atom,
-  Bolt,
-  Box,
-  Code2,
-  Database,
-  FileCode,
-  GitBranch,
-  Layers,
-  Layout,
-  Palette,
-  Server,
-  Smartphone,
-  Sparkles,
-  Triangle,
-  Workflow,
-  Zap,
-} from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, Database, FileCode, Palette, Server, Smartphone, Sparkles, Workflow, Wrench } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import {
+  SiAstro,
+  SiCss3,
+  SiGit,
+  SiJavascript,
+  SiMariadb,
+  SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiReact,
+  SiShadcnui,
+  SiSqlite,
+  SiSupabase,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
 
 import { cn } from "@/lib/utils";
 
 interface Skill {
   name: string;
   icon: React.ReactNode;
-  category: string;
-  level: number;
   color: string;
-  glowColor: string;
   description: string;
   docsUrl: string;
 }
 
-const atomIcon = <Atom className="h-8 w-8" />;
-const triangleIcon = <Triangle className="h-8 w-8" />;
-const fileCodeIcon = <FileCode className="h-8 w-8" />;
-const sparklesIcon = <Sparkles className="h-8 w-8" />;
-const serverIcon = <Server className="h-8 w-8" />;
-const zapIcon = <Zap className="h-8 w-8" />;
-const databaseIcon = <Database className="h-8 w-8" />;
-const gitBranchIcon = <GitBranch className="h-8 w-8" />;
-const boltIcon = <Bolt className="h-8 w-8" />;
-const smartphoneIcon = <Smartphone className="h-8 w-8" />;
+interface SkillCategory {
+  name: string;
+  tagline: string;
+  icon: React.ReactNode;
+  skills: Skill[];
+}
 
-const skills: Skill[] = [
+const categories: SkillCategory[] = [
   {
-    name: "React",
-    icon: atomIcon,
-    category: "Frontend",
-    level: 95,
-    color: "#61DAFB",
-    glowColor: "rgba(97, 218, 251, 0.4)",
-    description: "Hooks, Context, Performance",
-    docsUrl: "https://react.dev/",
+    name: "Lenguajes",
+    tagline: "Las bases sobre las que construyo",
+    icon: <FileCode className="h-5 w-5" />,
+    skills: [
+      {
+        name: "TypeScript",
+        icon: <SiTypescript className="h-7 w-7" />,
+        color: "#3178C6",
+        description: "Tipado estático, Genéricos",
+        docsUrl: "https://www.typescriptlang.org/docs/",
+      },
+      {
+        name: "JavaScript",
+        icon: <SiJavascript className="h-7 w-7" />,
+        color: "#F7DF1E",
+        description: "ES2023+, Async/Await",
+        docsUrl: "https://developer.mozilla.org/es/docs/Web/JavaScript",
+      },
+    ],
   },
   {
-    name: "Next.js",
-    icon: triangleIcon,
-    category: "Framework",
-    level: 88,
-    color: "#ffffff",
-    glowColor: "rgba(255, 255, 255, 0.3)",
-    description: "App Router, SSR, RSC",
-    docsUrl: "https://nextjs.org/docs",
+    name: "Frameworks",
+    tagline: "Donde estructuro las aplicaciones",
+    icon: <Sparkles className="h-5 w-5" />,
+    skills: [
+      {
+        name: "React",
+        icon: <SiReact className="h-7 w-7" />,
+        color: "#61DAFB",
+        description: "Hooks, Context, RSC",
+        docsUrl: "https://react.dev/",
+      },
+      {
+        name: "Next.js",
+        icon: <SiNextdotjs className="h-7 w-7" />,
+        color: "#ECEFF3",
+        description: "App Router, SSR, ISR",
+        docsUrl: "https://nextjs.org/docs",
+      },
+      {
+        name: "Astro",
+        icon: <SiAstro className="h-7 w-7" />,
+        color: "#FF5D01",
+        description: "Islas, Content Collections",
+        docsUrl: "https://docs.astro.build",
+      },
+    ],
   },
   {
-    name: "TypeScript",
-    icon: fileCodeIcon,
-    category: "Lenguaje",
-    level: 90,
-    color: "#3178C6",
-    glowColor: "rgba(49, 120, 198, 0.4)",
-    description: "Tipado estricto, Genéricos",
-    docsUrl: "https://www.typescriptlang.org/docs/",
+    name: "Estilos",
+    tagline: "La capa visual de cada producto",
+    icon: <Palette className="h-5 w-5" />,
+    skills: [
+      {
+        name: "CSS",
+        icon: <SiCss3 className="h-7 w-7" />,
+        color: "#1572B6",
+        description: "Grid, Flexbox, Variables",
+        docsUrl: "https://developer.mozilla.org/es/docs/Web/CSS",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: <SiTailwindcss className="h-7 w-7" />,
+        color: "#38BDF8",
+        description: "Utility-first, Design tokens",
+        docsUrl: "https://tailwindcss.com/docs",
+      },
+      {
+        name: "shadcn/ui",
+        icon: <SiShadcnui className="h-7 w-7" />,
+        color: "#E4E4E7",
+        description: "Componentes accesibles",
+        docsUrl: "https://ui.shadcn.com/",
+      },
+    ],
   },
   {
-    name: "Tailwind CSS",
-    icon: sparklesIcon,
-    category: "Styling",
-    level: 92,
-    color: "#38BDF8",
-    glowColor: "rgba(56, 189, 248, 0.4)",
-    description: "Diseño utility-first",
-    docsUrl: "https://tailwindcss.com/docs",
+    name: "Backend",
+    tagline: "Lógica de servidor y APIs",
+    icon: <Server className="h-5 w-5" />,
+    skills: [
+      {
+        name: "Node.js",
+        icon: <SiNodedotjs className="h-7 w-7" />,
+        color: "#5FA04E",
+        description: "Event Loop, Streams",
+        docsUrl: "https://nodejs.org/en/docs",
+      },
+      {
+        name: "Supabase",
+        icon: <SiSupabase className="h-7 w-7" />,
+        color: "#3ECF8E",
+        description: "Auth, Realtime, Storage",
+        docsUrl: "https://supabase.com/docs",
+      },
+    ],
   },
   {
-    name: "Node.js",
-    icon: serverIcon,
-    category: "Backend",
-    level: 85,
-    color: "#339933",
-    glowColor: "rgba(51, 153, 51, 0.4)",
-    description: "APIs REST, Event Loop",
-    docsUrl: "https://nodejs.org/en/docs",
+    name: "Bases de datos",
+    tagline: "Persistencia y consultas",
+    icon: <Database className="h-5 w-5" />,
+    skills: [
+      {
+        name: "MySQL",
+        icon: <SiMysql className="h-7 w-7" />,
+        color: "#4479A1",
+        description: "Relacional, Índices",
+        docsUrl: "https://dev.mysql.com/doc/",
+      },
+      {
+        name: "PostgreSQL",
+        icon: <SiPostgresql className="h-7 w-7" />,
+        color: "#4DA8DA",
+        description: "JSONB, CTEs, Triggers",
+        docsUrl: "https://www.postgresql.org/docs/",
+      },
+      {
+        name: "MariaDB",
+        icon: <SiMariadb className="h-7 w-7" />,
+        color: "#C0765A",
+        description: "Compatible MySQL",
+        docsUrl: "https://mariadb.com/kb/en/documentation/",
+      },
+      {
+        name: "SQLite",
+        icon: <SiSqlite className="h-7 w-7" />,
+        color: "#00A8E1",
+        description: "Embebida, Sin servidor",
+        docsUrl: "https://www.sqlite.org/docs.html",
+      },
+    ],
   },
   {
-    name: "Astro",
-    icon: zapIcon,
-    category: "Framework",
-    level: 80,
-    color: "#FF5D01",
-    glowColor: "rgba(255, 93, 1, 0.4)",
-    description: "Islas, Content Collections",
-    docsUrl: "https://docs.astro.build",
-  },
-  {
-    name: "PostgreSQL",
-    icon: databaseIcon,
-    category: "Database",
-    level: 82,
-    color: "#336791",
-    glowColor: "rgba(51, 103, 145, 0.4)",
-    description: "Queries complejas, Índices",
-    docsUrl: "https://www.postgresql.org/docs/",
-  },
-  {
-    name: "Git",
-    icon: gitBranchIcon,
-    category: "DevOps",
-    level: 88,
-    color: "#F05032",
-    glowColor: "rgba(240, 80, 50, 0.4)",
-    description: "Branching, Rebase, CI/CD",
-    docsUrl: "https://git-scm.com/doc",
-  },
-  {
-    name: "Supabase",
-    icon: boltIcon,
-    category: "Backend",
-    level: 78,
-    color: "#3ECF8E",
-    glowColor: "rgba(62, 207, 142, 0.4)",
-    description: "Auth, Realtime, Storage",
-    docsUrl: "https://supabase.com/docs",
-  },
-  {
-    name: "React Native",
-    icon: smartphoneIcon,
-    category: "Mobile",
-    level: 72,
-    color: "#7D70F7",
-    glowColor: "rgba(125, 112, 247, 0.4)",
-    description: "UI nativa, navegación",
-    docsUrl: "https://reactnative.dev/docs/getting-started",
+    name: "DevOps & Herramientas",
+    tagline: "Flujo de trabajo y tooling",
+    icon: <Workflow className="h-5 w-5" />,
+    skills: [
+      {
+        name: "Git",
+        icon: <SiGit className="h-7 w-7" />,
+        color: "#F05032",
+        description: "Branching, Rebase, CI/CD",
+        docsUrl: "https://git-scm.com/doc",
+      },
+      {
+        name: "React Native",
+        icon: <Smartphone className="h-7 w-7" />,
+        color: "#61DAFB",
+        description: "Móvil multiplataforma",
+        docsUrl: "https://reactnative.dev/docs/getting-started",
+      },
+    ],
   },
 ];
 
-const layoutIcon = <Layout className="h-4 w-4" />;
-const serverSmIcon = <Server className="h-4 w-4" />;
-const databaseSmIcon = <Database className="h-4 w-4" />;
-const paletteIcon = <Palette className="h-4 w-4" />;
-const workflowIcon = <Workflow className="h-4 w-4" />;
-const boxIcon = <Box className="h-4 w-4" />;
-const code2Icon = <Code2 className="h-4 w-4" />;
-const layersIcon = <Layers className="h-4 w-4" />;
+const gridFor = (count: number) =>
+  count <= 2
+    ? "grid-cols-2"
+    : count === 3
+      ? "grid-cols-1 sm:grid-cols-3"
+      : count === 4
+        ? "grid-cols-2 lg:grid-cols-4"
+        : "grid-cols-2 lg:grid-cols-3";
 
-const categories = [
-  { name: "Frontend", icon: layoutIcon },
-  { name: "Backend", icon: serverSmIcon },
-  { name: "Database", icon: databaseSmIcon },
-  { name: "Design", icon: paletteIcon },
-  { name: "DevOps", icon: workflowIcon },
-  { name: "Framework", icon: boxIcon },
-  { name: "Lenguaje", icon: code2Icon },
-  { name: "Styling", icon: layersIcon },
-];
-
-function SkillCard({ skill, index }: { skill: Skill; index: number }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-
+function SkillCard({ skill }: { skill: Skill }) {
   return (
-    <div
-      ref={cardRef}
-      className={cn(
-        "group relative overflow-hidden rounded-2xl border border-[#324f75]/30",
-        "bg-gradient-to-br from-[#0b1628]/80 to-[#0b0f13]/90",
-        "transition-all duration-500 ease-out",
-        "hover:border-[#638ec6]/50 hover:shadow-2xl",
-        index === 0 && "col-span-2 row-span-2",
-        index === 3 && "col-span-2",
-        index === 6 && "col-span-2",
-      )}
-      style={{
-        animationDelay: `${index * 100}ms`,
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <a
+      href={skill.docsUrl}
+      target="_blank"
+      rel="noreferrer"
+      className="group relative flex items-center gap-3 overflow-hidden rounded-xl border border-[#324f75]/30 bg-[#0b0f13]/50 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#638ec6]/50"
     >
       <div
-        className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-25"
+        style={{ backgroundColor: skill.color }}
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
-          background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${skill.glowColor}, transparent 40%)`,
+          background: `linear-gradient(to right, transparent, ${skill.color}, transparent)`,
         }}
       />
-
       <div
-        className="absolute -right-20 -top-20 h-40 w-40 rounded-full blur-3xl transition-all duration-700 group-hover:scale-150"
-        style={{ backgroundColor: skill.glowColor }}
-      />
-
-      <div className="relative z-10 flex h-full flex-col p-6">
-        <div className="mb-4 flex items-start justify-between">
-          <div
-            className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:border-white/20"
-            style={{ color: skill.color }}
-          >
-            {skill.icon}
-          </div>
-          <span className="max-w-[110px] rounded-full border border-white/10 bg-white/5 px-2 py-1 text-[10px] font-medium leading-tight text-[#a2b7d1]/70 backdrop-blur-sm sm:max-w-none sm:px-3 sm:text-xs">
-            {skill.category}
-          </span>
-        </div>
-
-        <h3
-          className={cn(
-            "font-bold text-[#eceff3] transition-all duration-300",
-            index === 0 ? "text-3xl" : "text-xl",
-          )}
-        >
-          {skill.name}
-        </h3>
-
-        <p className="mt-2 text-sm text-[#a2b7d1]/60">{skill.description}</p>
-
-        <a
-          className="mt-3 inline-flex w-fit items-center gap-2 text-xs font-semibold text-[#638ec6] transition-colors duration-300 hover:text-[#a2b7d1]"
-          href={skill.docsUrl}
-          rel="noreferrer"
-          target="_blank"
-        >
-          Ver documentación
-        </a>
-
-        <div className="mt-auto pt-4">
-          <div className="flex items-center gap-2">
-            <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[#1a2942]">
-              <div
-                className="h-full rounded-full transition-all duration-1000 ease-out"
-                style={{
-                  width: isHovered ? "100%" : "0%",
-                  backgroundColor: skill.color,
-                  boxShadow: isHovered ? `0 0 20px ${skill.color}` : "none",
-                }}
-              />
-            </div>
-          </div>
-        </div>
+        className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-white/5 bg-white/[0.03] transition-transform duration-300 group-hover:scale-110"
+        style={{ color: skill.color }}
+      >
+        {skill.icon}
       </div>
-
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-transparent via-transparent to-[#638ec6]/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-    </div>
+      <div className="relative min-w-0 flex-1">
+        <p className="truncate text-sm font-semibold text-[#eceff3]">{skill.name}</p>
+        <p className="truncate text-xs text-[#a2b7d1]/60">{skill.description}</p>
+      </div>
+    </a>
   );
 }
 
-function SkillBadge({ skill }: { skill: Skill }) {
+function CategoryTile({
+  category,
+  isOpen,
+  onToggle,
+}: {
+  category: SkillCategory;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
   return (
-    <div className="group relative flex items-center gap-3 rounded-xl border border-[#324f75]/20 bg-[#0b1628]/40 px-4 py-3 transition-all duration-300 hover:border-[#638ec6]/40 hover:bg-[#0b1628]/60">
-      <span style={{ color: skill.color }}>{skill.icon}</span>
-      <span className="text-sm font-medium text-[#eceff3]/80">{skill.name}</span>
-      <div
-        className="absolute inset-0 -z-10 rounded-xl opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-30"
-        style={{ backgroundColor: skill.color }}
-      />
-    </div>
+    <motion.div
+      layout
+      transition={{ layout: { duration: 0.45, ease: [0.4, 0, 0.2, 1] } }}
+      className={cn(
+        "relative overflow-hidden rounded-2xl border bg-gradient-to-br from-[#0b1628]/60 via-[#0b0f13]/80 to-[#0b0f13]/90 transition-colors duration-300",
+        isOpen ? "border-[#638ec6]/50" : "border-[#324f75]/30 hover:border-[#324f75]/60",
+        isOpen ? "col-span-2 lg:col-span-4" : "col-span-1 lg:col-span-2",
+      )}
+    >
+      <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#638ec6] opacity-[0.07] blur-3xl transition-opacity duration-500" />
+
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        className="group/header relative flex w-full items-center gap-3 p-4 text-left md:p-5"
+      >
+        <div
+          className={cn(
+            "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#324f75] to-[#638ec6] text-white shadow-lg shadow-[#324f75]/30 transition-transform duration-300",
+            isOpen && "scale-105",
+          )}
+        >
+          {category.icon}
+        </div>
+        <div className="min-w-0 flex-1">
+          <h3 className="font-heading text-base font-bold leading-tight text-[#eceff3] md:text-lg">
+            {category.name}
+          </h3>
+          <p className="truncate text-xs text-[#a2b7d1]/50">
+            {category.skills.length} tecnologías
+          </p>
+        </div>
+        <ChevronDown
+          className={cn(
+            "h-5 w-5 shrink-0 text-[#a2b7d1] transition-transform duration-300",
+            isOpen && "rotate-180 text-[#638ec6]",
+          )}
+        />
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, delay: isOpen ? 0.15 : 0 }}
+            className="px-4 pb-4 md:px-5 md:pb-5"
+          >
+            <div className={cn("grid gap-3", gridFor(category.skills.length))}>
+              {category.skills.map((skill) => (
+                <SkillCard key={skill.name} skill={skill} />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
 export function Skills() {
-  const gridRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   useEffect(() => {
-    const grid = gridRef.current;
+    const section = sectionRef.current;
 
-    if (!grid) return;
+    if (!section) return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      const rect = grid.getBoundingClientRect();
+      const rect = section.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      grid.style.setProperty("--mouse-x", `${x}px`);
-      grid.style.setProperty("--mouse-y", `${y}px`);
+      section.style.setProperty("--mouse-x", `${x}px`);
+      section.style.setProperty("--mouse-y", `${y}px`);
     };
 
-    grid.addEventListener("mousemove", handleMouseMove);
+    section.addEventListener("mousemove", handleMouseMove);
 
-    return () => grid.removeEventListener("mousemove", handleMouseMove);
+    return () => section.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const featuredSkills = skills.slice(0, 7);
-  const otherSkills = skills.slice(7);
-
   return (
-    <section id="skills" className="space-y-12">
-      <div className="space-y-4">
+    <section ref={sectionRef} id="skills" className="relative space-y-12">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500"
+        style={{
+          background:
+            "radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 142, 198, 0.08), transparent 70%)",
+        }}
+      />
+
+      <div className="relative space-y-4">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#324f75] to-[#638ec6]">
-            <Sparkles className="h-5 w-5 text-white" />
+            <Wrench className="h-5 w-5 text-white" />
           </div>
           <h2 className="font-heading text-4xl font-bold text-[#eceff3] md:text-5xl">
             Habilidades
           </h2>
         </div>
         <p className="max-w-2xl text-lg text-[#a2b7d1]/70">
-          Tecnologías y herramientas que domino para crear experiencias web excepcionales. Cada
-          proyecto es una oportunidad para profundizar y expandir mis capacidades.
+          Tecnologías agrupadas por disciplina. Pulsa una categoría para expandirla — el bento se
+          reorganiza y revela las herramientas de su interior.
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {categories.map((cat) => (
-          <button
-            key={cat.name}
-            className="flex items-center gap-2 rounded-full border border-[#324f75]/30 bg-[#0b1628]/50 px-4 py-2 text-sm text-[#a2b7d1]/70 transition-all duration-300 hover:border-[#638ec6]/50 hover:bg-[#324f75]/20 hover:text-[#eceff3]"
-          >
-            {cat.icon}
-            {cat.name}
-          </button>
-        ))}
-      </div>
-
-      <div
-        ref={gridRef}
-        className="grid auto-rows-[240px] grid-cols-1 gap-4 sm:auto-rows-[200px] sm:grid-cols-2 lg:grid-cols-4"
+      <motion.div
+        layout
+        className="relative grid grid-cols-2 items-start gap-4 lg:grid-cols-6"
       >
-        {featuredSkills.map((skill, index) => (
-          <SkillCard key={skill.name} skill={skill} index={index} />
+        {categories.map((category, index) => (
+          <CategoryTile
+            key={category.name}
+            category={category}
+            isOpen={openIndex === index}
+            onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+          />
         ))}
-      </div>
-
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-[#a2b7d1]">También trabajo con</h3>
-        <div className="flex flex-wrap gap-3">
-          {otherSkills.map((skill) => (
-            <SkillBadge key={skill.name} skill={skill} />
-          ))}
-        </div>
-      </div>
+      </motion.div>
 
       <div className="relative overflow-hidden rounded-2xl border border-[#324f75]/30 bg-gradient-to-r from-[#0b1628] via-[#0b0f13] to-[#0b1628] p-8">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIgZmlsbD0iIzMyNGY3NSIgLz48L3N2Zz4=')] opacity-20" />

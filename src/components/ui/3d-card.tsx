@@ -1,9 +1,6 @@
 import React, { createContext, useState, useContext, useRef, useEffect } from "react";
 
-// Utility function to replace @/lib/utils cn function
-function cn(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+import { cn } from "@/lib/utils";
 
 const MouseEnterContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
