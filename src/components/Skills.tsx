@@ -57,7 +57,7 @@ const categories: SkillCategory[] = [
     skills: [
       {
         name: "TypeScript",
-        icon: <SiTypescript className="h-6 w-6" />,
+        icon: <SiTypescript className="h-5 w-5" />,
         color: "#3178C6",
         description: "Tipado estático y genéricos",
         docsUrl: "https://www.typescriptlang.org/docs/",
@@ -65,7 +65,7 @@ const categories: SkillCategory[] = [
       },
       {
         name: "JavaScript",
-        icon: <SiJavascript className="h-6 w-6" />,
+        icon: <SiJavascript className="h-5 w-5" />,
         color: "#F7DF1E",
         description: "ES2023+, Async/Await",
         docsUrl: "https://developer.mozilla.org/es/docs/Web/JavaScript",
@@ -79,7 +79,7 @@ const categories: SkillCategory[] = [
     skills: [
       {
         name: "React",
-        icon: <SiReact className="h-6 w-6" />,
+        icon: <SiReact className="h-5 w-5" />,
         color: "#61DAFB",
         description: "Hooks, Context y RSC",
         docsUrl: "https://react.dev/",
@@ -87,14 +87,14 @@ const categories: SkillCategory[] = [
       },
       {
         name: "Next.js",
-        icon: <SiNextdotjs className="h-6 w-6" />,
+        icon: <SiNextdotjs className="h-5 w-5" />,
         color: "#ECEFF3",
         description: "App Router, SSR, ISR",
         docsUrl: "https://nextjs.org/docs",
       },
       {
         name: "Astro",
-        icon: <SiAstro className="h-6 w-6" />,
+        icon: <SiAstro className="h-5 w-5" />,
         color: "#FF5D01",
         description: "Islas y Content Collections",
         docsUrl: "https://docs.astro.build",
@@ -108,7 +108,7 @@ const categories: SkillCategory[] = [
     skills: [
       {
         name: "Tailwind CSS",
-        icon: <SiTailwindcss className="h-6 w-6" />,
+        icon: <SiTailwindcss className="h-5 w-5" />,
         color: "#38BDF8",
         description: "Utility-first y design tokens",
         docsUrl: "https://tailwindcss.com/docs",
@@ -116,14 +116,14 @@ const categories: SkillCategory[] = [
       },
       {
         name: "CSS",
-        icon: <SiCss3 className="h-6 w-6" />,
+        icon: <SiCss3 className="h-5 w-5" />,
         color: "#1572B6",
         description: "Grid, Flexbox y variables",
         docsUrl: "https://developer.mozilla.org/es/docs/Web/CSS",
       },
       {
         name: "shadcn/ui",
-        icon: <SiShadcnui className="h-6 w-6" />,
+        icon: <SiShadcnui className="h-5 w-5" />,
         color: "#E4E4E7",
         description: "Componentes accesibles",
         docsUrl: "https://ui.shadcn.com/",
@@ -137,21 +137,21 @@ const categories: SkillCategory[] = [
     skills: [
       {
         name: "Node.js",
-        icon: <SiNodedotjs className="h-6 w-6" />,
+        icon: <SiNodedotjs className="h-5 w-5" />,
         color: "#5FA04E",
         description: "Event Loop y Streams",
         docsUrl: "https://nodejs.org/en/docs",
       },
       {
         name: "Hono",
-        icon: <SiHono className="h-6 w-6" />,
+        icon: <SiHono className="h-5 w-5" />,
         color: "#E36002",
         description: "Framework web ultraligero",
         docsUrl: "https://hono.dev/docs/",
       },
       {
         name: "Supabase",
-        icon: <SiSupabase className="h-6 w-6" />,
+        icon: <SiSupabase className="h-5 w-5" />,
         color: "#3ECF8E",
         description: "Auth, Realtime y Storage",
         docsUrl: "https://supabase.com/docs",
@@ -166,7 +166,7 @@ const categories: SkillCategory[] = [
     skills: [
       {
         name: "PostgreSQL",
-        icon: <SiPostgresql className="h-6 w-6" />,
+        icon: <SiPostgresql className="h-5 w-5" />,
         color: "#4DA8DA",
         description: "JSONB, CTEs y triggers",
         docsUrl: "https://www.postgresql.org/docs/",
@@ -174,21 +174,21 @@ const categories: SkillCategory[] = [
       },
       {
         name: "MySQL",
-        icon: <SiMysql className="h-6 w-6" />,
+        icon: <SiMysql className="h-5 w-5" />,
         color: "#4479A1",
         description: "Relacional e índices",
         docsUrl: "https://dev.mysql.com/doc/",
       },
       {
         name: "SQLite",
-        icon: <SiSqlite className="h-6 w-6" />,
+        icon: <SiSqlite className="h-5 w-5" />,
         color: "#00A8E1",
         description: "Embebida, sin servidor",
         docsUrl: "https://www.sqlite.org/docs.html",
       },
       {
         name: "Drizzle ORM",
-        icon: <SiDrizzle className="h-6 w-6" />,
+        icon: <SiDrizzle className="h-5 w-5" />,
         color: "#C5F74E",
         description: "ORM TypeScript type-safe",
         docsUrl: "https://orm.drizzle.team/docs/overview",
@@ -202,7 +202,7 @@ const categories: SkillCategory[] = [
     skills: [
       {
         name: "Git",
-        icon: <SiGit className="h-6 w-6" />,
+        icon: <SiGit className="h-5 w-5" />,
         color: "#F05032",
         description: "Branching, Rebase y CI/CD",
         docsUrl: "https://git-scm.com/doc",
@@ -210,7 +210,7 @@ const categories: SkillCategory[] = [
       },
       {
         name: "React Native",
-        icon: <Smartphone className="h-6 w-6" />,
+        icon: <Smartphone className="h-5 w-5" />,
         color: "#61DAFB",
         description: "Móvil multiplataforma",
         docsUrl: "https://reactnative.dev/docs/getting-started",
@@ -235,9 +235,9 @@ function SkillCard({ skill, reduceMotion }: { skill: Skill; reduceMotion: boolea
       }
       style={{ "--skill": skill.color } as React.CSSProperties}
       className={cn(
-        "group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-[#324f75]/30 bg-gradient-to-br from-[#0b1628]/60 to-[#0b0f13]/80 p-5",
-        "hover:border-[color:var(--skill)]/50 transition-all duration-300 hover:-translate-y-1",
-        "hover:shadow-[0_10px_40px_-12px_var(--skill)]",
+        "group relative flex items-center gap-3 overflow-hidden rounded-xl border border-[#324f75]/30 bg-gradient-to-br from-[#0b1628]/60 to-[#0b0f13]/80 p-3",
+        "hover:border-[color:var(--skill)]/50 transition-all duration-300 hover:-translate-y-0.5",
+        "hover:shadow-[0_8px_30px_-12px_var(--skill)]",
       )}
     >
       {/* Acento superior en las tecnologías principales */}
@@ -254,24 +254,23 @@ function SkillCard({ skill, reduceMotion }: { skill: Skill; reduceMotion: boolea
       {/* Glow de color al hacer hover */}
       <span
         aria-hidden
-        className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-25"
+        className="pointer-events-none absolute -right-6 -top-6 h-16 w-16 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-25"
         style={{ backgroundColor: skill.color }}
       />
 
-      <div className="flex items-start justify-between">
-        <div
-          className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/5 bg-white/[0.03] transition-transform duration-300 group-hover:scale-110"
-          style={{ color: skill.color }}
-        >
-          {skill.icon}
-        </div>
-        <ArrowUpRight className="h-4 w-4 -translate-y-1 translate-x-1 text-[#a2b7d1]/40 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:text-[color:var(--skill)] group-hover:opacity-100" />
+      <div
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/5 bg-white/[0.03] transition-transform duration-300 group-hover:scale-110"
+        style={{ color: skill.color }}
+      >
+        {skill.icon}
       </div>
 
-      <div className="min-w-0">
-        <p className="truncate text-base font-semibold text-[#eceff3]">{skill.name}</p>
-        <p className="mt-0.5 truncate text-xs text-[#a2b7d1]/60">{skill.description}</p>
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-sm font-semibold text-[#eceff3]">{skill.name}</p>
+        <p className="truncate text-xs text-[#a2b7d1]/60">{skill.description}</p>
       </div>
+
+      <ArrowUpRight className="h-4 w-4 shrink-0 -translate-x-1 text-[#a2b7d1]/40 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-[color:var(--skill)] group-hover:opacity-100" />
     </motion.a>
   );
 }
@@ -284,14 +283,14 @@ function CategoryBlock({
   reduceMotion: boolean;
 }) {
   return (
-    <div className="grid gap-5 border-t border-[#324f75]/20 pt-8 lg:grid-cols-[220px_1fr] lg:gap-10">
-      <div className="flex items-center gap-3 lg:flex-col lg:items-start lg:gap-4">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#324f75] to-[#638ec6] text-white shadow-lg shadow-[#324f75]/20">
+    <div className="grid gap-4 border-t border-[#324f75]/20 pt-5 lg:grid-cols-[200px_1fr] lg:gap-8">
+      <div className="flex items-center gap-2.5">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#324f75] to-[#638ec6] text-white shadow-lg shadow-[#324f75]/20">
           {category.icon}
         </div>
         <div>
-          <h3 className="font-heading text-xl font-semibold text-[#eceff3]">{category.name}</h3>
-          <p className="text-sm text-[#a2b7d1]/50">
+          <h3 className="font-heading text-base font-semibold text-[#eceff3]">{category.name}</h3>
+          <p className="text-xs text-[#a2b7d1]/50">
             {category.skills.length} {category.skills.length === 1 ? "tecnología" : "tecnologías"}
           </p>
         </div>
@@ -302,7 +301,7 @@ function CategoryBlock({
         initial={reduceMotion ? false : "hidden"}
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="grid grid-cols-2 gap-3 sm:grid-cols-3"
+        className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3"
       >
         {category.skills.map((skill) => (
           <SkillCard key={skill.name} skill={skill} reduceMotion={reduceMotion} />
@@ -332,7 +331,7 @@ export function Skills() {
         </p>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-5">
         {categories.map((category) => (
           <CategoryBlock key={category.id} category={category} reduceMotion={reduceMotion} />
         ))}
