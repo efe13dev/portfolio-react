@@ -47,11 +47,11 @@ export function Hero() {
       {floatingIcons.map(({ Icon, delay, x, y, size, duration }, index) => (
         <motion.div
           key={index}
-          className="pointer-events-none absolute text-[#638ec6]/35"
+          className="pointer-events-none absolute text-[#638ec6]/60 drop-shadow-[0_0_10px_rgba(99,142,198,0.45)]"
           style={{ left: x, top: y }}
           initial={{ opacity: 0, scale: 0 }}
           animate={{
-            opacity: [0.15, 0.3, 0.15],
+            opacity: [0.4, 0.65, 0.4],
             scale: 1,
             y: [0, -15, 0],
           }}
