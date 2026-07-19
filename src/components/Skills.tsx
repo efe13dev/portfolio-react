@@ -1,7 +1,8 @@
 "use client";
 
-import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
+  ArrowUpRight,
   Database,
   FileCode,
   Palette,
@@ -11,11 +12,12 @@ import {
   Workflow,
   Wrench,
 } from "lucide-react";
-import { forwardRef, useMemo, useState } from "react";
 import {
   SiAstro,
   SiCss3,
+  SiDrizzle,
   SiGit,
+  SiHono,
   SiJavascript,
   SiMysql,
   SiNextdotjs,
@@ -38,8 +40,6 @@ interface Skill {
   description: string;
   docsUrl: string;
   featured?: boolean;
-  /** Columnas que ocupa en el grid de escritorio (5 columnas por fila). */
-  span: number;
 }
 
 interface SkillCategory {
@@ -57,20 +57,18 @@ const categories: SkillCategory[] = [
     skills: [
       {
         name: "TypeScript",
-        icon: <SiTypescript className="h-7 w-7" />,
+        icon: <SiTypescript className="h-5 w-5" />,
         color: "#3178C6",
         description: "Tipado estático y genéricos",
         docsUrl: "https://www.typescriptlang.org/docs/",
         featured: true,
-        span: 3,
       },
       {
         name: "JavaScript",
-        icon: <SiJavascript className="h-7 w-7" />,
+        icon: <SiJavascript className="h-5 w-5" />,
         color: "#F7DF1E",
         description: "ES2023+, Async/Await",
         docsUrl: "https://developer.mozilla.org/es/docs/Web/JavaScript",
-        span: 2,
       },
     ],
   },
@@ -81,28 +79,25 @@ const categories: SkillCategory[] = [
     skills: [
       {
         name: "React",
-        icon: <SiReact className="h-7 w-7" />,
+        icon: <SiReact className="h-5 w-5" />,
         color: "#61DAFB",
         description: "Hooks, Context y RSC",
         docsUrl: "https://react.dev/",
         featured: true,
-        span: 3,
       },
       {
         name: "Next.js",
-        icon: <SiNextdotjs className="h-7 w-7" />,
+        icon: <SiNextdotjs className="h-5 w-5" />,
         color: "#ECEFF3",
         description: "App Router, SSR, ISR",
         docsUrl: "https://nextjs.org/docs",
-        span: 1,
       },
       {
         name: "Astro",
-        icon: <SiAstro className="h-7 w-7" />,
+        icon: <SiAstro className="h-5 w-5" />,
         color: "#FF5D01",
         description: "Islas y Content Collections",
         docsUrl: "https://docs.astro.build",
-        span: 1,
       },
     ],
   },
@@ -113,28 +108,25 @@ const categories: SkillCategory[] = [
     skills: [
       {
         name: "Tailwind CSS",
-        icon: <SiTailwindcss className="h-7 w-7" />,
+        icon: <SiTailwindcss className="h-5 w-5" />,
         color: "#38BDF8",
         description: "Utility-first y design tokens",
         docsUrl: "https://tailwindcss.com/docs",
         featured: true,
-        span: 2,
       },
       {
         name: "CSS",
-        icon: <SiCss3 className="h-7 w-7" />,
+        icon: <SiCss3 className="h-5 w-5" />,
         color: "#1572B6",
         description: "Grid, Flexbox y variables",
         docsUrl: "https://developer.mozilla.org/es/docs/Web/CSS",
-        span: 2,
       },
       {
         name: "shadcn/ui",
-        icon: <SiShadcnui className="h-7 w-7" />,
+        icon: <SiShadcnui className="h-5 w-5" />,
         color: "#E4E4E7",
         description: "Componentes accesibles",
         docsUrl: "https://ui.shadcn.com/",
-        span: 1,
       },
     ],
   },
@@ -145,20 +137,25 @@ const categories: SkillCategory[] = [
     skills: [
       {
         name: "Node.js",
-        icon: <SiNodedotjs className="h-7 w-7" />,
+        icon: <SiNodedotjs className="h-5 w-5" />,
         color: "#5FA04E",
         description: "Event Loop y Streams",
         docsUrl: "https://nodejs.org/en/docs",
-        span: 2,
+      },
+      {
+        name: "Hono",
+        icon: <SiHono className="h-5 w-5" />,
+        color: "#E36002",
+        description: "Framework web ultraligero",
+        docsUrl: "https://hono.dev/docs/",
       },
       {
         name: "Supabase",
-        icon: <SiSupabase className="h-7 w-7" />,
+        icon: <SiSupabase className="h-5 w-5" />,
         color: "#3ECF8E",
         description: "Auth, Realtime y Storage",
         docsUrl: "https://supabase.com/docs",
         featured: true,
-        span: 3,
       },
     ],
   },
@@ -169,28 +166,32 @@ const categories: SkillCategory[] = [
     skills: [
       {
         name: "PostgreSQL",
-        icon: <SiPostgresql className="h-7 w-7" />,
+        icon: <SiPostgresql className="h-5 w-5" />,
         color: "#4DA8DA",
         description: "JSONB, CTEs y triggers",
         docsUrl: "https://www.postgresql.org/docs/",
         featured: true,
-        span: 2,
       },
       {
         name: "MySQL",
-        icon: <SiMysql className="h-7 w-7" />,
+        icon: <SiMysql className="h-5 w-5" />,
         color: "#4479A1",
         description: "Relacional e índices",
         docsUrl: "https://dev.mysql.com/doc/",
-        span: 1,
       },
       {
         name: "SQLite",
-        icon: <SiSqlite className="h-7 w-7" />,
+        icon: <SiSqlite className="h-5 w-5" />,
         color: "#00A8E1",
         description: "Embebida, sin servidor",
         docsUrl: "https://www.sqlite.org/docs.html",
-        span: 2,
+      },
+      {
+        name: "Drizzle ORM",
+        icon: <SiDrizzle className="h-5 w-5" />,
+        color: "#C5F74E",
+        description: "ORM TypeScript type-safe",
+        docsUrl: "https://orm.drizzle.team/docs/overview",
       },
     ],
   },
@@ -201,180 +202,117 @@ const categories: SkillCategory[] = [
     skills: [
       {
         name: "Git",
-        icon: <SiGit className="h-7 w-7" />,
+        icon: <SiGit className="h-5 w-5" />,
         color: "#F05032",
         description: "Branching, Rebase y CI/CD",
         docsUrl: "https://git-scm.com/doc",
         featured: true,
-        span: 4,
       },
       {
         name: "React Native",
-        icon: <Smartphone className="h-7 w-7" />,
+        icon: <Smartphone className="h-5 w-5" />,
         color: "#61DAFB",
         description: "Móvil multiplataforma",
         docsUrl: "https://reactnative.dev/docs/getting-started",
-        span: 1,
       },
     ],
   },
 ];
 
-interface FlatSkill extends Skill {
-  categoryId: string;
-  categoryName: string;
-}
-
-const allSkills: FlatSkill[] = categories.flatMap((category) =>
-  category.skills.map((skill) => ({
-    ...skill,
-    categoryId: category.id,
-    categoryName: category.name,
-  })),
-);
-
-function FilterPill({
-  active,
-  icon,
-  label,
-  count,
-  onClick,
-}: {
-  active: boolean;
-  icon: React.ReactNode;
-  label: string;
-  count: number;
-  onClick: () => void;
-}) {
+function SkillCard({ skill, reduceMotion }: { skill: Skill; reduceMotion: boolean }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
+    <motion.a
+      href={skill.docsUrl}
+      target="_blank"
+      rel="noreferrer"
+      variants={
+        reduceMotion
+          ? undefined
+          : {
+              hidden: { opacity: 0, y: 16 },
+              show: { opacity: 1, y: 0 },
+            }
+      }
+      style={{ "--skill": skill.color } as React.CSSProperties}
       className={cn(
-        "group relative flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-300",
-        active
-          ? "border-transparent text-white"
-          : "border-[#324f75]/40 text-[#a2b7d1]/80 hover:border-[#638ec6]/60 hover:text-[#eceff3]",
+        "group relative flex items-center gap-3 overflow-hidden rounded-xl border border-[#324f75]/30 bg-gradient-to-br from-[#0b1628]/60 to-[#0b0f13]/80 p-3",
+        "hover:border-[color:var(--skill)]/50 transition-all duration-300 hover:-translate-y-0.5",
+        "hover:shadow-[0_8px_30px_-12px_var(--skill)]",
       )}
     >
-      {active && (
-        <motion.span
-          layoutId="skill-pill-active"
-          transition={{ type: "spring", stiffness: 380, damping: 32 }}
-          className="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-[#324f75] to-[#638ec6] shadow-lg shadow-[#324f75]/30"
-        />
-      )}
-      <span className={cn("transition-colors", active ? "text-white" : "text-[#638ec6]")}>
-        {icon}
-      </span>
-      {label}
-      <span
-        className={cn(
-          "rounded-full px-1.5 py-0.5 text-[10px] font-semibold tabular-nums transition-colors",
-          active ? "bg-white/20 text-white" : "bg-[#324f75]/20 text-[#a2b7d1]/70",
-        )}
-      >
-        {count}
-      </span>
-    </button>
-  );
-}
-
-// El grid de escritorio tiene 5 columnas y cada categoría reparte sus cards
-// con anchos propios (skill.span) para que cada una tenga una composición única.
-const LG_SPAN: Record<number, string> = {
-  1: "lg:col-span-1",
-  2: "lg:col-span-2",
-  3: "lg:col-span-3",
-  4: "lg:col-span-4",
-  5: "lg:col-span-5",
-};
-
-function spanClass(skill: Skill) {
-  // En móvil el card destacado ocupa el ancho completo; el resto media columna.
-  const base = skill.featured ? "col-span-2" : "col-span-1";
-
-  // En desktop se fija todo a la primera fila: así, si una card sale conserva su
-  // ancho ~180ms, no provoca un salto a una segunda fila (el grid recorta).
-  return cn(base, "lg:row-start-1", LG_SPAN[skill.span] ?? "lg:col-span-1");
-}
-
-const SkillTile = forwardRef<HTMLAnchorElement, { skill: FlatSkill; reduceMotion: boolean }>(
-  function SkillTile({ skill, reduceMotion }, ref) {
-    return (
-      <motion.a
-        ref={ref}
-        layout={!reduceMotion}
-        initial={reduceMotion ? false : { opacity: 0, scale: 0.96 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{
-          layout: { type: "spring", stiffness: 300, damping: 32 },
-          opacity: { duration: 0.18, ease: "easeOut" },
-          scale: { duration: 0.28, ease: [0.4, 0, 0.2, 1] },
-        }}
-        href={skill.docsUrl}
-        target="_blank"
-        rel="noreferrer"
-        className={cn(
-          "group relative flex min-h-[7.5rem] flex-col justify-between overflow-hidden rounded-2xl border border-[#324f75]/30 bg-gradient-to-br from-[#0b1628]/50 to-[#0b0f13]/80 p-4 transition-colors duration-300 hover:border-[#638ec6]/50",
-          spanClass(skill),
-        )}
-      >
-        <motion.div
-          layout="position"
-          className="pointer-events-none absolute inset-0 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-20"
-          style={{ backgroundColor: skill.color }}
-        />
-        <motion.div
-          layout="position"
-          className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      {/* Acento superior en las tecnologías principales */}
+      {skill.featured && (
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-0.5"
           style={{
             background: `linear-gradient(to right, transparent, ${skill.color}, transparent)`,
           }}
         />
+      )}
 
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.div
-            key={skill.name}
-            initial={reduceMotion ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.22, ease: "easeInOut" }}
-            className="relative flex h-full flex-col justify-between gap-4"
-          >
-            <div className="flex items-start justify-between gap-3">
-              <div
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/5 bg-white/[0.03] transition-transform duration-300 group-hover:scale-110"
-                style={{ color: skill.color }}
-              >
-                {skill.icon}
-              </div>
-              <span className="rounded-full border border-[#324f75]/30 bg-[#0b0f13]/40 px-2 py-0.5 text-[10px] font-medium text-[#a2b7d1]/50">
-                {skill.categoryName}
-              </span>
-            </div>
+      {/* Glow de color al hacer hover */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-6 -top-6 h-16 w-16 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-25"
+        style={{ backgroundColor: skill.color }}
+      />
 
-            <div className="min-w-0">
-              <p className="truncate text-sm font-semibold text-[#eceff3]">{skill.name}</p>
-              <p className="truncate text-xs text-[#a2b7d1]/60">{skill.description}</p>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </motion.a>
-    );
-  },
-);
+      <div
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/5 bg-white/[0.03] transition-transform duration-300 group-hover:scale-110"
+        style={{ color: skill.color }}
+      >
+        {skill.icon}
+      </div>
+
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-sm font-semibold text-[#eceff3]">{skill.name}</p>
+        <p className="truncate text-xs text-[#a2b7d1]/60">{skill.description}</p>
+      </div>
+
+      <ArrowUpRight className="h-4 w-4 shrink-0 -translate-x-1 text-[#a2b7d1]/40 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-[color:var(--skill)] group-hover:opacity-100" />
+    </motion.a>
+  );
+}
+
+function CategoryBlock({
+  category,
+  reduceMotion,
+}: {
+  category: SkillCategory;
+  reduceMotion: boolean;
+}) {
+  return (
+    <div className="grid gap-4 border-t border-[#324f75]/20 pt-5 lg:grid-cols-[200px_1fr] lg:gap-8">
+      <div className="flex items-center gap-2.5">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#324f75] to-[#638ec6] text-white shadow-lg shadow-[#324f75]/20">
+          {category.icon}
+        </div>
+        <div>
+          <h3 className="font-heading text-base font-semibold text-[#eceff3]">{category.name}</h3>
+          <p className="text-xs text-[#a2b7d1]/50">
+            {category.skills.length} {category.skills.length === 1 ? "tecnología" : "tecnologías"}
+          </p>
+        </div>
+      </div>
+
+      <motion.div
+        variants={reduceMotion ? undefined : { show: { transition: { staggerChildren: 0.06 } } }}
+        initial={reduceMotion ? false : "hidden"}
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        {category.skills.map((skill) => (
+          <SkillCard key={skill.name} skill={skill} reduceMotion={reduceMotion} />
+        ))}
+      </motion.div>
+    </div>
+  );
+}
 
 export function Skills() {
   const reduceMotion = useReducedMotion() ?? false;
-  const [activeFilter, setActiveFilter] = useState<string>(categories[0].id);
-
-  const visibleSkills = useMemo(
-    () => allSkills.filter((skill) => skill.categoryId === activeFilter),
-    [activeFilter],
-  );
 
   return (
     <section id="skills" className="relative space-y-10">
@@ -388,33 +326,16 @@ export function Skills() {
           </h2>
         </div>
         <p className="max-w-2xl text-lg text-[#a2b7d1]/70">
-          Filtra por disciplina y el bento se reorganiza para mostrar las tecnologías con las que
-          construyo.
+          El stack con el que construyo, organizado por disciplina. Cada tecnología enlaza a su
+          documentación oficial.
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2.5">
+      <div className="space-y-5">
         {categories.map((category) => (
-          <FilterPill
-            key={category.id}
-            active={activeFilter === category.id}
-            icon={category.icon}
-            label={category.name}
-            count={category.skills.length}
-            onClick={() => setActiveFilter(category.id)}
-          />
+          <CategoryBlock key={category.id} category={category} reduceMotion={reduceMotion} />
         ))}
       </div>
-
-      <LayoutGroup>
-        <div className="relative grid grid-cols-2 items-stretch gap-3 lg:grid-cols-5 lg:overflow-hidden">
-          <AnimatePresence mode="popLayout" initial={false}>
-            {visibleSkills.map((skill, index) => (
-              <SkillTile key={`slot-${index}`} skill={skill} reduceMotion={reduceMotion} />
-            ))}
-          </AnimatePresence>
-        </div>
-      </LayoutGroup>
 
       <div className="relative overflow-hidden rounded-2xl border border-[#324f75]/30 bg-gradient-to-r from-[#0b1628] via-[#0b0f13] to-[#0b1628] p-8">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIgZmlsbD0iIzMyNGY3NSIgLz48L3N2Zz4=')] opacity-20" />
