@@ -5,14 +5,14 @@ import { SiNextdotjs, SiSupabase, SiTailwindcss, SiTypescript, SiVite } from "re
 import { Button } from "./ui/button";
 
 const floatingIcons = [
-  { Icon: FaReact, delay: 0, x: "5%", y: "15%", size: 32, duration: 4 },
-  { Icon: SiTypescript, delay: 0.5, x: "85%", y: "20%", size: 28, duration: 5 },
-  { Icon: SiTailwindcss, delay: 1, x: "10%", y: "70%", size: 30, duration: 4.5 },
-  { Icon: SiNextdotjs, delay: 1.5, x: "90%", y: "65%", size: 34, duration: 3.5 },
-  { Icon: FaNodeJs, delay: 2, x: "15%", y: "45%", size: 26, duration: 5.5 },
-  { Icon: SiVite, delay: 2.5, x: "80%", y: "40%", size: 24, duration: 4.2 },
-  { Icon: FaDatabase, delay: 3, x: "5%", y: "85%", size: 22, duration: 4.8 },
-  { Icon: SiSupabase, delay: 3.5, x: "92%", y: "85%", size: 26, duration: 3.8 },
+  { Icon: FaReact, delay: 0, x: "62%", y: "15%", size: 32, duration: 4 },
+  { Icon: SiTypescript, delay: 0.5, x: "88%", y: "22%", size: 28, duration: 5 },
+  { Icon: SiTailwindcss, delay: 1, x: "70%", y: "72%", size: 30, duration: 4.5 },
+  { Icon: SiNextdotjs, delay: 1.5, x: "90%", y: "62%", size: 34, duration: 3.5 },
+  { Icon: FaNodeJs, delay: 2, x: "60%", y: "45%", size: 26, duration: 5.5 },
+  { Icon: SiVite, delay: 2.5, x: "82%", y: "42%", size: 24, duration: 4.2 },
+  { Icon: FaDatabase, delay: 3, x: "68%", y: "88%", size: 22, duration: 4.8 },
+  { Icon: SiSupabase, delay: 3.5, x: "93%", y: "85%", size: 26, duration: 3.8 },
 ];
 
 export function Hero() {
@@ -47,11 +47,11 @@ export function Hero() {
       {floatingIcons.map(({ Icon, delay, x, y, size, duration }, index) => (
         <motion.div
           key={index}
-          className="pointer-events-none absolute text-[#638ec6]/35"
+          className="pointer-events-none absolute text-[#638ec6]/60 drop-shadow-[0_0_10px_rgba(99,142,198,0.45)]"
           style={{ left: x, top: y }}
           initial={{ opacity: 0, scale: 0 }}
           animate={{
-            opacity: [0.15, 0.3, 0.15],
+            opacity: [0.4, 0.65, 0.4],
             scale: 1,
             y: [0, -15, 0],
           }}
