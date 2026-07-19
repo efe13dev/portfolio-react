@@ -8,12 +8,12 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["about", "projects", "skills"];
+      const sections = ["about", "projects", "skills", "contact"];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       // Verificar si estamos cerca del final de la página
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
-        setActiveSection((prev) => (prev === "skills" ? prev : "skills"));
+        setActiveSection((prev) => (prev === "contact" ? prev : "contact"));
 
         return;
       }
@@ -56,7 +56,7 @@ export function Header() {
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#324f75]/30 bg-[#0b0f13]/80 shadow-lg shadow-black/10 backdrop-blur-md">
       <nav className="container mx-auto flex items-center justify-between px-6 py-4">
         <ul className="flex space-x-2">
-          {["about", "projects", "skills"].map((section) => (
+          {["about", "projects", "skills", "contact"].map((section) => (
             <li key={section}>
               <Button
                 onClick={() => scrollToSection(section)}

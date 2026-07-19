@@ -51,6 +51,7 @@ export function Contact() {
   const form = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,7 +68,7 @@ export function Contact() {
       setShowModal(true);
     } catch (error) {
       console.error("Error al enviar el mensaje:", error);
-      alert("Error al enviar el mensaje. Por favor, intenta de nuevo.");
+      setShowErrorModal(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -100,8 +101,11 @@ export function Contact() {
         >
           <motion.div variants={fadeInUp}>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-[#a2b7d1]">Nombre</label>
+              <label htmlFor="from_name" className="text-sm font-medium text-[#a2b7d1]">
+                Nombre
+              </label>
               <Input
+                id="from_name"
                 type="text"
                 name="from_name"
                 placeholder="Tu nombre"
@@ -112,8 +116,11 @@ export function Contact() {
           </motion.div>
           <motion.div variants={fadeInUp}>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-[#a2b7d1]">Email</label>
+              <label htmlFor="email" className="text-sm font-medium text-[#a2b7d1]">
+                Email
+              </label>
               <Input
+                id="email"
                 type="email"
                 name="email"
                 placeholder="tu@email.com"
@@ -124,8 +131,11 @@ export function Contact() {
           </motion.div>
           <motion.div variants={fadeInUp}>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-[#a2b7d1]">Mensaje</label>
+              <label htmlFor="message" className="text-sm font-medium text-[#a2b7d1]">
+                Mensaje
+              </label>
               <Textarea
+                id="message"
                 name="message"
                 placeholder="Cuéntame sobre tu proyecto..."
                 required
@@ -176,6 +186,45 @@ export function Contact() {
                   </p>
                   <Button
                     onClick={() => setShowModal(false)}
+                    className="min-w-[120px] bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90"
+                  >
+                    Cerrar
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showErrorModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            {/* Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowErrorModal(false)}
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            />
+
+            {/* Modal */}
+            <motion.div
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="relative mx-4 w-full max-w-md"
+            >
+              <div className="rounded-lg border-2 border-[#324f75] bg-[#0b0f13] p-8 shadow-xl">
+                <div className="text-center">
+                  <h3 className="mb-3 text-2xl font-semibold text-[#eceff3]">Algo salió mal</h3>
+                  <p className="mb-6 text-[#eceff3]/80">
+                    Error al enviar el mensaje. Por favor, intenta de nuevo.
+                  </p>
+                  <Button
+                    onClick={() => setShowErrorModal(false)}
                     className="min-w-[120px] bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90"
                   >
                     Cerrar
