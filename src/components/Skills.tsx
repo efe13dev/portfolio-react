@@ -15,6 +15,7 @@ import {
 import {
   SiAstro,
   SiCss3,
+  SiDrizzle,
   SiGit,
   SiHono,
   SiJavascript,
@@ -184,6 +185,13 @@ const categories: SkillCategory[] = [
         color: "#00A8E1",
         description: "Embebida, sin servidor",
         docsUrl: "https://www.sqlite.org/docs.html",
+      },
+      {
+        name: "Drizzle ORM",
+        icon: <SiDrizzle className="h-6 w-6" />,
+        color: "#C5F74E",
+        description: "ORM TypeScript type-safe",
+        docsUrl: "https://orm.drizzle.team/docs/overview",
       },
     ],
   },
