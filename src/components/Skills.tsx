@@ -16,6 +16,7 @@ import {
   SiAstro,
   SiCss3,
   SiGit,
+  SiHono,
   SiJavascript,
   SiMysql,
   SiNextdotjs,
@@ -139,6 +140,13 @@ const categories: SkillCategory[] = [
         color: "#5FA04E",
         description: "Event Loop y Streams",
         docsUrl: "https://nodejs.org/en/docs",
+      },
+      {
+        name: "Hono",
+        icon: <SiHono className="h-6 w-6" />,
+        color: "#E36002",
+        description: "Framework web ultraligero",
+        docsUrl: "https://hono.dev/docs/",
       },
       {
         name: "Supabase",
