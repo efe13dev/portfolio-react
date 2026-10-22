@@ -2,27 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-const ARCH_SIGNALS = [
-  {
-    code: "SYS-01",
-    label: "Frontend & SSR",
-    stack: "React · Next.js · Astro · TypeScript",
-    note: "Interfaces rápidas, accesibles y tipadas de extremo a extremo",
-  },
-  {
-    code: "SYS-02",
-    label: "Backend & Datos",
-    stack: "Node.js · Hono · Supabase · PostgreSQL · Drizzle",
-    note: "APIs ligeras, autenticación y esquemas relacionales",
-  },
-  {
-    code: "SYS-03",
-    label: "Móvil & Producto",
-    stack: "React Native · Expo · Tailwind CSS",
-    note: "Del prototipo a la aplicación lista para usar en producción",
-  },
-];
-
 export function Hero() {
   return (
     <section className="relative pt-8 md:pt-16">
@@ -42,7 +21,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+      <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
         {/* Columna principal: Titular editorial + propuesta + CTAs */}
         <motion.div
           className="space-y-8"
@@ -101,28 +80,27 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Columna derecha: Showreel HyperFrames + Ficha de arquitectura */}
+        {/* Columna derecha: Showreel HyperFrames protagonista */}
         <motion.aside
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.12, ease: "easeOut" }}
-          className="relative overflow-hidden rounded-2xl border border-[#3d352e]/60 bg-gradient-to-b from-[#161412]/90 to-[#0c0b0a]/95 p-5 shadow-2xl shadow-black/50"
+          className="relative overflow-hidden rounded-2xl border border-[#3d352e]/60 bg-gradient-to-b from-[#161412]/90 to-[#0c0b0a]/95 p-3.5 shadow-2xl shadow-black/50 md:p-4"
         >
-          <div className="mb-3.5 flex items-center justify-between border-b border-[#3d352e]/35 pb-3">
+          <div className="mb-3 flex items-center justify-between px-1">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[#e56b38]" />
               <span className="font-mono text-xs font-medium uppercase tracking-wider text-[#b8aea2]">
                 Showreel // Arquitectura & Producción
               </span>
             </div>
-            <span className="font-mono text-[11px] text-[#e56b38]">00:08 LOOP</span>
+            <span className="font-mono text-[11px] text-[#e56b38]">00:09 LOOP</span>
           </div>
 
-          {/* Vídeo renderizado con HyperFrames */}
-          <div className="mb-4 overflow-hidden rounded-xl border border-[#3d352e]/60 bg-[#090807]">
+          <div className="overflow-hidden rounded-xl border border-[#3d352e]/60 bg-[#090807]">
             <video
-              src="./hero-showreel.mp4"
+              src="./hero-showreel.mp4?v=2"
               autoPlay
               loop
               muted
@@ -131,19 +109,19 @@ export function Hero() {
             />
           </div>
 
-          <div className="space-y-2.5">
-            {ARCH_SIGNALS.map((item) => (
-              <div
-                key={item.code}
-                className="rounded-xl border border-[#3d352e]/40 bg-[#0c0b0a]/75 p-3 transition-colors duration-200 hover:border-[#e56b38]/50"
-              >
-                <div className="mb-0.5 flex items-center justify-between gap-2">
-                  <span className="text-xs font-semibold text-[#f4f0ea]">{item.label}</span>
-                  <span className="font-mono text-[10px] text-[#e56b38]">{item.code}</span>
-                </div>
-                <p className="font-mono text-xs text-[#b8aea2]">{item.stack}</p>
-              </div>
-            ))}
+          <div className="mt-3.5 grid grid-cols-3 gap-2 border-t border-[#3d352e]/35 pt-3 text-center">
+            <div>
+              <p className="font-mono text-sm font-semibold text-[#f4f0ea]">Frontend & SSR</p>
+              <p className="font-mono text-[10px] text-[#b8aea2]/65">React · Next.js · Astro</p>
+            </div>
+            <div className="border-x border-[#3d352e]/35">
+              <p className="font-mono text-sm font-semibold text-[#f4f0ea]">Backend & SQL</p>
+              <p className="font-mono text-[10px] text-[#b8aea2]/65">Node · Hono · Supabase</p>
+            </div>
+            <div>
+              <p className="font-mono text-sm font-semibold text-[#f4f0ea]">Móvil Nativo</p>
+              <p className="font-mono text-[10px] text-[#b8aea2]/65">React Native · Expo</p>
+            </div>
           </div>
         </motion.aside>
       </div>

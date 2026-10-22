@@ -58,8 +58,8 @@
         height: 1080px;
         overflow: hidden;
         background:
-          radial-gradient(ellipse 75% 65% at 50% 18%, rgba(229, 107, 56, 0.22), transparent 70%),
-          linear-gradient(180deg, #12100e 0%, #0c0b0a 100%);
+          radial-gradient(ellipse 80% 70% at 50% 15%, rgba(229, 107, 56, 0.24), transparent 70%),
+          linear-gradient(180deg, #141210 0%, #0c0b0a 100%);
       }
 
       .clip {
@@ -71,43 +71,44 @@
         position: absolute;
         inset: 0;
         background-image:
-          linear-gradient(to right, rgba(61, 53, 46, 0.28) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(61, 53, 46, 0.28) 1px, transparent 1px);
+          linear-gradient(to right, rgba(61, 53, 46, 0.3) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(61, 53, 46, 0.3) 1px, transparent 1px);
         background-size: 72px 72px;
       }
 
       .hud-bar {
         position: absolute;
-        left: 192px;
-        right: 192px;
-        top: 112px;
+        left: 72px;
+        right: 72px;
+        top: 52px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding-bottom: 20px;
-        border-bottom: 2px solid var(--border);
+        padding-bottom: 22px;
+        border-bottom: 3px solid var(--border);
         font-family: var(--font-mono);
-        font-size: 28px;
-        letter-spacing: 0.06em;
+        font-size: 36px;
+        font-weight: 500;
+        letter-spacing: 0.05em;
         color: var(--muted);
         z-index: 10;
       }
 
       .hud-dot {
         display: inline-block;
-        width: 14px;
-        height: 14px;
+        width: 18px;
+        height: 18px;
         border-radius: 999px;
         background: var(--accent);
-        margin-right: 14px;
+        margin-right: 16px;
       }
 
       .stage {
         position: absolute;
-        left: 192px;
-        right: 192px;
-        top: 190px;
-        bottom: 120px;
+        left: 72px;
+        right: 72px;
+        top: 148px;
+        bottom: 64px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -115,42 +116,37 @@
 
       .kicker {
         font-family: var(--font-mono);
-        font-size: 28px;
+        font-size: 38px;
+        font-weight: 500;
         text-transform: uppercase;
-        letter-spacing: 0.14em;
+        letter-spacing: 0.1em;
         color: var(--accent);
-        margin-bottom: 18px;
+        margin-bottom: 14px;
       }
 
       .headline {
         font-family: var(--font-display);
-        font-size: 72px;
-        line-height: 1.08;
+        font-size: 92px;
+        line-height: 1.06;
         color: var(--ink);
-        max-width: 1450px;
-      }
-
-      .subline {
-        font-size: 32px;
-        color: var(--muted);
-        margin-top: 18px;
       }
 
       .terminal-card {
         background: var(--surface);
-        border: 2px solid var(--border);
-        border-radius: 24px;
-        padding: 36px 44px;
+        border: 3px solid var(--border);
+        border-radius: 28px;
+        padding: 48px 54px;
         display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 36px;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 44px;
         align-items: center;
+        height: 560px;
       }
 
       .code-lines {
         font-family: var(--font-mono);
-        font-size: 28px;
-        line-height: 1.6;
+        font-size: 44px;
+        line-height: 1.55;
         color: var(--ink);
       }
 
@@ -165,16 +161,17 @@
       .pill-grid {
         display: flex;
         flex-wrap: wrap;
-        gap: 14px;
+        gap: 18px;
       }
 
       .pill {
         font-family: var(--font-mono);
-        font-size: 28px;
-        padding: 12px 22px;
-        border-radius: 12px;
+        font-size: 40px;
+        font-weight: 500;
+        padding: 18px 30px;
+        border-radius: 16px;
         background: #0c0b0a;
-        border: 2px solid var(--border);
+        border: 3px solid var(--border);
         color: var(--ink);
       }
 
@@ -183,32 +180,26 @@
         color: var(--amber);
       }
 
-      .cards-two {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 36px;
-        height: 510px;
-      }
-
-      .browser-card {
+      .showcase-card {
         background: var(--surface);
-        border: 2px solid var(--border);
-        border-radius: 24px;
+        border: 3px solid var(--border);
+        border-radius: 28px;
         overflow: hidden;
         display: flex;
         flex-direction: column;
+        height: 600px;
       }
 
       .browser-top {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 14px 22px;
+        padding: 20px 32px;
         background: #090807;
-        border-bottom: 2px solid var(--border);
+        border-bottom: 3px solid var(--border);
         font-family: var(--font-mono);
-        font-size: 20px;
-        white-space: nowrap;
+        font-size: 36px;
+        font-weight: 500;
         color: var(--muted);
       }
 
@@ -232,7 +223,7 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="8"
+      data-duration="9"
       data-width="1920"
       data-height="1080"
     >
@@ -240,7 +231,7 @@
         id="bg-layer"
         class="clip"
         data-start="0"
-        data-duration="8"
+        data-duration="9"
         data-track-index="0"
         data-layout-allow-overlap
       >
@@ -250,117 +241,92 @@
             <span class="hud-dot"></span>
             <span data-var-text="brand">efe_13 // FULL STACK</span>
           </div>
-          <div>REACT · NEXT.JS · SUPABASE · TYPESCRIPT</div>
+          <div style="color: var(--amber)">TS · REACT · NEXT.JS · SUPABASE</div>
         </div>
       </div>
 
-      <!-- Escena 1: Arquitectura y Stack [0s - 2.7s] -->
-      <div
-        id="scene-stack"
-        class="clip"
-        data-start="0"
-        data-duration="2.7"
-        data-track-index="1"
-      >
+      <!-- Escena 1: Stack y Código en grande [0s - 3.0s] -->
+      <div id="scene-stack" class="clip" data-start="0" data-duration="3" data-track-index="1">
         <div class="stage" id="s1-stage">
           <div id="s1-header">
-            <div class="kicker">01 // ARQUITECTURA END-TO-END</div>
-            <h1 class="headline">Del esquema SQL a la interfaz en producción.</h1>
-            <p class="subline">Aplicaciones web y móviles tipadas, rápidas y mantenibles.</p>
+            <div class="kicker">01 // STACK PRINCIPAL</div>
+            <h1 class="headline">Arquitectura tipada de extremo a extremo.</h1>
           </div>
 
           <div class="terminal-card" id="s1-card">
             <div class="code-lines">
               <div><span class="code-accent">const</span> stack = {</div>
-              <div>&nbsp;&nbsp;web: [<span class="code-amber">"React"</span>, <span class="code-amber">"Next.js"</span>, <span class="code-amber">"Astro"</span>],</div>
-              <div>&nbsp;&nbsp;api: [<span class="code-amber">"Node.js"</span>, <span class="code-amber">"Hono"</span>, <span class="code-amber">"Supabase"</span>],</div>
-              <div>&nbsp;&nbsp;data: [<span class="code-amber">"PostgreSQL"</span>, <span class="code-amber">"Drizzle ORM"</span>],</div>
+              <div>
+                &nbsp;&nbsp;ui: [<span class="code-amber">"React"</span>,
+                <span class="code-amber">"Next.js"</span>],
+              </div>
+              <div>
+                &nbsp;&nbsp;api: [<span class="code-amber">"Node"</span>,
+                <span class="code-amber">"Hono"</span>],
+              </div>
+              <div>
+                &nbsp;&nbsp;db: [<span class="code-amber">"Postgres"</span>,
+                <span class="code-amber">"Supabase"</span>],
+              </div>
               <div>};</div>
             </div>
             <div class="pill-grid">
               <span class="pill pill-core">TypeScript</span>
-              <span class="pill pill-core">React 18</span>
-              <span class="pill pill-core">Next.js SSR</span>
-              <span class="pill">Tailwind CSS</span>
+              <span class="pill pill-core">Next.js</span>
+              <span class="pill pill-core">React</span>
               <span class="pill pill-core">Supabase</span>
               <span class="pill">PostgreSQL</span>
-              <span class="pill">React Native</span>
+              <span class="pill">Drizzle</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Escena 2: Ecosistema Protectora Huellas [2.7s - 5.4s] -->
-      <div
-        id="scene-huellas"
-        class="clip"
-        data-start="2.7"
-        data-duration="2.7"
-        data-track-index="1"
-      >
+      <!-- Escena 2: Protectora Huellas a ancho completo [3.0s - 6.0s] -->
+      <div id="scene-huellas" class="clip" data-start="3" data-duration="3" data-track-index="1">
         <div class="stage" id="s2-stage">
           <div id="s2-header">
-            <div class="kicker">02 // ECOSISTEMA EN PRODUCCIÓN</div>
-            <h2 class="headline">Protectora Huellas: Portal Público + Backoffice</h2>
+            <div class="kicker">02 // PLATAFORMA WEB + BACKOFFICE</div>
+            <h2 class="headline">Protectora Huellas</h2>
           </div>
 
-          <div class="cards-two">
-            <div class="browser-card" id="s2-card-left">
-              <div class="browser-top">
-                <span>huellas-protectora.vercel.app</span>
-                <span style="color: var(--accent)">WEB PÚBLICA</span>
-              </div>
-              <div class="browser-img-wrap">
-                <img class="browser-img" src="assets/huellas-opt.v2.webp" alt="Protectora Huellas" />
-              </div>
+          <div class="showcase-card" id="s2-card">
+            <div class="browser-top">
+              <span>huellas-protectora.vercel.app</span>
+              <span style="color: var(--accent)">NEXT.JS · TYPESCRIPT · NEXTAUTH</span>
             </div>
-
-            <div class="browser-card" id="s2-card-right">
-              <div class="browser-top">
-                <span>huellas-gestion.vercel.app</span>
-                <span style="color: var(--amber)">NEXTAUTH + ADMIN</span>
-              </div>
-              <div class="browser-img-wrap">
-                <img class="browser-img" src="assets/huellas-form-opt.webp" alt="Gestión Huellas" />
-              </div>
+            <div class="browser-img-wrap">
+              <img
+                id="s2-img"
+                class="browser-img"
+                src="assets/huellas-opt.v2.webp"
+                alt="Protectora Huellas"
+              />
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Escena 3: Mobile & Full Stack [5.4s - 8.0s] -->
-      <div
-        id="scene-mobile"
-        class="clip"
-        data-start="5.4"
-        data-duration="2.6"
-        data-track-index="1"
-      >
+      <!-- Escena 3: Qué Comemos Hoy a ancho completo [6.0s - 9.0s] -->
+      <div id="scene-mobile" class="clip" data-start="6" data-duration="3" data-track-index="1">
         <div class="stage" id="s3-stage">
           <div id="s3-header">
-            <div class="kicker">03 // MULTIPLATAFORMA & EVENTOS</div>
-            <h2 class="headline">Qué Comemos Hoy (Android) & Meetups Full Stack</h2>
+            <div class="kicker">03 // APLICACIÓN MÓVIL ANDROID</div>
+            <h2 class="headline">Qué Comemos Hoy</h2>
           </div>
 
-          <div class="cards-two">
-            <div class="browser-card" id="s3-card-left">
-              <div class="browser-top">
-                <span>React Native · Expo · Supabase</span>
-                <span style="color: var(--accent)">ANDROID APK</span>
-              </div>
-              <div class="browser-img-wrap">
-                <img class="browser-img" src="assets/que-comemos-hoy-opt.webp" alt="Qué Comemos Hoy" />
-              </div>
+          <div class="showcase-card" id="s3-card">
+            <div class="browser-top">
+              <span>Planificador semanal y recetario</span>
+              <span style="color: var(--amber)">REACT NATIVE · EXPO · SUPABASE</span>
             </div>
-
-            <div class="browser-card" id="s3-card-right">
-              <div class="browser-top">
-                <span>React · Node.js · MySQL</span>
-                <span style="color: var(--amber)">FULL STACK</span>
-              </div>
-              <div class="browser-img-wrap">
-                <img class="browser-img" src="assets/meetups-opt.webp" alt="Meetups" />
-              </div>
+            <div class="browser-img-wrap">
+              <img
+                id="s3-img"
+                class="browser-img"
+                src="assets/que-comemos-hoy-opt.webp"
+                alt="Qué Comemos Hoy"
+              />
             </div>
           </div>
         </div>
@@ -381,57 +347,49 @@
         "#s1-card",
         { opacity: 0, y: 36, scale: 0.97 },
         { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" },
-        0.2,
+        0.18,
       );
-      tl.to(
-        "#s1-stage",
-        { opacity: 0, y: -18, duration: 0.3, ease: "power2.in" },
-        2.35,
-      );
+      tl.to("#s1-stage", { opacity: 0, y: -18, duration: 0.3, ease: "power2.in" }, 2.65);
 
       // Escena 2
       tl.fromTo(
         "#s2-header",
         { opacity: 0, y: 24 },
         { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" },
-        2.75,
+        3.05,
       );
       tl.fromTo(
-        "#s2-card-left",
-        { opacity: 0, x: -32 },
-        { opacity: 1, x: 0, duration: 0.48, ease: "power3.out" },
-        2.9,
+        "#s2-card",
+        { opacity: 0, y: 36 },
+        { opacity: 1, y: 0, duration: 0.48, ease: "power3.out" },
+        3.18,
       );
       tl.fromTo(
-        "#s2-card-right",
-        { opacity: 0, x: 32 },
-        { opacity: 1, x: 0, duration: 0.48, ease: "power3.out" },
-        3.02,
+        "#s2-img",
+        { scale: 1 },
+        { scale: 1.06, duration: 2.5, ease: "none" },
+        3.2,
       );
-      tl.to(
-        "#s2-stage",
-        { opacity: 0, y: -18, duration: 0.3, ease: "power2.in" },
-        5.05,
-      );
+      tl.to("#s2-stage", { opacity: 0, y: -18, duration: 0.3, ease: "power2.in" }, 5.65);
 
       // Escena 3
       tl.fromTo(
         "#s3-header",
         { opacity: 0, y: 24 },
         { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" },
-        5.45,
+        6.05,
       );
       tl.fromTo(
-        "#s3-card-left",
-        { opacity: 0, y: 32 },
+        "#s3-card",
+        { opacity: 0, y: 36 },
         { opacity: 1, y: 0, duration: 0.48, ease: "power3.out" },
-        5.6,
+        6.18,
       );
       tl.fromTo(
-        "#s3-card-right",
-        { opacity: 0, y: 32 },
-        { opacity: 1, y: 0, duration: 0.48, ease: "power3.out" },
-        5.72,
+        "#s3-img",
+        { scale: 1 },
+        { scale: 1.06, duration: 2.5, ease: "none" },
+        6.2,
       );
 
       window.__timelines = window.__timelines || {};
