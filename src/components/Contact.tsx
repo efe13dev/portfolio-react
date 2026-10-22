@@ -1,6 +1,8 @@
 import emailjs from "@emailjs/browser";
 import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, Mail } from "lucide-react";
 import { useRef, useState } from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 import { Button } from "./ui/button";
 
@@ -8,26 +10,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { EMAIL_CONFIG } from "@/data/emailConfig";
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.3 },
-  transition: { duration: 0.6 },
-};
-
-const staggerChildren = {
-  whileInView: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
 const modalVariants = {
   hidden: {
     opacity: 0,
-    scale: 0.8,
-    y: 20,
+    scale: 0.95,
+    y: 12,
   },
   visible: {
     opacity: 1,
@@ -35,14 +22,14 @@ const modalVariants = {
     y: 0,
     transition: {
       type: "spring",
-      duration: 0.5,
+      duration: 0.4,
     },
   },
   exit: {
     opacity: 0,
-    scale: 0.8,
+    scale: 0.95,
     transition: {
-      duration: 0.3,
+      duration: 0.2,
     },
   },
 };
@@ -76,101 +63,154 @@ export function Contact() {
 
   return (
     <>
-      <section id="contact" className="space-y-8">
-        <div className="space-y-3">
-          <h2 className="font-heading text-4xl font-bold text-[#a2b7d1] md:text-5xl">Contáctame</h2>
-          <motion.p
-            className="max-w-2xl text-lg leading-relaxed text-[#eceff3]/70"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            ¿Tienes un proyecto en mente o quieres colaborar? ¡Me encantaría escuchar tus ideas!
-            Envíame un mensaje y te responderé lo antes posible.
-          </motion.p>
+      <section className="space-y-10">
+        <div className="flex flex-col justify-between gap-4 border-b border-[#3d352e]/35 pb-6 md:flex-row md:items-end">
+          <div className="space-y-2">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#e56b38]">
+              04 // CONTACTO DIRECTO
+            </p>
+            <h2 className="font-heading text-4xl font-bold text-[#f4f0ea] md:text-5xl">
+              Hablemos de tu proyecto
+            </h2>
+          </div>
+          <p className="max-w-md text-sm leading-relaxed text-[#b8aea2]/80">
+            ¿Buscas incorporar a alguien a tu equipo o lanzar un producto? Escríbeme por formulario
+            o directamente por correo.
+          </p>
         </div>
-        <motion.form
-          ref={form}
-          onSubmit={handleSubmit}
-          className="max-w-2xl space-y-6 rounded-2xl border border-[#324f75]/30 bg-gradient-to-br from-[#0b0f13] to-[#1a2942]/20 p-8 shadow-xl shadow-black/20 backdrop-blur-sm"
-          variants={staggerChildren}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <motion.div variants={fadeInUp}>
-            <div className="space-y-2">
-              <label htmlFor="from_name" className="text-sm font-medium text-[#a2b7d1]">
-                Nombre
-              </label>
-              <Input
-                id="from_name"
-                type="text"
-                name="from_name"
-                placeholder="Tu nombre"
-                required
-                className="border-2 border-[#324f75]/50 bg-[#0b0f13]/50 py-6 text-[#eceff3] backdrop-blur-sm transition-all duration-300 placeholder:text-[#eceff3]/40 focus:border-[#638ec6] focus:bg-[#0b0f13] focus:shadow-lg focus:shadow-[#638ec6]/10"
-              />
+
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
+          {/* Columna izquierda: Canales directos */}
+          <div className="flex flex-col justify-between gap-8 rounded-2xl border border-[#3d352e]/50 bg-[#161412]/60 p-6 md:p-8">
+            <div className="space-y-4">
+              <span className="font-mono text-xs uppercase tracking-wider text-[#e56b38]">
+                Canales directos
+              </span>
+              <p className="text-sm leading-relaxed text-[#f4f0ea]/80">
+                Respondo habitualmente en menos de 24 horas laborables. Si prefieres no usar el
+                formulario, puedes contactarme directamente aquí:
+              </p>
             </div>
-          </motion.div>
-          <motion.div variants={fadeInUp}>
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium text-[#a2b7d1]">
-                Email
-              </label>
-              <Input
-                id="email"
-                type="email"
-                name="email"
-                placeholder="tu@email.com"
-                required
-                className="border-2 border-[#324f75]/50 bg-[#0b0f13]/50 py-6 text-[#eceff3] backdrop-blur-sm transition-all duration-300 placeholder:text-[#eceff3]/40 focus:border-[#638ec6] focus:bg-[#0b0f13] focus:shadow-lg focus:shadow-[#638ec6]/10"
-              />
+
+            <div className="space-y-3">
+              <a
+                href="mailto:efe13dev@gmail.com"
+                className="group flex items-center justify-between rounded-xl border border-[#3d352e]/50 bg-[#0c0b0a]/80 p-4 transition-colors hover:border-[#e56b38]"
+              >
+                <div className="flex items-center gap-3">
+                  <Mail className="h-4 w-4 text-[#e56b38]" />
+                  <div>
+                    <p className="font-mono text-[11px] uppercase text-[#b8aea2]/60">Email</p>
+                    <p className="text-sm font-medium text-[#f4f0ea]">efe13dev@gmail.com</p>
+                  </div>
+                </div>
+                <ArrowUpRight className="h-4 w-4 text-[#b8aea2]/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#e56b38]" />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/efe13-dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between rounded-xl border border-[#3d352e]/50 bg-[#0c0b0a]/80 p-4 transition-colors hover:border-[#e56b38]"
+              >
+                <div className="flex items-center gap-3">
+                  <FaLinkedin className="h-4 w-4 text-[#e56b38]" />
+                  <div>
+                    <p className="font-mono text-[11px] uppercase text-[#b8aea2]/60">LinkedIn</p>
+                    <p className="text-sm font-medium text-[#f4f0ea]">in/efe13-dev</p>
+                  </div>
+                </div>
+                <ArrowUpRight className="h-4 w-4 text-[#b8aea2]/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#e56b38]" />
+              </a>
+
+              <a
+                href="https://github.com/efe13dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between rounded-xl border border-[#3d352e]/50 bg-[#0c0b0a]/80 p-4 transition-colors hover:border-[#e56b38]"
+              >
+                <div className="flex items-center gap-3">
+                  <FaGithub className="h-4 w-4 text-[#b8aea2]" />
+                  <div>
+                    <p className="font-mono text-[11px] uppercase text-[#b8aea2]/60">GitHub</p>
+                    <p className="text-sm font-medium text-[#f4f0ea]">github.com/efe13dev</p>
+                  </div>
+                </div>
+                <ArrowUpRight className="h-4 w-4 text-[#b8aea2]/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#e56b38]" />
+              </a>
             </div>
-          </motion.div>
-          <motion.div variants={fadeInUp}>
+          </div>
+
+          {/* Columna derecha: Formulario */}
+          <form
+            ref={form}
+            onSubmit={handleSubmit}
+            className="space-y-5 rounded-2xl border border-[#3d352e]/50 bg-gradient-to-b from-[#161412]/75 to-[#0c0b0a]/95 p-6 md:p-8"
+          >
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="space-y-2">
+                <label htmlFor="from_name" className="font-mono text-xs text-[#b8aea2]">
+                  Nombre
+                </label>
+                <Input
+                  id="from_name"
+                  type="text"
+                  name="from_name"
+                  placeholder="Tu nombre"
+                  required
+                  className="border border-[#3d352e]/70 bg-[#0c0b0a]/80 py-5 text-[#f4f0ea] placeholder:text-[#f4f0ea]/35 focus:border-[#e56b38]"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="email" className="font-mono text-xs text-[#b8aea2]">
+                  Email
+                </label>
+                <Input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="tu@email.com"
+                  required
+                  className="border border-[#3d352e]/70 bg-[#0c0b0a]/80 py-5 text-[#f4f0ea] placeholder:text-[#f4f0ea]/35 focus:border-[#e56b38]"
+                />
+              </div>
+            </div>
+
             <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-medium text-[#a2b7d1]">
+              <label htmlFor="message" className="font-mono text-xs text-[#b8aea2]">
                 Mensaje
               </label>
               <Textarea
                 id="message"
                 name="message"
-                placeholder="Cuéntame sobre tu proyecto..."
+                placeholder="Cuéntame sobre tu proyecto, equipo o idea..."
                 required
-                className="min-h-[150px] resize-none border-2 border-[#324f75]/50 bg-[#0b0f13]/50 text-[#eceff3] backdrop-blur-sm transition-all duration-300 placeholder:text-[#eceff3]/40 focus:border-[#638ec6] focus:bg-[#0b0f13] focus:shadow-lg focus:shadow-[#638ec6]/10"
+                className="min-h-[150px] resize-none border border-[#3d352e]/70 bg-[#0c0b0a]/80 text-[#f4f0ea] placeholder:text-[#f4f0ea]/35 focus:border-[#e56b38]"
               />
             </div>
-          </motion.div>
-          <motion.div variants={fadeInUp}>
+
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="group relative w-full overflow-hidden bg-gradient-to-r from-[#324f75] to-[#638ec6] py-6 font-medium text-[#eceff3] shadow-lg shadow-[#324f75]/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#638ec6]/30 disabled:opacity-50 disabled:hover:scale-100"
+              className="w-full rounded-xl bg-[#e56b38] py-6 text-sm font-semibold text-[#0c0b0a] transition-colors duration-200 hover:bg-[#f59e0b] disabled:opacity-50"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-[#638ec6] to-[#90b5ed] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <span className="relative z-10">
-                {isSubmitting ? "Enviando..." : "Enviar mensaje"}
-              </span>
+              {isSubmitting ? "Enviando..." : "Enviar mensaje"}
             </Button>
-          </motion.div>
-        </motion.form>
+          </form>
+        </div>
       </section>
 
       <AnimatePresence>
         {showModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center">
-            {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowModal(false)}
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             />
-
-            {/* Modal */}
             <motion.div
               variants={modalVariants}
               initial="hidden"
@@ -178,15 +218,17 @@ export function Contact() {
               exit="exit"
               className="relative mx-4 w-full max-w-md"
             >
-              <div className="rounded-lg border-2 border-[#324f75] bg-[#0b0f13] p-8 shadow-xl">
+              <div className="rounded-2xl border border-[#3d352e] bg-[#0c0b0a] p-8 shadow-2xl">
                 <div className="text-center">
-                  <h3 className="mb-3 text-2xl font-semibold text-[#eceff3]">¡Mensaje Enviado!</h3>
-                  <p className="mb-6 text-[#eceff3]/80">
-                    Gracias por contactarme. Te responderé lo antes posible.
+                  <h3 className="mb-3 font-heading text-2xl font-bold text-[#f4f0ea]">
+                    ¡Mensaje enviado!
+                  </h3>
+                  <p className="mb-6 text-sm text-[#f4f0ea]/80">
+                    Gracias por escribirme. Te responderé lo antes posible.
                   </p>
                   <Button
                     onClick={() => setShowModal(false)}
-                    className="min-w-[120px] bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90"
+                    className="min-w-[120px] bg-[#e56b38] text-[#0c0b0a] hover:bg-[#f59e0b]"
                   >
                     Cerrar
                   </Button>
@@ -200,16 +242,13 @@ export function Contact() {
       <AnimatePresence>
         {showErrorModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center">
-            {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowErrorModal(false)}
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             />
-
-            {/* Modal */}
             <motion.div
               variants={modalVariants}
               initial="hidden"
@@ -217,15 +256,18 @@ export function Contact() {
               exit="exit"
               className="relative mx-4 w-full max-w-md"
             >
-              <div className="rounded-lg border-2 border-[#324f75] bg-[#0b0f13] p-8 shadow-xl">
+              <div className="rounded-2xl border border-[#3d352e] bg-[#0c0b0a] p-8 shadow-2xl">
                 <div className="text-center">
-                  <h3 className="mb-3 text-2xl font-semibold text-[#eceff3]">Algo salió mal</h3>
-                  <p className="mb-6 text-[#eceff3]/80">
-                    Error al enviar el mensaje. Por favor, intenta de nuevo.
+                  <h3 className="mb-3 font-heading text-2xl font-bold text-[#f4f0ea]">
+                    Algo salió mal
+                  </h3>
+                  <p className="mb-6 text-sm text-[#f4f0ea]/80">
+                    Error al enviar el mensaje. Por favor, inténtalo de nuevo o escríbeme a
+                    efe13dev@gmail.com.
                   </p>
                   <Button
                     onClick={() => setShowErrorModal(false)}
-                    className="min-w-[120px] bg-[#324f75] text-[#eceff3] hover:bg-[#324f75]/90"
+                    className="min-w-[120px] bg-[#3d352e] text-[#f4f0ea] hover:bg-[#e56b38] hover:text-[#0c0b0a]"
                   >
                     Cerrar
                   </Button>

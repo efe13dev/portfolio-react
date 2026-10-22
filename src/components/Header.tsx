@@ -1,32 +1,37 @@
+import { ArrowDownToLine } from "lucide-react";
 import { useEffect, useState } from "react";
-import { FaDownload } from "react-icons/fa";
 
-import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
+
+const NAV_ITEMS = [
+  { id: "about", index: "01", label: "Inicio" },
+  { id: "projects", index: "02", label: "Proyectos" },
+  { id: "skills", index: "03", label: "Stack" },
+  { id: "contact", index: "04", label: "Contacto" },
+];
 
 export function Header() {
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["about", "projects", "skills", "contact"];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-      // Verificar si estamos cerca del final de la página
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
         setActiveSection((prev) => (prev === "contact" ? prev : "contact"));
 
         return;
       }
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
+      for (const item of NAV_ITEMS) {
+        const element = document.getElementById(item.id);
 
         if (
           element &&
           scrollPosition >= element.offsetTop &&
           scrollPosition < element.offsetTop + element.offsetHeight
         ) {
-          setActiveSection((prev) => (prev === section ? prev : section));
+          setActiveSection((prev) => (prev === item.id ? prev : item.id));
           break;
         }
       }
@@ -42,10 +47,8 @@ export function Header() {
     const element = document.getElementById(sectionId);
 
     if (element) {
-      const offsetTop = element.offsetTop;
-
       window.scrollTo({
-        top: offsetTop - 80,
+        top: element.offsetTop - 88,
         behavior: "smooth",
       });
       setActiveSection(sectionId);
@@ -53,36 +56,57 @@ export function Header() {
   };
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#324f75]/30 bg-[#0b0f13]/80 shadow-lg shadow-black/10 backdrop-blur-md">
-      <nav className="container mx-auto flex items-center justify-between px-6 py-4">
-        <ul className="flex space-x-2">
-          {["about", "projects", "skills", "contact"].map((section) => (
-            <li key={section}>
-              <Button
-                onClick={() => scrollToSection(section)}
-                className={`relative capitalize transition-all duration-300 ${
-                  activeSection === section
-                    ? "bg-gradient-to-r from-[#324f75] to-[#638ec6] text-[#eceff3] shadow-lg shadow-[#324f75]/20 hover:shadow-xl hover:shadow-[#638ec6]/30"
-                    : "text-[#a2b7d1] hover:bg-[#324f75]/20 hover:text-[#90b5ed]"
-                }`}
-              >
-                {section}
-                {activeSection === section ? (
-                  <span className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-[#638ec6] to-[#90b5ed]" />
-                ) : null}
-              </Button>
-            </li>
-          ))}
-        </ul>
-        <Button
-          className="group flex items-center gap-2 border-2 border-[#a2b7d1] bg-transparent text-[#a2b7d1] transition-all duration-300 hover:scale-105 hover:border-[#638ec6] hover:bg-[#638ec6]/10 hover:text-[#638ec6] hover:shadow-lg hover:shadow-[#638ec6]/20"
-          asChild
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#3d352e]/40 bg-[#0c0b0a]/85 backdrop-blur-md">
+      <nav className="container mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
+        <button
+          type="button"
+          onClick={() => scrollToSection("about")}
+          className="group flex items-center gap-2.5 text-left"
         >
-          <a href="./CV_FranciscoAntonioLorcaMulero_2025_01.pdf" download>
-            <FaDownload className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
-            <span className="font-medium">CV</span>
-          </a>
-        </Button>
+          <span className="h-2 w-2 rounded-full bg-[#e56b38] shadow-[0_0_10px_#e56b38]" />
+          <span className="font-mono text-sm font-medium tracking-tight text-[#f4f0ea]">
+            efe_13
+          </span>
+          <span className="hidden font-mono text-xs text-[#b8aea2]/50 sm:inline">/ full-stack</span>
+        </button>
+
+        <ul className="flex items-center gap-1 sm:gap-2">
+          {NAV_ITEMS.map((item) => {
+            const isActive = activeSection === item.id;
+
+            return (
+              <li key={item.id}>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection(item.id)}
+                  className={cn(
+                    "relative flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors duration-200 sm:text-sm",
+                    isActive
+                      ? "bg-[#e56b38]/15 text-[#f4f0ea]"
+                      : "text-[#b8aea2]/75 hover:bg-[#3d352e]/25 hover:text-[#f4f0ea]",
+                  )}
+                >
+                  <span className="hidden font-mono text-[11px] text-[#e56b38] md:inline">
+                    {item.index}
+                  </span>
+                  <span>{item.label}</span>
+                  {isActive ? (
+                    <span className="absolute inset-x-2 -bottom-[15px] h-px bg-[#e56b38]" />
+                  ) : null}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+
+        <a
+          href="./CV_FranciscoAntonioLorcaMulero_2025_01.pdf"
+          download
+          className="group inline-flex items-center gap-2 rounded-lg border border-[#3d352e]/80 bg-[#161412]/80 px-3.5 py-1.5 font-mono text-xs font-medium text-[#f4f0ea] transition-all duration-200 hover:border-[#e56b38] hover:bg-[#3d352e]/35"
+        >
+          <span>CV.pdf</span>
+          <ArrowDownToLine className="h-3.5 w-3.5 text-[#e56b38] transition-transform duration-200 group-hover:translate-y-0.5" />
+        </a>
       </nav>
     </header>
   );

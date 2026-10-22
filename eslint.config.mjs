@@ -7,7 +7,7 @@ import { fixupPluginRules } from "@eslint/compat";
 export default [
   // Ignorar carpetas
   {
-    ignores: ["node_modules", "dist", "coverage", ".idea"],
+    ignores: ["node_modules", "dist", "coverage", ".idea", ".devin", ".agents", "hyperframes-reel"],
   },
 
   // Base: TypeScript recomendado

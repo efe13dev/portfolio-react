@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# HyperFrames render artifacts
+.hyperframes
+hyperframes-reel/.hyperframes
+hyperframes-reel/out.mp4

@@ -1,171 +1,151 @@
 import { motion } from "framer-motion";
-import { FaDatabase, FaGithub, FaLinkedin, FaNodeJs, FaReact } from "react-icons/fa";
-import { SiNextdotjs, SiSupabase, SiTailwindcss, SiTypescript, SiVite } from "react-icons/si";
+import { ArrowUpRight } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-import { Button } from "./ui/button";
-
-const floatingIcons = [
-  { Icon: FaReact, delay: 0, x: "62%", y: "15%", size: 32, duration: 4 },
-  { Icon: SiTypescript, delay: 0.5, x: "88%", y: "22%", size: 28, duration: 5 },
-  { Icon: SiTailwindcss, delay: 1, x: "70%", y: "72%", size: 30, duration: 4.5 },
-  { Icon: SiNextdotjs, delay: 1.5, x: "90%", y: "62%", size: 34, duration: 3.5 },
-  { Icon: FaNodeJs, delay: 2, x: "60%", y: "45%", size: 26, duration: 5.5 },
-  { Icon: SiVite, delay: 2.5, x: "82%", y: "42%", size: 24, duration: 4.2 },
-  { Icon: FaDatabase, delay: 3, x: "68%", y: "88%", size: 22, duration: 4.8 },
-  { Icon: SiSupabase, delay: 3.5, x: "93%", y: "85%", size: 26, duration: 3.8 },
+const ARCH_SIGNALS = [
+  {
+    code: "SYS-01",
+    label: "Frontend & SSR",
+    stack: "React · Next.js · Astro · TypeScript",
+    note: "Interfaces rápidas, accesibles y tipadas de extremo a extremo",
+  },
+  {
+    code: "SYS-02",
+    label: "Backend & Datos",
+    stack: "Node.js · Hono · Supabase · PostgreSQL · Drizzle",
+    note: "APIs ligeras, autenticación y esquemas relacionales",
+  },
+  {
+    code: "SYS-03",
+    label: "Móvil & Producto",
+    stack: "React Native · Expo · Tailwind CSS",
+    note: "Del prototipo a la aplicación lista para usar en producción",
+  },
 ];
 
 export function Hero() {
   return (
-    <section
-      id="about"
-      className="relative flex min-h-[calc(100vh-6rem)] items-center justify-center overflow-hidden px-6 py-32"
-    >
-      {/* Grid de fondo decorativo */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03]">
-        <div
-          className="h-full w-full"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #638ec6 1px, transparent 1px),
-              linear-gradient(to bottom, #638ec6 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
-          }}
-        />
+    <section className="relative pt-8 md:pt-16">
+      {/* Cabecera de índice editorial */}
+      <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b border-[#3d352e]/40 pb-4 font-mono text-xs text-[#b8aea2]/65">
+        <div className="flex items-center gap-3">
+          <span className="text-[#e56b38]">01 // PERFIL</span>
+          <span className="text-[#3d352e]">—</span>
+          <span>FRANCISCO ANTONIO LORCA MULERO</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#e56b38] opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-[#e56b38]" />
+          </span>
+          <span className="text-[#f4f0ea]/85">Disponible para nuevos proyectos</span>
+        </div>
       </div>
 
-      {/* Gradiente radial de fondo */}
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
-        style={{
-          background: "radial-gradient(circle, rgba(50, 79, 117, 0.25) 0%, transparent 70%)",
-        }}
-      />
-
-      {/* Iconos flotantes de tecnologías */}
-      {floatingIcons.map(({ Icon, delay, x, y, size, duration }, index) => (
+      <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+        {/* Columna principal: Titular editorial + propuesta + CTAs */}
         <motion.div
-          key={index}
-          className="pointer-events-none absolute text-[#638ec6]/60 drop-shadow-[0_0_10px_rgba(99,142,198,0.45)]"
-          style={{ left: x, top: y }}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{
-            opacity: [0.4, 0.65, 0.4],
-            scale: 1,
-            y: [0, -15, 0],
-          }}
-          transition={{
-            opacity: { duration: duration, repeat: Infinity, ease: "easeInOut" },
-            scale: { duration: 0.5, delay: delay },
-            y: { duration: duration, repeat: Infinity, ease: "easeInOut", delay: delay },
-          }}
-        >
-          <Icon size={size} />
-        </motion.div>
-      ))}
-
-      {/* Líneas decorativas diagonales */}
-      <motion.div
-        className="pointer-events-none absolute -left-20 top-20 h-[1px] w-80 rotate-45 bg-gradient-to-r from-transparent via-[#638ec6]/30 to-transparent"
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-      />
-      <motion.div
-        className="pointer-events-none absolute -right-20 bottom-32 h-[1px] w-96 -rotate-45 bg-gradient-to-r from-transparent via-[#638ec6]/30 to-transparent"
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.5, delay: 0.8 }}
-      />
-
-      <div className="relative z-10 w-full space-y-12 text-left">
-        <motion.div
-          className="space-y-4"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <motion.div
-            className="inline-block rounded-full bg-gradient-to-r from-[#324f75]/20 to-[#638ec6]/20 px-4 py-2 backdrop-blur-sm"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            <span className="text-sm font-medium text-[#a2b7d1]">👋 Bienvenido a mi portfolio</span>
-          </motion.div>
-
-          <h1
-            className="relative pb-4 font-heading text-6xl font-bold leading-[1.1] tracking-tight md:text-7xl lg:text-8xl"
-            style={{
-              background: "linear-gradient(135deg, #a2b7d1 0%, #638ec6 50%, #90b5ed 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              backgroundSize: "200% 200%",
-              animation: "gradient 8s ease infinite",
-            }}
-          >
-            efe_13
-          </h1>
-        </motion.div>
-
-        <motion.p
+          className="space-y-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="font-body text-3xl font-normal leading-tight text-[#a2b7d1] md:text-4xl"
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          Desarrollador Web Full Stack
-        </motion.p>
+          <div className="space-y-4">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#e56b38]">
+              Desarrollador Web Full Stack
+            </p>
+            <h1 className="font-heading text-5xl font-bold leading-[1.06] tracking-tight text-[#f4f0ea] md:text-6xl lg:text-7xl">
+              efe_13
+              <span className="mt-2 block text-2xl font-normal leading-snug text-[#b8aea2] md:text-3xl">
+                Software web y móvil pensado para resolver problemas reales, sin artificios.
+              </span>
+            </h1>
+          </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="max-w-3xl text-left font-body text-xl font-normal leading-relaxed text-[#eceff3]/90 md:text-2xl"
-        >
-          Creo soluciones web{" "}
-          <span className="font-semibold text-[#a2b7d1]">eficientes y funcionales</span>, combinando
-          técnicas avanzadas con diseño práctico para entregar productos digitales que{" "}
-          <span className="shine-text font-semibold">destacan</span>.
-        </motion.p>
+          <p className="max-w-2xl text-base leading-relaxed text-[#f4f0ea]/80 md:text-lg">
+            Construyo aplicaciones completas desde la base de datos hasta la interfaz: plataformas
+            de gestión con autenticación, portales públicos en{" "}
+            <span className="font-medium text-[#f4f0ea]">Next.js y TypeScript</span>, y aplicaciones
+            móviles con <span className="font-medium text-[#f4f0ea]">React Native y Supabase</span>.
+          </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="flex flex-wrap gap-4 pt-4"
-        >
-          <Button
-            className="group relative flex items-center gap-2 overflow-hidden bg-gradient-to-r from-[#324f75] to-[#638ec6] px-8 py-6 text-lg font-medium text-[#eceff3] shadow-lg shadow-[#324f75]/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#638ec6]/30"
-            asChild
-          >
+          <div className="flex flex-wrap items-center gap-3.5 pt-2">
+            <a
+              href="#projects"
+              className="group inline-flex items-center gap-2.5 rounded-xl bg-[#e56b38] px-6 py-3.5 text-sm font-semibold text-[#0c0b0a] transition-all duration-200 hover:bg-[#f59e0b]"
+            >
+              <span>Ver proyectos reales</span>
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
+
+            <a
+              href="https://github.com/efe13dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-[#3d352e]/80 bg-[#161412]/70 px-5 py-3.5 text-sm font-medium text-[#f4f0ea] transition-colors duration-200 hover:border-[#e56b38] hover:bg-[#3d352e]/30"
+            >
+              <FaGithub className="h-4 w-4 text-[#b8aea2]" />
+              <span>GitHub</span>
+            </a>
+
             <a
               href="https://www.linkedin.com/in/efe13-dev/"
               target="_blank"
               rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-[#3d352e]/80 bg-[#161412]/70 px-5 py-3.5 text-sm font-medium text-[#f4f0ea] transition-colors duration-200 hover:border-[#e56b38] hover:bg-[#3d352e]/30"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-[#638ec6] to-[#90b5ed] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <FaLinkedin className="relative z-10 h-5 w-5" />
-              <span className="relative z-10">LinkedIn</span>
+              <FaLinkedin className="h-4 w-4 text-[#e56b38]" />
+              <span>LinkedIn</span>
             </a>
-          </Button>
-          <Button
-            className="group flex items-center gap-2 border-2 border-[#a2b7d1] bg-transparent px-8 py-6 text-lg font-medium text-[#a2b7d1] transition-all duration-300 hover:scale-105 hover:border-[#638ec6] hover:bg-[#638ec6]/10 hover:text-[#638ec6]"
-            asChild
-          >
-            <a href="https://github.com/efe13dev" target="_blank" rel="noopener noreferrer">
-              <FaGithub className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
-              <span>GitHub</span>
-            </a>
-          </Button>
+          </div>
         </motion.div>
+
+        {/* Columna derecha: Showreel HyperFrames + Ficha de arquitectura */}
+        <motion.aside
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.12, ease: "easeOut" }}
+          className="relative overflow-hidden rounded-2xl border border-[#3d352e]/60 bg-gradient-to-b from-[#161412]/90 to-[#0c0b0a]/95 p-5 shadow-2xl shadow-black/50"
+        >
+          <div className="mb-3.5 flex items-center justify-between border-b border-[#3d352e]/35 pb-3">
+            <div className="flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-[#e56b38]" />
+              <span className="font-mono text-xs font-medium uppercase tracking-wider text-[#b8aea2]">
+                Showreel // Arquitectura & Producción
+              </span>
+            </div>
+            <span className="font-mono text-[11px] text-[#e56b38]">00:08 LOOP</span>
+          </div>
+
+          {/* Vídeo renderizado con HyperFrames */}
+          <div className="mb-4 overflow-hidden rounded-xl border border-[#3d352e]/60 bg-[#090807]">
+            <video
+              src="./hero-showreel.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="aspect-video w-full object-cover"
+            />
+          </div>
+
+          <div className="space-y-2.5">
+            {ARCH_SIGNALS.map((item) => (
+              <div
+                key={item.code}
+                className="rounded-xl border border-[#3d352e]/40 bg-[#0c0b0a]/75 p-3 transition-colors duration-200 hover:border-[#e56b38]/50"
+              >
+                <div className="mb-0.5 flex items-center justify-between gap-2">
+                  <span className="text-xs font-semibold text-[#f4f0ea]">{item.label}</span>
+                  <span className="font-mono text-[10px] text-[#e56b38]">{item.code}</span>
+                </div>
+                <p className="font-mono text-xs text-[#b8aea2]">{item.stack}</p>
+              </div>
+            ))}
+          </div>
+        </motion.aside>
       </div>
     </section>
   );

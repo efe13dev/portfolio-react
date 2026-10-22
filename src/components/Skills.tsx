@@ -10,7 +10,6 @@ import {
   Smartphone,
   Sparkles,
   Workflow,
-  Wrench,
 } from "lucide-react";
 import {
   SiAstro,
@@ -88,7 +87,7 @@ const categories: SkillCategory[] = [
       {
         name: "Next.js",
         icon: <SiNextdotjs className="h-5 w-5" />,
-        color: "#ECEFF3",
+        color: "#F4F0EA",
         description: "App Router, SSR, ISR",
         docsUrl: "https://nextjs.org/docs",
       },
@@ -197,7 +196,7 @@ const categories: SkillCategory[] = [
   },
   {
     id: "devops",
-    name: "DevOps & Tooling",
+    name: "DevOps & Móvil",
     icon: <Workflow className="h-4 w-4" />,
     skills: [
       {
@@ -229,75 +228,77 @@ function SkillCard({ skill, reduceMotion }: { skill: Skill; reduceMotion: boolea
         reduceMotion
           ? undefined
           : {
-              hidden: { opacity: 0, y: 16 },
+              hidden: { opacity: 0, y: 12 },
               show: { opacity: 1, y: 0 },
             }
       }
       style={{ "--skill": skill.color } as React.CSSProperties}
       className={cn(
-        "group relative flex items-center gap-3 overflow-hidden rounded-xl border border-[#324f75]/30 bg-gradient-to-br from-[#0b1628]/60 to-[#0b0f13]/80 p-3",
-        "hover:border-[color:var(--skill)]/50 transition-all duration-300 hover:-translate-y-0.5",
-        "hover:shadow-[0_8px_30px_-12px_var(--skill)]",
+        "group relative flex items-center gap-3 overflow-hidden rounded-xl border border-[#3d352e]/45 bg-gradient-to-br from-[#161412]/80 to-[#0c0b0a]/95 p-3.5",
+        "hover:border-[color:var(--skill)]/55 transition-all duration-200 hover:-translate-y-0.5",
       )}
     >
-      {/* Acento superior en las tecnologías principales */}
-      {skill.featured && (
+      {skill.featured ? (
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-0.5"
+          className="pointer-events-none absolute inset-x-0 top-0 h-px"
           style={{
             background: `linear-gradient(to right, transparent, ${skill.color}, transparent)`,
           }}
         />
-      )}
-
-      {/* Glow de color al hacer hover */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-6 -top-6 h-16 w-16 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-25"
-        style={{ backgroundColor: skill.color }}
-      />
+      ) : null}
 
       <div
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/5 bg-white/[0.03] transition-transform duration-300 group-hover:scale-110"
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/5 bg-white/[0.03] transition-transform duration-200 group-hover:scale-105"
         style={{ color: skill.color }}
       >
         {skill.icon}
       </div>
 
       <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-semibold text-[#eceff3]">{skill.name}</p>
-        <p className="truncate text-xs text-[#a2b7d1]/60">{skill.description}</p>
+        <div className="flex items-center gap-2">
+          <p className="truncate text-sm font-semibold text-[#f4f0ea]">{skill.name}</p>
+          {skill.featured ? (
+            <span className="rounded bg-[#e56b38]/15 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-[#e56b38]">
+              Core
+            </span>
+          ) : null}
+        </div>
+        <p className="truncate text-xs text-[#b8aea2]/70">{skill.description}</p>
       </div>
 
-      <ArrowUpRight className="h-4 w-4 shrink-0 -translate-x-1 text-[#a2b7d1]/40 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-[color:var(--skill)] group-hover:opacity-100" />
+      <ArrowUpRight className="h-4 w-4 shrink-0 text-[#b8aea2]/35 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[color:var(--skill)]" />
     </motion.a>
   );
 }
 
 function CategoryBlock({
   category,
+  index,
   reduceMotion,
 }: {
   category: SkillCategory;
+  index: number;
   reduceMotion: boolean;
 }) {
   return (
-    <div className="grid gap-4 border-t border-[#324f75]/20 pt-5 lg:grid-cols-[200px_1fr] lg:gap-8">
-      <div className="flex items-center gap-2.5">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#324f75] to-[#638ec6] text-white shadow-lg shadow-[#324f75]/20">
-          {category.icon}
+    <div className="grid gap-4 border-t border-[#3d352e]/35 pt-5 lg:grid-cols-[220px_1fr] lg:gap-8">
+      <div className="flex items-start justify-between lg:flex-col lg:justify-start lg:gap-1">
+        <div className="flex items-center gap-2 font-mono text-xs text-[#e56b38]">
+          <span>03.{index + 1}</span>
+          <span className="text-[#3d352e]">/</span>
+          <span className="text-[#b8aea2]/60">{category.icon}</span>
         </div>
         <div>
-          <h3 className="font-heading text-base font-semibold text-[#eceff3]">{category.name}</h3>
-          <p className="text-xs text-[#a2b7d1]/50">
-            {category.skills.length} {category.skills.length === 1 ? "tecnología" : "tecnologías"}
+          <h3 className="font-heading text-lg font-bold text-[#f4f0ea]">{category.name}</h3>
+          <p className="font-mono text-[11px] text-[#b8aea2]/55">
+            {category.skills.length} {category.skills.length === 1 ? "herramienta" : "herramientas"}
           </p>
         </div>
       </div>
 
       <motion.div
-        variants={reduceMotion ? undefined : { show: { transition: { staggerChildren: 0.06 } } }}
+        variants={reduceMotion ? undefined : { show: { transition: { staggerChildren: 0.05 } } }}
         initial={reduceMotion ? false : "hidden"}
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
@@ -315,57 +316,31 @@ export function Skills() {
   const reduceMotion = useReducedMotion() ?? false;
 
   return (
-    <section id="skills" className="relative space-y-10">
-      <div className="space-y-4">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#324f75] to-[#638ec6]">
-            <Wrench className="h-5 w-5 text-white" />
-          </div>
-          <h2 className="font-heading text-4xl font-bold text-[#eceff3] md:text-5xl">
-            Habilidades
+    <section className="relative space-y-10">
+      <div className="flex flex-col justify-between gap-4 border-b border-[#3d352e]/35 pb-6 md:flex-row md:items-end">
+        <div className="space-y-2">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#e56b38]">
+            03 // STACK & HERRAMIENTAS
+          </p>
+          <h2 className="font-heading text-4xl font-bold text-[#f4f0ea] md:text-5xl">
+            Habilidades técnicas
           </h2>
         </div>
-        <p className="max-w-2xl text-lg text-[#a2b7d1]/70">
-          El stack con el que construyo, organizado por disciplina. Cada tecnología enlaza a su
-          documentación oficial.
+        <p className="max-w-md text-sm leading-relaxed text-[#b8aea2]/80">
+          El stack con el que construyo a diario, organizado por capa técnica. Cada tarjeta enlaza a
+          su documentación oficial.
         </p>
       </div>
 
-      <div className="space-y-5">
-        {categories.map((category) => (
-          <CategoryBlock key={category.id} category={category} reduceMotion={reduceMotion} />
+      <div className="space-y-6">
+        {categories.map((category, index) => (
+          <CategoryBlock
+            key={category.id}
+            category={category}
+            index={index}
+            reduceMotion={reduceMotion}
+          />
         ))}
-      </div>
-
-      <div className="relative overflow-hidden rounded-2xl border border-[#324f75]/30 bg-gradient-to-r from-[#0b1628] via-[#0b0f13] to-[#0b1628] p-8">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIgZmlsbD0iIzMyNGY3NSIgLz48L3N2Zz4=')] opacity-20" />
-        <div className="relative z-10 flex flex-col items-center gap-4 text-center">
-          <div>
-            <motion.svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-8 w-8 text-[#638ec6]"
-            >
-              <polyline points="4 17 10 11 4 5" />
-              <motion.line
-                x1="12"
-                y1="19"
-                x2="20"
-                y2="19"
-                animate={reduceMotion ? undefined : { opacity: [1, 0.15, 1] }}
-                transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </motion.svg>
-          </div>
-          <p className="text-[#eceff3]/80">
-            Abierto a incorporar nuevas tecnologías cuando aporten valor real al proyecto.
-          </p>
-        </div>
       </div>
     </section>
   );

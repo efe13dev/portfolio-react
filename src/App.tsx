@@ -4,46 +4,39 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Projects } from "./components/Projects";
 import { Skills } from "./components/Skills";
-import { Vortex } from "./components/ui/vortex";
 
 function App() {
   return (
-    <main className="min-h-screen bg-background text-text">
-      {/* Background grid */}
-      <div className="pointer-events-none fixed inset-0 z-0 h-full w-full overflow-hidden opacity-30">
+    <main className="relative min-h-screen bg-background text-text selection:bg-[#e56b38] selection:text-[#0c0b0a]">
+      {/* Atmósfera cálida carbón & terracota: luz radial + retícula arquitectónica */}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div
-          className="absolute inset-0 h-full w-full"
+          className="absolute -top-48 left-1/2 h-[680px] w-[1100px] -translate-x-1/2 rounded-full opacity-35 blur-3xl"
           style={{
-            backgroundImage: `
-              radial-gradient(circle at 1px 1px, #638ec6 1px, transparent 0),
-              radial-gradient(circle at 1px 1px, #324f75 1px, transparent 0)
-            `,
-            backgroundSize: "50px 50px",
-            backgroundPosition: "0 0, 25px 25px",
-            maskImage: "radial-gradient(circle at center, black, transparent 90%)",
-            WebkitMaskImage: "radial-gradient(circle at center, black, transparent 90%)",
+            background:
+              "radial-gradient(ellipse at center, rgba(229, 107, 56, 0.18) 0%, rgba(245, 158, 11, 0.06) 45%, transparent 75%)",
           }}
         />
-      </div>
-
-      {/* Vortex background */}
-      <div className="pointer-events-none fixed inset-0 z-0 h-full w-full overflow-hidden">
-        <Vortex
-          particleCount={50}
-          baseSpeed={0.01}
-          rangeSpeed={1}
-          baseRadius={1}
-          rangeRadius={1.5}
-          baseHue={120}
-          backgroundColor="transparent"
+        <div
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, #3d352e 1px, transparent 1px),
+              linear-gradient(to bottom, #3d352e 1px, transparent 1px)
+            `,
+            backgroundSize: "72px 72px",
+            maskImage: "radial-gradient(ellipse 80% 70% at 50% 20%, black 20%, transparent 100%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 80% 70% at 50% 20%, black 20%, transparent 100%)",
+          }}
         />
       </div>
 
       <div className="relative z-10 min-h-screen">
         <Header />
 
-        <div className="container mx-auto space-y-24 px-6 pb-20 pt-20 md:space-y-32">
-          <div className="pt-4" id="about">
+        <div className="container mx-auto max-w-6xl space-y-28 px-6 pb-24 pt-24 md:space-y-36">
+          <div id="about">
             <Hero />
           </div>
 

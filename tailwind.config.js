@@ -9,11 +9,11 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        text: "#eceff3",
-        background: "#0b0f13",
-        primary: "#a2b7d1",
-        secondary: "#324f75",
-        accent: "#638ec6",
+        text: "#f4f0ea",
+        background: "#0c0b0a",
+        primary: "#b8aea2",
+        secondary: "#3d352e",
+        accent: "#e56b38",
       },
       fontSize: {
         sm: "0.750rem",
@@ -26,7 +26,8 @@ export default {
       },
       fontFamily: {
         heading: ["Artifika", "serif"],
-        body: ["Artifika", "serif"],
+        body: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       fontWeight: {
         normal: "400",
