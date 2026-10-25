@@ -11,7 +11,6 @@ export function Footer() {
           <span className="text-[#3d352e]">—</span>
           <span>&copy; {new Date().getFullYear()}</span>
         </div>
-
         <div className="flex items-center gap-4">
           <a
             href="https://github.com/efe13dev"
@@ -20,6 +19,7 @@ export function Footer() {
             rel="noopener noreferrer"
             className="rounded-lg border border-[#3d352e]/50 bg-[#161412]/70 p-2.5 text-[#b8aea2] transition-colors hover:border-[#e56b38] hover:text-[#f4f0ea]"
           >
+            {" "}
             <Github className="h-4 w-4" />
           </a>
           <a
