@@ -4,11 +4,11 @@ import { ArrowUpRight, Mail } from "lucide-react";
 import { useRef, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-import { Button } from "./ui/button";
-
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { EMAIL_CONFIG } from "@/data/emailConfig";
+
+import { Button } from "./ui/button";
 
 const modalVariants = {
   hidden: {
